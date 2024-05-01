@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import travel.project.domain.Customer;
 import travel.project.mapper.CustomerMapper;
-
+// 뭐 시발
 @Slf4j
 @RequiredArgsConstructor
 @Repository
