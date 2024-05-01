@@ -8,4 +8,7 @@ public interface CustomerMapper {
 
     void save(Customer customer);
 
+
+    Customer findByLoginId(String customerId, String password);
+
 }

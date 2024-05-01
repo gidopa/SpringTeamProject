@@ -20,7 +20,7 @@
                     <h3 class="form-tit">LOGIN</h3>
                 </div>
                 <div class="form-body">
-                    <form>
+                    <form action method="post">
                         <div class="tabset tabset-fluid border-bottom">
                             <ul class="tabset-list tabset-lg">
                                 <li class="tabset-item">
@@ -31,10 +31,10 @@
                             </ul>
                         </div>
                         <div class="inputset inputset-line inputset-lg">
-                            <input type="text" class="inputset-input form-control" placeholder="아이디" aria-label="ID">
+                            <input type="text" class="inputset-input form-control" placeholder="아이디" name="customerId">
                         </div>
                         <div class="inputset inputset-line inputset-lg">
-                            <input type="password" class="inputset-input form-control" placeholder="비밀번호" aria-label="Password">
+                            <input type="password" class="inputset-input form-control" placeholder="비밀번호" name="password">
                         </div>
                         <div class="contents-checkset d-flex justify-content-start">
                             <div class="checkset">
@@ -55,7 +55,8 @@
                             </li>
                         </ul>
                         <div class="btn-box">
-                            <a class="btnset2 btnset-lg btnset-rect" href="javascript:void(0)">로그인</a>
+                            <input type="submit" class="btnset2 btnset-lg btnset-rect" value="로그인">
+<%--                            <a class="btnset2 btnset-lg btnset-rect" href="javascript:void(0)">로그인</a>--%>
                         </div>
                     </form>
                 </div>

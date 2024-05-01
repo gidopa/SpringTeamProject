@@ -1,12 +1,11 @@
 package travel.project.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import travel.project.repository.customer.CustomerRepository;
 
-@RequiredArgsConstructor
-@Service
-public class LoginService {
+import travel.project.domain.Customer;
 
-    private final CustomerRepository customerRepository;
+import java.util.Optional;
+
+public interface LoginService {
+
+    Optional<Customer> login(String customerId, String password);
 }
