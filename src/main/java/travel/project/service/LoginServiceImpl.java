@@ -16,9 +16,8 @@ public class LoginServiceImpl implements LoginService{
     @Override
     public Optional<Customer> login(String customerId, String password) {
         // filter로 로그인 폼에서 입력받은 password와 db에서 select 해온 customer의 password가 같은지 검증
-        Optional<Customer> customer = customerRepository.login(customerId, password)
+        return customerRepository.login(customerId, password)
                 .filter(m -> m.getPassword().equals(password));
-        return customer;
 
 
     }
