@@ -16,15 +16,15 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     private final CustomerMapper customerMapper;
 
+    // 회원 한명 insert 하고 다시 리턴
     @Override
     public Customer save(Customer customer) {
         customerMapper.save(customer);
         return customer;
     }
-
+    // 로그인하는 id, pwd 받아서 Optional로 리턴
     @Override
     public Optional<Customer> login(String customerId, String password) {
-        Optional<Customer> a = Optional.ofNullable(customerMapper.findByLoginId(customerId, password));
-        return a;
+        return Optional.ofNullable(customerMapper.findByLoginId(customerId));
     }
 }
