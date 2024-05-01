@@ -32,6 +32,7 @@ public class LoginController {
         String id = null;
         // Optional로 받아 service 계층에서 filter 사용
         Optional<Customer> loginCustomer = loginService.login(customer.getCustomerId(), customer.getPassword());
+        // Optional이 있으면
         if (loginCustomer.isPresent()) {
             id = loginCustomer.get().getCustomerId();
             // id 사용
