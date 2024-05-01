@@ -18,7 +18,7 @@ public class MainController {
 		log.info("home controller");
 		return main;
 	}
-
+	//test
 	@GetMapping("/reservation")
 	public String res(Model model){
 		model.addAttribute("center", "../reservation.jsp");
