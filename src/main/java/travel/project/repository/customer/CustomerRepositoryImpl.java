@@ -22,7 +22,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         customerMapper.save(customer);
         return customer;
     }
-    // 로그인하는 id, pwd 받아서 Optional로 리턴
+    // 로그인하는 id, pwd 받고 Optional로 리턴
     @Override
     public Optional<Customer> login(String customerId, String password) {
         return Optional.ofNullable(customerMapper.findByLoginId(customerId));
