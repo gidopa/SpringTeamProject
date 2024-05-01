@@ -10,7 +10,7 @@
     <div class="header-container container-lg">
         <div class="header-left">
             <h1 class="header-title">
-                <a href="/test">
+                <a href="/">
                     <img src="resources/images/img_logo_black.png" alt="로고">
                 </a>
             </h1>
@@ -99,6 +99,11 @@
                         <li class="header-subitem">
                             <a class="header-sublink" href="javascript:void(0)">
                                 <span>부대시설</span>
+                            </a>
+                        </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/hotel">
+                                <span>호텔등록</span>
                             </a>
                         </li>
                     </ul>

@@ -29,4 +29,5 @@ public class MainController {
 		model.addAttribute("center", "../member/loginForm.jsp");
 		return main;
 	}
+	
 }
