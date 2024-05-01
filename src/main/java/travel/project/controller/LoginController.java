@@ -28,8 +28,9 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@Validated @ModelAttribute Customer customer, Model model, HttpServletRequest request){
+    public String login(@ModelAttribute Customer customer, Model model, HttpServletRequest request){
         String id = null;
+        // Optional로 받아 service 계층에서 filter 사용
         Optional<Customer> loginCustomer = loginService.login(customer.getCustomerId(), customer.getPassword());
         if (loginCustomer.isPresent()) {
             id = loginCustomer.get().getCustomerId();
