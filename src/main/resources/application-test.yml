@@ -12,3 +12,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+logging:
+  level:
+    travel.project.repository: trace
+    travel.project.mapper: trace
+
+

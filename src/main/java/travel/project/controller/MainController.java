@@ -24,9 +24,5 @@ public class MainController {
 		return "main/main";
 	}
 
-	@GetMapping("/login")
-	public String login(Model model){
-		model.addAttribute("center", "../member/loginForm.jsp");
-		return main;
-	}
+
 }
