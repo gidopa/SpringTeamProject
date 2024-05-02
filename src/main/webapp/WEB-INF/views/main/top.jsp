@@ -207,7 +207,7 @@
                 %>
                 <ul class="fullmenu-member">
                     <li>
-                        <a href="/login">로그아웃</a>
+                        <a href="/logout">로그아웃</a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">회원가입</a>
