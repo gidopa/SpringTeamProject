@@ -29,7 +29,6 @@ public class PackRepositoryImpl implements PackRepository{
 	// 호텔 이미지 등록
 	@Override
 	public void saveHotelImg(List<String> imgNames, Long id) {
-		
 		packMapper.saveHotelImg(imgNames, id);
 	}
 	

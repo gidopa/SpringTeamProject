@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="header-subitem">
-                            <a class="header-sublink" href="/hotel">
+                            <a class="header-sublink" href="/hotels">
                                 <span>호텔등록</span>
                             </a>
                         </li>

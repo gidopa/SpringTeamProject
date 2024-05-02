@@ -7,16 +7,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Registration Form</title>
     <link rel="stylesheet" href="resources/css/hotelRegister.css">
+    <script>
+		function validateForm() {
+		    // 호텔 편의시설 검사
+		    const amenities = document.querySelectorAll('input[name="amenities"]:checked');
+		    if (amenities.length === 0) {
+		        alert('적어도 하나 이상의 호텔 편의시설을 선택해야 합니다.');
+		        return false; // 폼 제출을 막습니다.
+		    }
+		
+		    // 호텔 이미지 검사
+		    const hotelImageInput = document.getElementById('hotelImage');
+		    if (hotelImageInput.files.length === 0) {
+		        alert('호텔 이미지를 업로드해야 합니다.');
+		        return false;
+		    }
+		
+		    return true;
+		}
+	</script>
 </head>
 <body>
 <div class="abc">
-    <form id="hotelRegistrationForm" action="/hotels" method="post" enctype="multipart/form-data">
+    <form id="hotelRegistrationForm" action="/hotels" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <h1>호텔 등록 페이지</h1>
         <label for="hotelName">호텔 이름:</label>
         <input type="text" id="hotelName" name="hotelName" required>
 
         <label for="location">호텔 위치:</label>
-        <input type="text" id="location" name="location" required>
+        <select id="location" name="location">
+		    <option value="ICN">인천(ICN)</option>
+		    <option value="NRT">도쿄(NRT)</option>
+		    <option value="HND">도쿄(하네다)(HND)</option>
+		    <option value="KIX">오사카(KIX)</option>
+		    <option value="CTS">삿포로(CTS)</option>
+		    <option value="BKK">방콕(BKK)</option>
+		    <option value="SIN">싱가포르(SIN)</option>
+		    <option value="KUL">쿠알라룸푸르(KUL)</option>
+		    <option value="CGK">자카르타(CGK)</option>
+		    <option value="HAN">하노이(HAN)</option>
+		</select>
 
         <label for="starRating">Hotel Stars:</label>
         <select id="starRating" name="starRating">
@@ -31,7 +61,7 @@
         <textarea id="description" name="description" required></textarea>
 
          <label for="hotelImage">호텔 이미지:</label> 
-         <input type="file" id="hotelImage" name="hotelImage" accept="image/*" multiple> 
+         <input type="file" id="hotelImage" name="hotelImage" accept="image/*" multiple>
 
         <fieldset>
             <legend>호텔 편의시설</legend>
@@ -45,5 +75,6 @@
         <button type="submit">Submit</button>
     </form>
    </div>
+   
 </body>
 </html>
