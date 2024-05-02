@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-//test
+//aaa
 @Slf4j
 @Controller
 public class MainController {
@@ -18,7 +18,7 @@ public class MainController {
 		log.info("home controller");
 		return main;
 	}
-	//test
+
 	@GetMapping("/reservation")
 	public String res(Model model){
 		model.addAttribute("center", "../reservation.jsp");
@@ -30,6 +30,5 @@ public class MainController {
 		model.addAttribute("center", "aboutus.jsp");
 		return main;
 	}
-
 
 }
