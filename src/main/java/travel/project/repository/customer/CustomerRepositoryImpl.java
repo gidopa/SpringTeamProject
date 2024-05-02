@@ -27,4 +27,11 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     public Optional<Customer> login(String customerId, String password) {
         return Optional.ofNullable(customerMapper.findByLoginId(customerId));
     }
+
+    @Override
+    public Optional<Customer> findById(String id) {
+        return Optional.ofNullable(customerMapper.findByLoginId(id));
+    }
+
+
 }
