@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class MainController {
+
+
 	String main = "main/main";
 
 
@@ -30,5 +32,7 @@ public class MainController {
 		model.addAttribute("center", "aboutus.jsp");
 		return main;
 	}
+
+
 
 }
