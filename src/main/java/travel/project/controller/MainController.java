@@ -25,5 +25,11 @@ public class MainController {
 		return "main/main";
 	}
 
+	@GetMapping("/aboutus")
+	public String aboutus(Model model){
+		model.addAttribute("center", "aboutus.jsp");
+		return main;
+	}
+
 
 }

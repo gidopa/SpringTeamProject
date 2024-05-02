@@ -52,23 +52,7 @@
                 }
             %>
             <ul class="header-gnblist">
-                <li class="header-gnbitem">
-                    <a class="header-gnblink" href="/link">
-                        <span>ABOUT</span>
-                    </a>
-                    <ul class="header-sublist">
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="javascript:void(0)">
-                                <span>브랜드스토리</span>
-                            </a>
-                        </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="javascript:void(0)">
-                                <span>오시는길</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
                 <li class="header-gnbitem">
                     <a class="header-gnblink" href="javascript:void(0)">
                         <span>패키지</span>
@@ -155,6 +139,23 @@
                         <li class="header-subitem">
                             <a class="header-sublink" href="javascript:void(0)">
                                 <span>고객의소리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="header-gnbitem">
+                    <a class="header-gnblink" href="/link">
+                        <span>ABOUT</span>
+                    </a>
+                    <ul class="header-sublist">
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="javascript:void(0)">
+                                <span>브랜드스토리</span>
+                            </a>
+                        </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/aboutus">
+                                <span>오시는길</span>
                             </a>
                         </li>
                     </ul>
