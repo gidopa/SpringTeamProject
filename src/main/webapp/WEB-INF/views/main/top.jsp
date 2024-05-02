@@ -7,6 +7,10 @@
 <head>
     <meta charset="UTF-8"/>
 </head>
+
+<%
+	String contextPath = request.getContextPath();
+%>
 <header class="bloomcity-N1" data-bid="jFlvm1V1Ec">
     <div class="header-container container-lg">
         <div class="header-left">
@@ -310,6 +314,11 @@
                         <li class="header-subitem">
                             <a class="header-sublink" href="javascript:void(0)">
                                 <span>고객의소리</span>
+                            </a>
+                        </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/admin">
+                                <span>관리자</span>
                             </a>
                         </li>
                     </ul>
