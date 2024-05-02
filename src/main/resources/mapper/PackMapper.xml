@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="travel.project.mapper.PackMapper">
+
+	<!-- 호텔 등록 -->
+    <insert id="saveHotel" parameterType="Hotels">
+        INSERT INTO hotels (Hotel_Name, Location, Star_Rating, Description)
+        VALUES (#{hotelName},#{location}, #{starRating}, #{description})
+    </insert>
+	
+	<!-- 호텔 이름으로 찾기 -->
+	<select id="selectOne" resultType="Hotels" parameterType="String">
+		SELECT * FROM hotels where Hotel_Name=#{hotelName}
+	</select>
+	
+	<!-- 호텔 편의시설 등록 -->
+	<insert id="saveHotelAmenities" >
+		INSERT INTO hotelAmenities(Hotel_ID, Amenity) VALUES
+		 <foreach item="amenity" collection="amenities" separator=",">
+            (#{id}, #{amenity})
+        </foreach> 
+	</insert>
+	
+	<!-- 호텔 이미지 등록 -->
+	<insert id="saveHotelImg" >
+		INSERT INTO hotels_img(Img_Name, Hotel_Id) VALUES
+		 <foreach item="imgName" collection="imgNames" separator=",">
+            (#{imgName}, #{id})
+        </foreach> 
+	</insert>
+
+
+
+
+</mapper>
