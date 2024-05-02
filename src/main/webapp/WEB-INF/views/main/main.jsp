@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="resources/css/template.css">
     <link rel="stylesheet" href="resources/css/common.css">
     <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css/>">
+
 </head>
 
 <body>

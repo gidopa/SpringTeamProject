@@ -216,6 +216,9 @@
                         <a href="/logout">로그아웃</a>
                     </li>
                     <li>
+                        <a href="/editForm">회원정보수정</a>
+                    </li>
+                    <li>
                         <a href="javascript:void(0)">회원가입</a>
                     </li>
                 </ul>
