@@ -32,5 +32,4 @@ mybatis:
 logging:
   level:
     travel.project.repository: trace
-    travel.project.controller: debug
-
+    travel.project.service: debug

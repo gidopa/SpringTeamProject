@@ -1,16 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 605
-  Date: 2024-05-01
-  Time: 오전 11:17
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.math.BigInteger" %>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%
+    request.setCharacterEncoding("UTF-8");
+    String contextPath = request.getContextPath();
+
+    String clientId = "e8WGcOTLKR6mfuHWudqi";//애플리케이션 클라이언트 아이디값";
+    String redirectURI = URLEncoder.encode("http://localhost:8081/login/naver", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    apiURL += "&client_id=" + clientId;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&state=" + state;
+    session.setAttribute("state", state);
+%>
 <main class="th-layout-main ">
     <!-- [S]bloomcity-N10 -->
     <div class="bloomcity-N10" data-bid="WnLvN6Jz4C">
@@ -20,7 +25,7 @@
                     <h3 class="form-tit">LOGIN</h3>
                 </div>
                 <div class="form-body">
-                    <form>
+                    <form method="post" action="login">
                         <div class="tabset tabset-fluid border-bottom">
                             <ul class="tabset-list tabset-lg">
                                 <li class="tabset-item">
@@ -28,21 +33,16 @@
                                         <span>회원 로그인</span>
                                     </a>
                                 </li>
+
                             </ul>
                         </div>
                         <div class="inputset inputset-line inputset-lg">
-                            <input type="text" class="inputset-input form-control" placeholder="아이디" aria-label="ID">
+                            <input type="text" class="inputset-input form-control" placeholder="아이디" aria-label="ID" name="customerId">
                         </div>
                         <div class="inputset inputset-line inputset-lg">
-                            <input type="password" class="inputset-input form-control" placeholder="비밀번호" aria-label="Password">
+                            <input type="password" class="inputset-input form-control" placeholder="비밀번호" aria-label="Password" name="password">
                         </div>
-                        <div class="contents-checkset d-flex justify-content-start">
-                            <div class="checkset">
-                                <input id="checkset-c-3-1" class="checkset-input input-round" type="checkbox" value="" checked="">
-                                <label class="checkset-label" for="checkset-c-3-1"></label>
-                                <span class="checkset-text">자동 로그인</span>
-                            </div>
-                        </div>
+
                         <ul class="contents-list d-flex justify-content-center">
                             <li class="contents-item">
                                 <a href="javascript:void(0)" class="contents-link">회원가입</a>
@@ -55,7 +55,8 @@
                             </li>
                         </ul>
                         <div class="btn-box">
-                            <a class="btnset2 btnset-lg btnset-rect" href="javascript:void(0)">로그인</a>
+<%--                            <a class="btnset2 btnset-lg btnset-rect" href="javascript:void(0)">로그인</a>--%>
+                            <input type="submit" class="btnset2 btnset-lg btnset-rect" value="로그인">
                         </div>
                     </form>
                 </div>
@@ -66,7 +67,7 @@
                     <a class="btnset btnset-round contents-start-kakao" href="javascript:void(0)">
                         <img class="btn-icon" src="../resources/icons/icon_kakao_circle.svg" alt="카카오로그인">
                     </a>
-                    <a class="btnset btnset-round contents-start-naver" href="javascript:void(0)">
+                    <a class="btnset btnset-round contents-start-naver" href="<%=apiURL%>">
                         <img class="btn-icon" src="../resources/icons/icon_naver_circle.svg" alt="네이버로그인">
                     </a>
                     <a class="btnset btnset-round contents-start-naver" href="javascript:void(0)">
@@ -78,5 +79,3 @@
     </div>
     <!-- [E]bloomcity-N10 -->
 </main>
-</body>
-</html>

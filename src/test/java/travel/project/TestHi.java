@@ -15,6 +15,7 @@ import travel.project.repository.customer.CustomerRepository;
 import static org.assertj.core.api.Assertions.*;
 
 
+
 //@SpringBootTest
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
 public class TestHi {
