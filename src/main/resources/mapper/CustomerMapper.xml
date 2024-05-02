@@ -10,7 +10,7 @@
     </insert>
 
     <select id="findByLoginId" resultType="Customer">
-        select customer_Id, password from customer
+        select * from customer
         where customer_id = #{customerId}
     </select>
 
