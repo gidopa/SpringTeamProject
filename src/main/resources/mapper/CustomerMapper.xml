@@ -14,6 +14,11 @@
         where customer_id = #{customerId}
     </select>
 
+    <update id="update">
+        update customer set name = #{name}, email = #{email}, phone_number = #{phoneNumber}, address = #{address}
+        where customer_id = #{customerId}
+    </update>
+
 
 
 

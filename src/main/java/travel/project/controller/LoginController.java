@@ -3,8 +3,11 @@ package travel.project.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.filters.CsrfPreventionFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +15,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import travel.project.domain.Customer;
+import travel.project.service.LoginService;
 import travel.project.service.LoginServiceImpl;
+import travel.project.service.customer.CustomerService;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -21,10 +26,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class LoginController {
-    private final LoginServiceImpl loginService;
+
+    private final LoginService loginService;
+    private final CustomerService customerService;
+    HttpServletRequest request;
     HttpSession session;
     String main = "main/main";
 
@@ -82,6 +91,26 @@ public class LoginController {
     public String logout(HttpServletRequest request){
         session = request.getSession();
         session.invalidate();
+        return "redirect:/";
+    }
+
+    @GetMapping("/editForm")
+    public String editForm(Model model, HttpServletRequest request){
+        session = request.getSession();
+        String id = (String)session.getAttribute("id");
+        Optional<Customer> customer = customerService.findById(id);
+        if(customer.isPresent()){
+            log.info("확인");
+            model.addAttribute("customer", customer.get());
+            model.addAttribute("center", "../member/editForm.jsp");
+        }
+        return main;
+    }
+
+    @PutMapping("/editForm")
+    public String editCustomer(@ModelAttribute Customer customer){
+        // 폼에서 입력받은 customer의 정보 수정
+        customerService.update(customer);
         return "redirect:/";
     }
 

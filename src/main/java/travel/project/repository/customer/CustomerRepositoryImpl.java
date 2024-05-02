@@ -33,5 +33,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         return Optional.ofNullable(customerMapper.findByLoginId(id));
     }
 
+    @Override
+    public void updateCustomer(Customer customer) {
+        customerMapper.update(customer);
+    }
+
 
 }

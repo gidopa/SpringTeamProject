@@ -8,8 +8,9 @@ public interface CustomerMapper {
 
     void save(Customer customer);
 
-
     // 로그인하는 Id로
     Customer findByLoginId(String customerId);
+
+    void update(Customer customer);
 
 }
