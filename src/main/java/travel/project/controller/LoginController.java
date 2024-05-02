@@ -75,7 +75,14 @@ public class LoginController {
         loginService.naverJoin(customer);
         session = request.getSession();
         session.setAttribute("id",customer.getCustomerId());
-        return "redirect:/main/main";
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        session = request.getSession();
+        session.invalidate();
+        return "redirect:/";
     }
 
 
