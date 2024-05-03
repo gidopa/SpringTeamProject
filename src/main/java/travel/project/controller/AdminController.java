@@ -12,4 +12,19 @@ public class AdminController {
 	public String adminHome() {
 		return "admin/index";
 	}
+	
+	@GetMapping("/membership")
+	public String membership() {
+		return "admin/membership";
+	}
+	
+	@GetMapping("/reservation")
+	public String reservation() {
+		return "admin/reservation";
+	}
+	
+	@GetMapping("/travelpackage")
+	public String travelPackage() {
+		return "admin/travelPackage";
+	}
 }
