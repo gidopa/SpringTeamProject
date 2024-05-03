@@ -7,22 +7,18 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.tags.shaded.org.apache.xpath.SourceTree;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 import travel.project.service.PackService;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -100,13 +96,21 @@ public class PackController {
         
 		return null;
 	}
-	
-	@GetMapping("/package/list")
-	public String getAllPackageList(Model model){
-//		packService.getAllPackageList();
-		model.addAttribute("center","../pack/AllPackageList.jsp");
+	// 지역별 패키지의 리스트
+	@GetMapping("/package/list/{destination}")
+	public String getAllPackageList(Model model,@PathVariable String destination){
+		// PathVariable로 destination을 받아 해당 destination에 따른 list 보여줌
+		List<Pack> packs = packService.getPackageListByDestination(destination);
+		model.addAttribute("center","../pack/PackageList.jsp");
+		model.addAttribute("list", packs);
 		return "main/main";
 	}
+
+/*	@GetMapping("/package/{tripId}")
+	public String packDetail(@PathVariable long tripId, Model model){
+
+	}*/
+
 
 	
 }
