@@ -66,25 +66,22 @@
 <body>
 
 <center>
-    <br><br><br><br><br>
-    <c:if test="${empty requestScope.roadMapList}">
-        <h1>로드맵이 없습니다</h1>
+    <c:if test="${empty list}">
+        <h1>패키지가 없습니다</h1>
     </c:if>
-    <h1><i class="fas fa-video fa-icon"></i>로드맵</h1>
+    <h1><i class="fas fa-video fa-icon"></i>패키지</h1>
     <table width="1000" height="470">
         <c:set var="j" value="0"/>
-        <c:forEach var="list" items="${requestScope.roadMapList}">
+        <c:forEach var="list" items="${list}">
             <c:if test="${j % 4 == 0}">
                 <tr align="center">
             </c:if>
             <td>
                 <div class="course-container">
-                    <a href="${contextPath}/RoadMap/detail?roadMapId=${list.roadMapId}">
-                        <img src="${contextPath}/project1/images/${list.imgPath}">
+                    <a href="/package/${list.tripId}">
+                        <img src="/images/travel.jpg">
                         <div class="course-info">
-                            <p><strong>로드맵명</strong> : ${list.roadMapTitle}</p>
-                            <br>
-                            <p class="description"><i class="fas fa-tag fa-icon"></i><strong>설명</strong> : ${list.roadMapDescription}</p>
+                            <p><strong>여행지</strong> : ${list.destination}</p>
                         </div>
                     </a>
                 </div>
