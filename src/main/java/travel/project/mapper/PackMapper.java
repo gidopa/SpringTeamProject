@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import travel.project.domain.Customer;
+import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 

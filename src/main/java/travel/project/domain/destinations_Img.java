@@ -8,8 +8,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-public class Hotels_Img {
-    private long hotelsImgId;
+public class destinations_Img {
+    private long destinationsImgId;
     private String imgName;
-    private long hotelId;
+    private String category;
+    private long destinationId;
 }

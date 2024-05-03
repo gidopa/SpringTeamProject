@@ -65,13 +65,13 @@
                         <span class="fw-500">SNS 계정으로 로그인</span>
                     </div>
                     <a class="btnset btnset-round contents-start-kakao" href="javascript:void(0)">
-                        <img class="btn-icon" src="../resources/icons/icon_kakao_circle.svg" alt="카카오로그인">
+                        <img class="btn-icon" src="/icons/icon_kakao_circle.svg" alt="카카오로그인">
                     </a>
                     <a class="btnset btnset-round contents-start-naver" href="<%=apiURL%>">
-                        <img class="btn-icon" src="../resources/icons/icon_naver_circle.svg" alt="네이버로그인">
+                        <img class="btn-icon" src="/icons/icon_naver_circle.svg" alt="네이버로그인">
                     </a>
                     <a class="btnset btnset-round contents-start-naver" href="javascript:void(0)">
-                        <img class="btn-icon" src="../resources/icons/icon_apple_circle.svg" alt="애플로그인">
+                        <img class="btn-icon" src="/icons/icon_apple_circle.svg" alt="애플로그인">
                     </a>
                 </div>
             </div>

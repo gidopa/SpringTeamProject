@@ -113,8 +113,18 @@
                             </a>
                         </li>
                         <li class="header-subitem">
-                            <a class="header-sublink" href="/hotel">
-                                <span>호텔등록</span>
+                            <a class="header-sublink" href="/hotels">
+                                <span>호텔 등록</span>
+                            </a>
+                        </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/destinations">
+                                <span>목적지 등록</span>
+                            </a>
+                        </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/destinationsList">
+                                <span>식당 등록</span>
                             </a>
                         </li>
                     </ul>

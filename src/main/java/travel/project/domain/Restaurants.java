@@ -12,8 +12,8 @@ import lombok.Setter;
 public class Restaurants {
     private long restaurantId;
     private long destinationId;
-    private String name;
+    private String restaurantName; // 열명 변경
     private String cuisine;
-    private String description;
+    private String restaurantDescription; // 열명 변경
 
 }
