@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
+import travel.project.domain.Restaurants;
 
 public interface PackService {
 	
@@ -19,5 +21,14 @@ public interface PackService {
 	
 	// 호텔 이미지 업로드
 	public List<String> uploadHotelImage(MultipartFile[] files, long id);
+	
+	// Destination 등록
+	public long saveDestination(Destination destination);
+	
+	// Destination 리스트 반환
+	public List<Destination> findAllDestination();
+	
+	// Restaurants 등록
+	public void saveRestaurant(Restaurants restaurants, long destination_Id);
 
 }

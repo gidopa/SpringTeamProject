@@ -13,7 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
+import travel.project.domain.Restaurants;
 import travel.project.mapper.PackMapper;
 import travel.project.repository.pack.PackRepository;
 import travel.project.repository.pack.PackRepositoryImpl;
@@ -81,6 +83,24 @@ public class PackServiceImpl implements PackService{
 	       }
 	    
 	    return imgNames;
+	}
+	
+	// Destination 등록
+	@Override
+	public long saveDestination(Destination destination) {
+		return packRepository.saveDestination(destination);
+	}
+	
+	// Destination 리스트 반환
+	@Override
+	public List<Destination> findAllDestination() {
+		return packRepository.findAllDestination();
+	}
+	
+	// Restaurants 등록
+	@Override
+	public void saveRestaurant(Restaurants restaurants, long destination_Id) {
+		packRepository.saveRestaurant(restaurants, destination_Id);
 	}
 	
 }

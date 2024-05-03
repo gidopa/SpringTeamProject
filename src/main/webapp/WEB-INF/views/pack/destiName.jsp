@@ -32,10 +32,9 @@
     <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
         <div class="wrapper wrapper--w960">
             <div class="card card-2">
-                <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">여행 목적지 정보 입력</h2>
-                    <form method="POST" action="/destinations">
+                    <h2 class="title">식당 지역 선택</h2>
+                    <form method="POST" action="/restaurants">
                     	
                     	<!-- Destination 정보 입력 -->
                     	<!-- Destination_name 목적지 이름 -->
@@ -43,43 +42,20 @@
                             <div class="rs-select2 js-select-simple select--no-search">
                                 <select name="destinationName" required>
                                     <option disabled="disabled" selected="selected">Destination_name</option>
-                                    <option value="KOREA ICN">인천(ICN)</option>
-								    <option value="JAPAN NRT">도쿄(NRT)</option>
-								    <option value="JAPAN HND">도쿄(하네다)(HND)</option>
-								    <option value="JAPAN KIX">오사카(KIX)</option>
-								    <option value="JAPAN CTS">삿포로(CTS)</option>
-								    <option value="EASTSOUTHASIA BKK">방콕(BKK)</option>
-								    <option value="EASTSOUTHASIA SIN">싱가포르(SIN)</option>
-								    <option value="EASTSOUTHASIA KUL">쿠알라룸푸르(KUL)</option>
-								    <option value="EASTSOUTHASIA CGK">자카르타(CGK)</option>
-								    <option value="EASTSOUTHASIA HAN">하노이(HAN)</option>
+                                    <option value="ICN">인천(ICN)</option>
+								    <option value="NRT">도쿄(NRT)</option>
+								    <option value="HND">도쿄(하네다)(HND)</option>
+								    <option value="KIX">오사카(KIX)</option>
+								    <option value="CTS">삿포로(CTS)</option>
+								    <option value="BKK">방콕(BKK)</option>
+								    <option value="SIN">싱가포르(SIN)</option>
+								    <option value="KUL">쿠알라룸푸르(KUL)</option>
+								    <option value="CGK">자카르타(CGK)</option>
+								    <option value="HAN">하노이(HAN)</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-                        
-                        <!-- Country, 국가 -->
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="country" required>
-                                    <option disabled="disabled" selected="selected">Country</option>
-                                    <option value="대한민국">대한민국</option>
-									<option value="일본">일본</option>
-									<option value="태국">태국</option>
-									<option value="싱가포르">싱가포르</option>
-									<option value="말레이시아">말레이시아</option>
-									<option value="인도네시아">인도네시아</option>
-									<option value="베트남">베트남</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
-                       
-                        <!-- Destination 설명 -->
-                        <div class="input-group">
-                            <input class="input--style-2" type="text" placeholder=description name="destinationDescription" required>
-                        </div>
-                        <!-- Destination END -->
                         
                          <div class="p-t-30">
                             <button class="btn btn--radius btn--green" type="submit">저장</button>

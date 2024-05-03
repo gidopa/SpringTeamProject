@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Registration Form</title>
-    <link rel="stylesheet" href="resources/css/hotelRegister.css">
+    <link rel="stylesheet" href="/css/hotelRegister.css">
     <script>
 		function validateForm() {
 		    // 호텔 편의시설 검사
@@ -34,18 +34,18 @@
         <label for="hotelName">호텔 이름:</label>
         <input type="text" id="hotelName" name="hotelName" required>
 
-        <label for="location">호텔 위치:</label>
-        <select id="location" name="location">
-		    <option value="ICN">인천(ICN)</option>
-		    <option value="NRT">도쿄(NRT)</option>
-		    <option value="HND">도쿄(하네다)(HND)</option>
-		    <option value="KIX">오사카(KIX)</option>
-		    <option value="CTS">삿포로(CTS)</option>
-		    <option value="BKK">방콕(BKK)</option>
-		    <option value="SIN">싱가포르(SIN)</option>
-		    <option value="KUL">쿠알라룸푸르(KUL)</option>
-		    <option value="CGK">자카르타(CGK)</option>
-		    <option value="HAN">하노이(HAN)</option>
+        <label for="destinationName">호텔 위치:</label>
+        <select id="destinationName" name="destinationName">
+		    <option value="KOREA ICN">인천(ICN)</option>
+		    <option value="JAPAN NRT">도쿄(NRT)</option>
+		    <option value="JAPAN HND">도쿄(하네다)(HND)</option>
+		    <option value="JAPAN KIX">오사카(KIX)</option>
+		    <option value="JAPAN CTS">삿포로(CTS)</option>
+		    <option value="EASTSOUTHASIA BKK">방콕(BKK)</option>
+		    <option value="EASTSOUTHASIA SIN">싱가포르(SIN)</option>
+		    <option value="EASTSOUTHASIA KUL">쿠알라룸푸르(KUL)</option>
+		    <option value="EASTSOUTHASIA CGK">자카르타(CGK)</option>
+		    <option value="EASTSOUTHASIA HAN">하노이(HAN)</option>
 		</select>
 
         <label for="starRating">Hotel Stars:</label>

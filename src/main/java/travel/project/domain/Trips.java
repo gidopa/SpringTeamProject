@@ -11,7 +11,7 @@ import java.sql.Date;
 @Getter @Setter
 public class Trips {
     private long tripId;
-    private String destination;
+    private String 	destinationName;
     private String tripType;
     private Date startDate; // startDate와 endDate는 트리거로 insert, update시 검증
     private Date endDate;

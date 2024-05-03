@@ -16,7 +16,7 @@
         <div class="header-left">
             <h1 class="header-title">
                 <a href="/">
-                    <img src="resources/images/img_logo_black.png" alt="로고">
+                    <img src="/images/img_logo_black.png" alt="로고">
                 </a>
             </h1>
         </div>
@@ -114,7 +114,17 @@
                         </li>
                         <li class="header-subitem">
                             <a class="header-sublink" href="/hotels">
-                                <span>호텔등록</span>
+                                <span>호텔 등록</span>
+                            </a>
+                        </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/destinations">
+                                <span>목적지 등록</span>
+                            </a>
+                        </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/destinationsList">
+                                <span>식당 등록</span>
                             </a>
                         </li>
                     </ul>
@@ -172,19 +182,19 @@
                 <a href="/reservation">
                     <button class="btn-calendar">
             <span class="btn-icon">
-              <img src="resources/icons/icon_calendar_check_white.svg" alt="검색">
+              <img src="/icons/icon_calendar_check_white.svg" alt="검색">
             </span>
                         <span>예약하기</span>
                     </button>
                 </a>
                 <button class="btn-allmenu">
-                    <img src="resources/icons/ico_menu_black.svg" alt="PC메뉴">
+                    <img src="/icons/ico_menu_black.svg" alt="PC메뉴">
                 </button>
                 <button class="btn-momenu">
-                    <img src="resources/icons/ico_menu_black.svg" alt="모바일메뉴">
+                    <img src="/icons/ico_menu_black.svg" alt="모바일메뉴">
                 </button>
                 <button class="btn-moclose">
-                    <img src="resources/icons/ico_close_black.svg" alt="닫기">
+                    <img src="/icons/ico_close_black.svg" alt="닫기">
                 </button>
             </div>
         </div>
@@ -194,7 +204,7 @@
             <div class="fullmenu-head">
                 <h4 class="fullmenu-title">
                     <a href="">
-                        <img src="resources/images/img_logo_black.png" alt="로고">
+                        <img src="/images/img_logo_black.png" alt="로고">
                     </a>
                 </h4>
                 <%
@@ -332,7 +342,7 @@
             </ul>
         </div>
         <button class="fullmenu-close">
-            <img src="resources/icons/ico_close_black.svg" alt="닫기">
+            <img src="/icons/ico_close_black.svg" alt="닫기">
         </button>
     </div>
 </header>

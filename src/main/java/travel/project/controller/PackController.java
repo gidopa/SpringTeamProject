@@ -16,13 +16,16 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
+import travel.project.domain.Restaurants;
 import travel.project.service.PackService;
 
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,8 +34,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.constraints.NotNull;
 
 
 @Slf4j
@@ -50,14 +51,6 @@ public class PackController {
 		model.addAttribute("center", "../pack/hotelRegister.jsp");
 		return main;
 	}
-	
-	@GetMapping("/destinations")
-	public String destinations(Model model){
-		log.info("packController");
-		model.addAttribute("center", "../pack/destination.jsp");
-		return main;
-	}
-	
 	
 	// 호텔, 호텔 편의시설, 호텔 이미지 등록
 	@PostMapping("/hotels")
@@ -79,6 +72,50 @@ public class PackController {
         
 		return main;
 	}
+	
+	// Destination 페이지 요청
+	@GetMapping("/destinations")
+	public String destinations(Model model){
+		log.info("packController");
+		model.addAttribute("center", "../pack/destination.jsp");
+		return main;
+	}
+	
+	// Destination 등록
+	@PostMapping("/destinations")
+	public String destinations(@ModelAttribute Destination destination, Model model) {
+		packService.saveDestination(destination);
+		return main;
+	}
+	
+	// 목적지 리스트 페이지 요청
+	@GetMapping("/destinationsList")
+	public String destiNames(Model model){
+		List<Destination> destinations = packService.findAllDestination();
+		model.addAttribute("destinations", destinations);
+		model.addAttribute("center", "../pack/destinationsList1.jsp");
+		return main;
+	}
+	
+	
+	// restaurants 페이지 요청
+	@GetMapping("/restaurants/{id}")
+	public String restaurants(@PathVariable("id") long id, Model model){
+		log.info("packController");
+		
+		model.addAttribute("destination_Id", id);
+		model.addAttribute("center", "../pack/restaurants.jsp");
+		
+		return main;
+	}
+	
+	@PostMapping("/restaurants")
+	public String restaurants(@ModelAttribute Restaurants restaurants, @RequestParam("destinationId") long destination_Id){
+		packService.saveRestaurant(restaurants, destination_Id);
+		
+		return main;
+	}
+	
 	
 	
 }

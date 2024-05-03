@@ -34,54 +34,36 @@
             <div class="card card-2">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">여행 목적지 정보 입력</h2>
-                    <form method="POST" action="/destinations">
+                    <h2 class="title">식당 정보 입력</h2>
+                    <form method="POST" action="/restaurants">
+                    
+                     	<!-- 식당 이름 -->
+                        <div class="input-group">
+                            <input class="input--style-2" type="text" placeholder="Restaurants_name" name="restaurantName" required>
+                        </div>
                     	
-                    	<!-- Destination 정보 입력 -->
-                    	<!-- Destination_name 목적지 이름 -->
+                    	<!-- cuisine 요리 이름 -->
                     	<div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="destinationName" required>
-                                    <option disabled="disabled" selected="selected">Destination_name</option>
-                                    <option value="KOREA ICN">인천(ICN)</option>
-								    <option value="JAPAN NRT">도쿄(NRT)</option>
-								    <option value="JAPAN HND">도쿄(하네다)(HND)</option>
-								    <option value="JAPAN KIX">오사카(KIX)</option>
-								    <option value="JAPAN CTS">삿포로(CTS)</option>
-								    <option value="EASTSOUTHASIA BKK">방콕(BKK)</option>
-								    <option value="EASTSOUTHASIA SIN">싱가포르(SIN)</option>
-								    <option value="EASTSOUTHASIA KUL">쿠알라룸푸르(KUL)</option>
-								    <option value="EASTSOUTHASIA CGK">자카르타(CGK)</option>
-								    <option value="EASTSOUTHASIA HAN">하노이(HAN)</option>
+                                <select  name="cuisine" required>
+                                    <option disabled="disabled" selected="selected">Cuisine_name</option>
+                                    <option value="koreaFood">한식</option>
+								    <option value="chinaFood">중식</option>
+								    <option value="japanFood">일식</option>
+								    <option value="westernFood">양식</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
                         
-                        <!-- Country, 국가 -->
+                        <!-- 식당 설명 -->
                         <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="country" required>
-                                    <option disabled="disabled" selected="selected">Country</option>
-                                    <option value="대한민국">대한민국</option>
-									<option value="일본">일본</option>
-									<option value="태국">태국</option>
-									<option value="싱가포르">싱가포르</option>
-									<option value="말레이시아">말레이시아</option>
-									<option value="인도네시아">인도네시아</option>
-									<option value="베트남">베트남</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
+                            <input class="input--style-2" type="text" placeholder="Restaurants_description" name="restaurantDescription" required>
                         </div>
                        
-                        <!-- Destination 설명 -->
-                        <div class="input-group">
-                            <input class="input--style-2" type="text" placeholder=description name="destinationDescription" required>
-                        </div>
-                        <!-- Destination END -->
-                        
-                         <div class="p-t-30">
+                       <!-- destination_id -->
+                       <input type="hidden" name="destinationId" value="${destinationId }">
+                        <div class="p-t-30">
                             <button class="btn btn--radius btn--green" type="submit">저장</button>
                         </div>
                     </form>
