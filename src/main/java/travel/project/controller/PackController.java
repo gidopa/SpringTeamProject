@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
@@ -79,8 +80,8 @@ public class PackController {
 		return main;
 	}
 	
-	// 목적지 리스트 페이지 요청
-	@GetMapping("/destinationsList")
+	// restaurants 등록을 위한 Destination 리스트 페이지
+	@GetMapping("/restaurants")
 	public String destiNames(Model model){
 		List<Destination> destinations = packService.findAllDestination();
 		model.addAttribute("destinations", destinations);
@@ -88,24 +89,50 @@ public class PackController {
 		return main;
 	}
 	
-	
 	// restaurants 페이지 요청
 	@GetMapping("/restaurants/{id}")
 	public String restaurants(@PathVariable("id") long id, Model model){
-		log.info("packController");
 		
 		model.addAttribute("destination_Id", id);
 		model.addAttribute("center", "../pack/restaurants.jsp");
-		
 		return main;
 	}
 	
-	@PostMapping("/restaurants")
-	public String restaurants(@ModelAttribute Restaurants restaurants, @RequestParam("destinationId") long destination_Id){
+	// restaurants 등록
+	@PostMapping("/restaurants/{destination_Id}")
+	public String restaurants(@ModelAttribute Restaurants restaurants, @PathVariable("destination_Id") long destination_Id){
 		packService.saveRestaurant(restaurants, destination_Id);
 		
 		return main;
 	}
+	
+	// attractions 등록을 위한 Destination 리스트 페이지
+	@GetMapping("/attractions")
+	public String attractions(Model model) {
+		List<Destination> destinations = packService.findAllDestination();
+		model.addAttribute("destinations", destinations);
+		model.addAttribute("center", "../pack/destinationList2.jsp");
+		
+		return main;
+	}
+	
+	// attractions 페이지 요청
+	@GetMapping("/attractions/{id}")
+	public String attractions(@PathVariable("id") long id, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("center", "../pack/attractions.jsp");
+		return main;
+	}
+	
+	// attractions 등록
+	@PostMapping("/attractions/{id}")
+	public String attractions(@ModelAttribute Attraction attraction, @PathVariable("id") long id) {
+		packService.saveAttraction(attraction, id);
+		return main;
+	}
+	
+	
+	
 	// 지역별 패키지의 리스트
 	@GetMapping("/package/list/{destination}")
 	public String getAllPackageList(Model model,@PathVariable("destination") String destination){

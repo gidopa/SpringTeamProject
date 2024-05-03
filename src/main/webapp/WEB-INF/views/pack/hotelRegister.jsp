@@ -22,14 +22,15 @@
 		        alert('호텔 이미지를 업로드해야 합니다.');
 		        return false;
 		    }
-		
+			
+		    alert("등록 완료");
 		    return true;
 		}
 	</script>
 </head>
 <body>
 <div class="abc">
-    <form id="hotelRegistrationForm" action="/hotels" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <form id="hotelRegistrationForm" action="/hotels" method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
         <h1>호텔 등록 페이지</h1>
         <label for="hotelName">호텔 이름:</label>
         <input type="text" id="hotelName" name="hotelName" required>

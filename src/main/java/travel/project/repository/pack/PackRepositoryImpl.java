@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
@@ -32,13 +33,13 @@ public class PackRepositoryImpl implements PackRepository{
 	
 	// 호텔 이미지 등록
 	@Override
-	public void saveHotelImg(List<String> imgNames, Long id) {
+	public void saveHotelImg(List<String> imgNames, long id) {
 		packMapper.saveHotelImg(imgNames, id);
 	}
 	
 	// 호텔 편의시설 등록
 	@Override
-	public void saveHotelAmenities(List<String> amenities, Long id) {
+	public void saveHotelAmenities(List<String> amenities, long id) {
 		packMapper.saveHotelAmenities(amenities, id);
 	}
 	
@@ -76,6 +77,14 @@ public class PackRepositoryImpl implements PackRepository{
 			packList = packMapper.findPacksByDestination(destination);
 		}
 		return packList;
+	}
+	
+	// Attraction 등록
+	@Override
+	public void saveAttraction(Attraction attraction, long id) {
+		
+		System.out.println(attraction.getAttractionName());
+		packMapper.saveAttraction(attraction, id);
 	}
 
 }

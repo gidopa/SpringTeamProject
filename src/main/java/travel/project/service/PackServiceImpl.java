@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
@@ -69,7 +70,6 @@ public class PackServiceImpl implements PackService{
 	            Files.createDirectories(hotelDirectory);
 	        } catch (IOException e) {
 	            log.error("Failed to create directory for hotel: " + hotelFolderPath, e);
-	            return null;
 	        }
 	     }
 	    for (MultipartFile file : files) {
@@ -108,6 +108,12 @@ public class PackServiceImpl implements PackService{
 	public void saveRestaurant(Restaurants restaurants, long destination_Id) {
 		packRepository.saveRestaurant(restaurants, destination_Id);
 	}
-
+	
+	// Attraction 등록
+	@Override
+	public void saveAttraction(Attraction attraction, long id) {
+		packRepository.saveAttraction(attraction, id);
+		
+	}
 	
 }

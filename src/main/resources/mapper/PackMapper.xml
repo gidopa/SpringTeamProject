@@ -60,10 +60,16 @@
 		SELECT * FROM destinations
 	</select>
 	
+	<!-- restaurant 등록 -->
 	<insert id="saveRestaurant" parameterType="Restaurants">
 		INSERT INTO Restaurants(Destination_ID, restaurant_Name, Cuisine, restaurant_Description)
-		VALUES (#{id}, #{restaurantName}, #{cuisine}, #{restaurantDescription})
+		VALUES (#{destination_Id}, #{restaurants.restaurantName}, #{restaurants.cuisine}, #{restaurants.restaurantDescription})
 	</insert>
 
+	<!-- Attraction 등록 -->
+	<insert id="saveAttraction" parameterType="Attraction">
+		INSERT INTO attractions(Destination_ID, attraction_Name, Type, attraction_Description)
+		VALUES (#{id}, #{attraction.attractionName}, #{attraction.type}, #{attraction.attractionDescription})
+	</insert>
 
 </mapper>

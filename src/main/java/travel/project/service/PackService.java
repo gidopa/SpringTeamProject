@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
@@ -34,5 +35,8 @@ public interface PackService {
 	
 	// Restaurants 등록
 	public void saveRestaurant(Restaurants restaurants, long destination_Id);
+	
+	// Attraction 등록
+	public void saveAttraction(Attraction attraction, long id);
 
 }

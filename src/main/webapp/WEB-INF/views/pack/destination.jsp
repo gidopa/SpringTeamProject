@@ -26,6 +26,7 @@
 
     <!-- Main CSS-->
     <link href="/pack/css/main.css" rel="stylesheet" media="all">
+    
 </head>
 
 <body>
@@ -41,8 +42,8 @@
                     	<!-- Destination_name 목적지 이름 -->
                     	<div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
+                            	목적지명:
                                 <select name="destinationName" required>
-                                    <option disabled="disabled" selected="selected">Destination_name</option>
                                     <option value="KOREA ICN">인천(ICN)</option>
 								    <option value="JAPAN NRT">도쿄(NRT)</option>
 								    <option value="JAPAN HND">도쿄(하네다)(HND)</option>
@@ -61,8 +62,8 @@
                         <!-- Country, 국가 -->
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
+                            	국가:
                                 <select name="country" required>
-                                    <option disabled="disabled" selected="selected">Country</option>
                                     <option value="대한민국">대한민국</option>
 									<option value="일본">일본</option>
 									<option value="태국">태국</option>
