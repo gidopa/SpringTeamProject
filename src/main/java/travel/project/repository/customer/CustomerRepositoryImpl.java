@@ -25,12 +25,12 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     // 로그인하는 id, pwd 받고 Optional로 리턴
     @Override
     public Optional<Customer> login(String customerId, String password) {
-        return Optional.ofNullable(customerMapper.findByLoginId(customerId));
+        return Optional.ofNullable(customerMapper.findById(customerId));
     }
 
     @Override
     public Optional<Customer> findById(String id) {
-        return Optional.ofNullable(customerMapper.findByLoginId(id));
+        return Optional.ofNullable(customerMapper.findById(id));
     }
 
     @Override
