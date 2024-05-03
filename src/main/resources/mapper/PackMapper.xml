@@ -44,7 +44,7 @@
 	</select>
 
 	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
-		SELECT * from trips WHERE destination LIKE CONCAT('%', #{destination}, '%')
+		SELECT * from trips WHERE destination_name LIKE CONCAT('%', #{destination}, '%')
 	</select>
 
 
@@ -64,6 +64,10 @@
 		INSERT INTO Restaurants(Destination_ID, restaurant_Name, Cuisine, restaurant_Description)
 		VALUES (#{id}, #{restaurantName}, #{cuisine}, #{restaurantDescription})
 	</insert>
+
+	<select id="findPackById">
+		SELECT * from trips where trip_id = #{tripId}
+	</select>
 
 
 </mapper>

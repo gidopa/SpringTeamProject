@@ -60,6 +60,7 @@ public class PackRepositoryImpl implements PackRepository{
 		packMapper.saveRestaurant(restaurants, destination_Id);
 	}
 
+
 	@Override
 	public List<Pack> findAllPacks() {
 		return packMapper.findAllPacks();
@@ -76,6 +77,11 @@ public class PackRepositoryImpl implements PackRepository{
 			packList = packMapper.findPacksByDestination(destination);
 		}
 		return packList;
+	}
+
+	@Override
+	public Pack findPackById(long tripId) {
+		return packMapper.findPackById(tripId);
 	}
 
 }
