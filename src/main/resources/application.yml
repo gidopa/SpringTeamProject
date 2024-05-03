@@ -6,7 +6,9 @@ spring:
     url: jdbc:mysql://localhost:3306/TRAVEL?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: Abcd123@
-
+    
+  
+    
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -16,7 +18,9 @@ spring:
       filter:
         enabled: true
 
-  # 추가
+
+
+# 추가
   servlet:
     multipart:
       enabled: true
