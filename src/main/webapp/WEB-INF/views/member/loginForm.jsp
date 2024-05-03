@@ -45,7 +45,7 @@
 
                         <ul class="contents-list d-flex justify-content-center">
                             <li class="contents-item">
-                                <a href="javascript:void(0)" class="contents-link">회원가입</a>
+                                <a href="/member" class="contents-link">회원가입</a>
                             </li>
                             <li class="contents-item">
                                 <a href="javascript:void(0)" class="contents-link">아이디 찾기</a>
