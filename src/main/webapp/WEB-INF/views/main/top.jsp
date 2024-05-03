@@ -9,13 +9,16 @@
 </head>
 
 <%
+
 	String contextPath = request.getContextPath();
+
 %>
 <header class="bloomcity-N1" data-bid="jFlvm1V1Ec">
     <div class="header-container container-lg">
         <div class="header-left">
             <h1 class="header-title">
                 <a href="/">
+
                     <img src="/images/img_logo_black.png" alt="로고">
                 </a>
             </h1>
@@ -215,7 +218,7 @@
                         <a href="/login">로그인</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">회원가입</a>
+                        <a href="/member">회원가입</a>
                     </li>
                 </ul>
                 <%

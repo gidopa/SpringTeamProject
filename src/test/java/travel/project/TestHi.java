@@ -1,12 +1,27 @@
 package travel.project;
 
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+
+import travel.project.domain.Customer;
+import travel.project.repository.customer.CustomerRepository;
+
+
+//@SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
+@SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
+public class TestHi {
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.ActiveProfiles;
@@ -35,6 +50,7 @@ import static org.assertj.core.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
  class TestHi {
 
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -48,6 +64,15 @@ import static org.assertj.core.api.Assertions.*;
     }
 
     @Test
+
+    void verificationId() {
+    	String id = "id1";
+    	String result = customerRepository.verificationId(id);
+    	assertThat(result).isEqualTo("true");
+
+    }
+
+
     void findById(){
         String id1 = "id1";
         String id2 = "id2";
@@ -85,4 +110,5 @@ import static org.assertj.core.api.Assertions.*;
         }
 
     }
+
 }
