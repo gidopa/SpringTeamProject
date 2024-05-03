@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import travel.project.domain.Destination;
-import travel.project.domain.Hotels;
-import travel.project.domain.Pack;
-import travel.project.domain.Restaurants;
+import travel.project.domain.*;
 import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
 
@@ -119,11 +116,11 @@ public class PackController {
 	}
 
 	@GetMapping("/package/{tripId}")
-	public String packDetail(@PathVariable long tripId, Model model){
-		Pack pack = packService.findPackById(tripId);
-		String destinationName = pack.getDestinationName();
+	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
 		Destination destination = destinationService.findDestByName(destinationName);
-		System.out.println("destination.getDestinationId() = " + destination.getDestinationId());
+		long destId = destination.getDestinationId();
+		List<Attraction> attractionList = destinationService.findAttractionById(destId);
+		System.out.println("attractionList.size() = " + attractionList.size());
 		return null;
 	}
 

@@ -2,8 +2,11 @@ package travel.project.service.Detination;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
 import travel.project.repository.DestinationRepository.DestinationRepository;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -15,5 +18,10 @@ public class DestinationServiceImpl implements DestinationService{
     @Override
     public Destination findDestByName(String destinationName) {
         return destinationRepository.findDestByName(destinationName);
+    }
+
+    @Override
+    public List<Attraction> findAttractionById(long destId) {
+        return destinationRepository.findAttractionById(destId);
     }
 }
