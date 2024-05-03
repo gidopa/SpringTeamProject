@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 import travel.project.mapper.PackMapper;
 import travel.project.repository.pack.PackRepository;
 import travel.project.repository.pack.PackRepositoryImpl;
@@ -36,6 +37,12 @@ public class PackServiceImpl implements PackService{
 	public void saveHotelAmenities(List<String> amenities, Long id) {
 		packRepository.saveHotelAmenities(amenities, id);
 	}
-	
-	
+
+	@Override
+	public List<Pack> getPackageListByDestination(String destination) {
+		return packRepository.findPackList(destination);
+	}
+
+
+
 }
