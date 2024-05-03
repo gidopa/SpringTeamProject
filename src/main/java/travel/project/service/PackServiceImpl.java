@@ -43,7 +43,8 @@ public class PackServiceImpl implements PackService{
 	public void saveHotelImg(List<String> imgNames, long id) {
 		packRepository.saveHotelImg(imgNames, id);
 	}
-	
+
+
 	// 호텔 편의시설 등록
 	@Override
 	public void saveHotelAmenities(List<String> amenities, long id) {

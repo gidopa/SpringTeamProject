@@ -317,7 +317,7 @@ button:hover {
 					거부할 권리가 있습니다. 동의를 거부할 경우 회원가입이 불가함을 알려드립니다.</div>
 		</div>
 
-		<inp ut type="checkbox" id="agreement" name="agreement" required>
+		<input type="checkbox" id="agreement" name="agreement" required>
 		<label for="agreement">회원가입 약관 및 개인정보 수집 및 이용에 동의합니다.</label> <br>
 
 		<button type="submit">회원가입</button>
@@ -337,7 +337,7 @@ button:hover {
 	</script>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<%-- 회원가입 유효성 검사 체크 --%>
-	<script src="<%=request.getContextPath()%>/resources/js/member.js"></script>
+	<script src="/js/member.js"></script>
 
 	<script type="text/javascript">
 		function goPopup() {

@@ -57,7 +57,6 @@ String contextPath = request.getContextPath();
 				</ul></li>
 		</ul>
 	</nav>
-	<div id="layoutSidenav">
 		<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
 			<nav class="sb-sidenav accordion sb-sidenav-dark"

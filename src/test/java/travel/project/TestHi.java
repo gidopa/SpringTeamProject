@@ -14,21 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-import travel.project.domain.Customer;
-import travel.project.repository.customer.CustomerRepository;
-
-
-//@SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
-@SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
-public class TestHi {
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.jdbc.Sql;
-
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import travel.project.domain.Customer;
 import travel.project.repository.customer.CustomerRepository;
@@ -37,17 +22,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
 
-
-
-//@SpringBootTest
 
 
 @Transactional
-
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
-@ExtendWith(SpringExtension.class)
  class TestHi {
 
 
@@ -64,7 +43,6 @@ import static org.assertj.core.api.Assertions.*;
     }
 
     @Test
-
     void verificationId() {
     	String id = "id1";
     	String result = customerRepository.verificationId(id);

@@ -21,19 +21,12 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
 
 
-    //회원가입 요청
-  @Override
-    public Customer save(Customer customer) {
-        customerMapper.save(customer);
-        return customer;
-    }
     // 회원 한명 insert 하고 다시 리턴
     @Override
     public Customer save(Customer customer) {
         customerMapper.save(customer);
         return customer;
     }
-
 
     //회원가입시 아이디 중복검사
 	@Override
