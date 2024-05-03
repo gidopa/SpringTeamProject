@@ -2,10 +2,7 @@ package travel.project.repository.pack;
 
 import java.util.List;
 
-import travel.project.domain.Customer;
-import travel.project.domain.Destination;
-import travel.project.domain.Hotels;
-import travel.project.domain.Pack;
+import travel.project.domain.*;
 
 public interface PackRepository {
 	
@@ -30,4 +27,6 @@ public interface PackRepository {
     
     // Restaurants 등록
     void saveRestaurant(Restaurants restaurants, long destination_Id);
+
+    Pack findPackById(long tripId);
 }

@@ -112,5 +112,10 @@ public class PackServiceImpl implements PackService{
 	public void saveRestaurant(Restaurants restaurants, long destination_Id) {
 		packRepository.saveRestaurant(restaurants, destination_Id);
 	}
-	
+
+	@Override
+	public Pack findPackById(long tripId) {
+		return packRepository.findPackById(tripId);
+	}
+
 }
