@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
 
 public interface PackService {
@@ -17,6 +18,9 @@ public interface PackService {
 	public void saveHotelImg(List<String> imgNames, long id);
 	
 	// 호텔 편의시설 등록
+	public void saveHotelAmenities(List<String> amenities, Long id);
+
+	List<Pack> getPackageListByDestination(String destination);
 	public void saveHotelAmenities(List<String> amenities, long id);
 	
 	// 호텔 이미지 업로드

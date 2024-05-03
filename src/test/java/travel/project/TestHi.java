@@ -2,26 +2,42 @@ package travel.project;
 
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 import travel.project.domain.Customer;
 import travel.project.repository.customer.CustomerRepository;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
 
 
 //@SpringBootTest
+
+
+@Transactional
+
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
-public class TestHi {
+@ExtendWith(SpringExtension.class)
+ class TestHi {
 
     @Autowired
     private CustomerRepository customerRepository;
+
 
     @Test
     void save(){
@@ -29,5 +45,44 @@ public class TestHi {
                 "01012341234","부산시");
         Customer savedOne = customerRepository.save(customer);
         assertThat(customer.getCustomerId()).isEqualTo(savedOne.getCustomerId());
+    }
+
+    @Test
+    void findById(){
+        String id1 = "id1";
+        String id2 = "id2";
+        Optional<Customer> customer1 = customerRepository.findById(id1);
+        Optional<Customer> customer2 = customerRepository.findById(id2);
+        Map<String, Customer> map = new LinkedHashMap<>();
+        if(customer1.isPresent()){
+            map.put("홍길동", customer1.get());
+        }else{
+            throw new RuntimeException("customer not found");
+        }
+        if(customer2.isPresent()){
+            map.put("김첨지", customer1.get());
+        }else{
+            throw new RuntimeException("customer not found");
+        }
+        assertThat(map.size()).isEqualTo(2);
+
+    }
+
+    @Test
+    void updateCustomer(){
+        // id가 id1인 회원 조회후
+        Optional<Customer> customer1 = customerRepository.findById("id1");
+        Customer changeCustomer = new Customer("id1", "qwer1234", "홍길동1", "change@test.com", "01023452345", "서울시");
+        if(customer1.isPresent()){
+            // db업데이트
+                customerRepository.updateCustomer(changeCustomer);
+            // customer1 도 변경 후로 다시 update
+            customer1 = customerRepository.findById("id1");
+            assertThat(customer1.get().getName()).isEqualTo(changeCustomer.getName());
+            assertThat(customer1.get().getEmail()).isEqualTo(changeCustomer.getEmail());
+            assertThat(customer1.get().getPhoneNumber()).isEqualTo(changeCustomer.getPhoneNumber());
+            assertThat(customer1.get().getAddress()).isEqualTo(changeCustomer.getAddress());
+        }
+
     }
 }

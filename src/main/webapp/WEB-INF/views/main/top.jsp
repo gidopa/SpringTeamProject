@@ -59,7 +59,7 @@
                     </a>
                     <ul class="header-sublist">
                         <li class="header-subitem">
-                            <a class="header-sublink" href="javascript:void(0)">
+                            <a class="header-sublink" href="/package/list/all">
                                 <span>전체</span>
                             </a>
                         </li>
@@ -69,12 +69,12 @@
                             </a>
                         </li>
                         <li class="header-subitem">
-                            <a class="header-sublink" href="javascript:void(0)">
+                            <a class="header-sublink" href="/package/list/japan">
                                 <span>일본</span>
                             </a>
                         </li>
                         <li class="header-subitem">
-                            <a class="header-sublink" href="javascript:void(0)">
+                            <a class="header-sublink" href="/package/list/eastsouthasia">
                                 <span>동남아</span>
                             </a>
                         </li>
@@ -224,6 +224,9 @@
                 <ul class="fullmenu-member">
                     <li>
                         <a href="/logout">로그아웃</a>
+                    </li>
+                    <li>
+                        <a href="/editForm">회원정보수정</a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">회원가입</a>

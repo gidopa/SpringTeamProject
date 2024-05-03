@@ -38,6 +38,16 @@
             (#{imgName}, #{id})
         </foreach> 
 	</insert>
+
+	<select id="findAllPacks" resultType="Pack">
+		select * from trips
+	</select>
+
+	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
+		SELECT * from trips WHERE destination LIKE CONCAT('%', #{destination}, '%')
+	</select>
+
+
 	
 	<!-- Destination 등록 -->
 	<insert id="saveDestination" parameterType="Destination" useGeneratedKeys="true" keyProperty="destinationId">

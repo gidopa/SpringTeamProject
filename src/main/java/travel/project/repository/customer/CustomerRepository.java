@@ -12,4 +12,6 @@ public interface CustomerRepository {
     Optional<Customer> login(String customerId, String password);
 
     Optional<Customer> findById(String id);
+
+    void updateCustomer(Customer customer);
 }

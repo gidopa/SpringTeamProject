@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
 import travel.project.mapper.PackMapper;
 import travel.project.repository.pack.PackRepository;
@@ -48,6 +49,14 @@ public class PackServiceImpl implements PackService{
 	public void saveHotelAmenities(List<String> amenities, long id) {
 		packRepository.saveHotelAmenities(amenities, id);
 	}
+
+	@Override
+	public List<Pack> getPackageListByDestination(String destination) {
+		return packRepository.findPackList(destination);
+	}
+
+
+
 	
 	// 호텔 이미지 업로드
 	@Override
