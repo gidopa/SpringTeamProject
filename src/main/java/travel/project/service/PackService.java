@@ -18,9 +18,9 @@ public interface PackService {
 	public void saveHotelImg(List<String> imgNames, long id);
 	
 	// 호텔 편의시설 등록
-	public void saveHotelAmenities(List<String> amenities, Long id);
 
 	List<Pack> getPackageListByDestination(String destination);
+	
 	public void saveHotelAmenities(List<String> amenities, long id);
 	
 	// 호텔 이미지 업로드

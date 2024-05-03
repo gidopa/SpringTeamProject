@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.Restaurants;
 import travel.project.service.PackService;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -107,7 +108,7 @@ public class PackController {
 	}
 	// 지역별 패키지의 리스트
 	@GetMapping("/package/list/{destination}")
-	public String getAllPackageList(Model model,@PathVariable String destination){
+	public String getAllPackageList(Model model,@PathVariable("destination") String destination){
 		// PathVariable로 destination을 받아 해당 destination에 따른 list 보여줌
 		List<Pack> packs = packService.getPackageListByDestination(destination);
 		model.addAttribute("center","../pack/PackageList.jsp");

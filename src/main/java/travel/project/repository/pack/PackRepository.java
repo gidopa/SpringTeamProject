@@ -6,6 +6,7 @@ import travel.project.domain.Customer;
 import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.Restaurants;
 
 public interface PackRepository {
 	
