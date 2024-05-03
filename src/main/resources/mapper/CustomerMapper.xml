@@ -4,13 +4,49 @@
 
 <mapper namespace="travel.project.mapper.CustomerMapper">
 
-    <insert id="save">
+    <insert id="save" parameterType="customer">
         INSERT INTO customer (customer_id,name, email, phone_number, address)
         values (#{customerId},#{name}, #{email}, #{phoneNumber}, #{address})
     </insert>
 
 
+	<select id="verificationId" parameterType="String" resultType="java.lang.String">
+	        SELECT 
+	            CASE 
+	                WHEN COUNT(*) = 1 THEN 'true'
+	                ELSE 'false'
+	            END AS result
+	        FROM 
+	            customer
+	        WHERE 
+	            customer_Id = #{customerId}
+	</select>
+	
+	
+	<select id="verificationEmail" parameterType="String" resultType="java.lang.String">
+	        SELECT 
+	            CASE 
+	                WHEN COUNT(*) = 1 THEN 'true'
+	                ELSE 'false'
+	            END AS result
+	        FROM 
+	            customer
+	        WHERE 
+	            email = #{email}
+	</select>	
+	
 
+	<select id="verificationPhoneNumber" parameterType="int" resultType="java.lang.String">
+		        SELECT 
+		            CASE 
+		                WHEN COUNT(*) = 1 THEN 'true'
+		                ELSE 'false'
+		            END AS result
+		        FROM 
+		            customer
+		        WHERE 
+		            phone_Number = #{phoneNumber}
+	</select>
 
 
 

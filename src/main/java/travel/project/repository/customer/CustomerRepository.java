@@ -4,5 +4,14 @@ import travel.project.domain.Customer;
 
 public interface CustomerRepository {
 
+	//회원가입 요청
     Customer save(Customer customer);
+    //회원가입시 아이디 중복검사
+    String verificationId(String customerId);
+    //회원가입시 이메일 중복검사
+    String verificationEmail(String email);
+
+    //회원가입시 핸드폰번호 중복검사
+    String verificationPhoneNumber(int phoneNumber);
+
 }

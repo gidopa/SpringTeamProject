@@ -1,11 +1,11 @@
 package travel.project.repository.customer;
 
+import org.springframework.stereotype.Repository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Repository;
 import travel.project.domain.Customer;
 import travel.project.mapper.CustomerMapper;
-// 뭐 시발
 @Slf4j
 @RequiredArgsConstructor
 @Repository
@@ -13,9 +13,32 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     private final CustomerMapper customerMapper;
 
+
+    //회원가입 요청
     @Override
     public Customer save(Customer customer) {
         customerMapper.save(customer);
         return customer;
     }
+
+    //회원가입시 아이디 중복검사
+	@Override
+	public String verificationId(String customerId) {
+		return customerMapper.verificationId(customerId);
+	}
+
+	//회원가입시 이메일 중복검사
+	@Override
+	public String verificationEmail(String email) {
+		return customerMapper.verificationEmail(email);
+	}
+
+	//회원가입시 핸드폰번호 중복검사
+	@Override
+	public String verificationPhoneNumber(int phoneNumber) {
+		return customerMapper.verificationPhoneNumber(phoneNumber);
+	}
+
+
+
 }
