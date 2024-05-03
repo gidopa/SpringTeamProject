@@ -23,7 +23,7 @@
                 <div class="visual-swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img class="visual-bg" src="resources/images/main_visual.jpg" alt="메인배너-1">
+                            <img class="visual-bg" src="/images/main_visual.jpg" alt="메인배너-1">
                             <div class="visual-text-box container-md">
                                 <div class="deco-txt">BLOOM CITY</div>
                                 <h2 class="visual-title" data-swiper-parallax="-700">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <img class="visual-bg" src="resources/images/main_visual.jpg" alt="메인배너-1">
+                            <img class="visual-bg" src="/images/main_visual.jpg" alt="메인배너-1">
                             <div class="visual-text-box container-md">
                                 <div class="deco-txt">BLOOM CITY</div>
                                 <h2 class="visual-title" data-swiper-parallax="-700">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <img class="visual-bg" src="resources/images/main_visual.jpg" alt="메인배너-1">
+                            <img class="visual-bg" src="/images/main_visual.jpg" alt="메인배너-1">
                             <div class="visual-text-box container-md">
                                 <div class="deco-txt">BLOOM CITY</div>
                                 <h2 class="visual-title" data-swiper-parallax="-700">
@@ -61,15 +61,15 @@
                         <div class="container-md">
                             <div class="control-bottom">
                                 <button class="button-prev" type="button">
-                                    <img src="resources/icons/icon_prev.svg" alt="이전">
+                                    <img src="/icons/icon_prev.svg" alt="이전">
                                 </button>
                                 <div class="pagination_fraction"></div>
                                 <button class="button-next" type="button">
-                                    <img src="resources/icons/icon_next.svg" alt="다음">
+                                    <img src="/icons/icon_next.svg" alt="다음">
                                 </button>
                                 <button class="stop-btn" type="button">
-                                    <img class="pause" src="resources/icons/icon_pause.svg" alt="일시정지">
-                                    <img class="play" src="resources/icons/icon-play.svg" alt="시작">
+                                    <img class="pause" src="/icons/icon_pause.svg" alt="일시정지">
+                                    <img class="play" src="/icons/icon-play.svg" alt="시작">
                                 </button>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                             <div class="swiper-slide">
                                 <a class="contents-link" href="javascript:void(0)">
                                     <div class="slide-img">
-                                        <img src="resources/images/dining-img-1.jpg" alt="이미지">
+                                        <img src="/images/dining-img-1.jpg" alt="이미지">
                                     </div>
                                     <div class="textset">
                                         <h2 class="textset-tit">블룸시티 호텔 조식 그릴 &amp; 시푸드 뷔페</h2>
@@ -112,7 +112,7 @@
                             <div class="swiper-slide">
                                 <a class="contents-link" href="javascript:void(0)">
                                     <div class="slide-img">
-                                        <img src="resources/images/dining-img-2.jpg" alt="이미지">
+                                        <img src="/images/dining-img-2.jpg" alt="이미지">
                                     </div>
                                     <div class="textset">
                                         <h2 class="textset-tit">블룸시티 호텔 조식 그릴 &amp; 시푸드 뷔페</h2>
@@ -124,7 +124,7 @@
                             <div class="swiper-slide">
                                 <a class="contents-link" href="javascript:void(0)">
                                     <div class="slide-img">
-                                        <img src="resources/images/dining-img-3.jpg" alt="이미지">
+                                        <img src="/images/dining-img-3.jpg" alt="이미지">
                                     </div>
                                     <div class="textset">
                                         <h2 class="textset-tit">블룸시티 호텔 조식 그릴 &amp; 시푸드 뷔페</h2>
@@ -136,7 +136,7 @@
                             <div class="swiper-slide">
                                 <a class="contents-link" href="javascript:void(0)">
                                     <div class="slide-img">
-                                        <img src="resources/images/dining-img-4.jpg" alt="이미지">
+                                        <img src="/images/dining-img-4.jpg" alt="이미지">
                                     </div>
                                     <div class="textset">
                                         <h2 class="textset-tit">블룸시티 호텔 조식 그릴 &amp; 시푸드 뷔페</h2>
@@ -165,8 +165,8 @@
                     <div class="left">
                         <a href="javascript:void(0)" class="cardset cardset-center cardset-slide">
                             <figure class="cardset-figure">
-                                <img class="cardset-img pc-img" src="resources/images/wedding-img-1.jpg" alt="이미지">
-                                <img class="cardset-img mobile-img" src="resources/images/wedding-m-img-1.jpg" alt="이미지">
+                                <img class="cardset-img pc-img" src="/images/wedding-img-1.jpg" alt="이미지">
+                                <img class="cardset-img mobile-img" src="/images/wedding-m-img-1.jpg" alt="이미지">
                             </figure>
                             <div class="cardset-body">
                                 <div class="cardset-hover-cont">
@@ -180,8 +180,8 @@
                     <div class="right">
                         <a href="javascript:void(0)" class="cardset cardset-center cardset-slide">
                             <figure class="cardset-figure">
-                                <img class="cardset-img pc-img" src="resources/images/wedding-img-2.jpg" alt="이미지">
-                                <img class="cardset-img mobile-img" src="resources/images/wedding-m-img-2.jpg" alt="이미지">
+                                <img class="cardset-img pc-img" src="/images/wedding-img-2.jpg" alt="이미지">
+                                <img class="cardset-img mobile-img" src="/images/wedding-m-img-2.jpg" alt="이미지">
                             </figure>
                             <div class="cardset-body">
                                 <div class="cardset-hover-cont">
@@ -210,24 +210,24 @@
                         <div class="about-slide">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img class="slide-img" src="resources/images/about-img.jpg" alt="이미지">
+                                    <img class="slide-img" src="/images/about-img.jpg" alt="이미지">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="slide-img" src="resources/images/about-img.jpg" alt="이미지">
+                                    <img class="slide-img" src="/images/about-img.jpg" alt="이미지">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="slide-img" src="resources/images/about-img.jpg" alt="이미지">
+                                    <img class="slide-img" src="/images/about-img.jpg" alt="이미지">
                                 </div>
                             </div>
                         </div>
                         <div class="about-slide-control">
                             <div class="control-bottom">
                                 <button class="button-prev" type="button">
-                                    <img src="resources/icons/icon_arrow_black.svg" alt="이전">
+                                    <img src="/icons/icon_arrow_black.svg" alt="이전">
                                 </button>
                                 <div class="pagination_fraction"></div>
                                 <button class="button-next" type="button">
-                                    <img src="resources/icons/icon_arrow_black.svg" alt="다음">
+                                    <img src="/icons/icon_arrow_black.svg" alt="다음">
                                 </button>
                             </div>
                             <div class="pagination_progress">
@@ -254,8 +254,8 @@
         <div class="content-container">
             <div class="content-group">
                 <figure class="con-figure">
-                    <img class="con-img pc-img" src="resources/images/sub-visual.jpg" alt="이미지">
-                    <img class="con-img mobile-img" src="resources/images/sub-visual-m.jpg" alt="이미지">
+                    <img class="con-img pc-img" src="/images/sub-visual.jpg" alt="이미지">
+                    <img class="con-img mobile-img" src="/images/sub-visual-m.jpg" alt="이미지">
                 </figure>
                 <div class="textset container-md">
                     <h2 class="textset-tit">블룸시티의 성공적인 호캉스의 완성</h2>
