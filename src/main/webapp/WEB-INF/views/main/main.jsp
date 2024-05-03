@@ -27,12 +27,12 @@
     <meta property="og:image" content="https://웹사이트/images/opengraph.png">
     <meta property="og:url" content="https://웹사이트">
     <title>첫페이지 | aaa</title>
-    <link rel="stylesheet" href="resources/css/setting.css">
-    <link rel="stylesheet" href="resources/css/plugin.css">
-    <link rel="stylesheet" href="resources/css/template.css">
-    <link rel="stylesheet" href="resources/css/common.css">
-    <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css/>">
+    <link rel="stylesheet" href="/css/setting.css">
+    <link rel="stylesheet" href="/css/plugin.css">
+    <link rel="stylesheet" href="/css/template.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css/>">
 
 </head>
 
@@ -58,9 +58,9 @@
     </div>
 </div>
 </body>
-<script src="resources/js/setting.js"></script>
-<script src="resources/js/plugin.js"></script>
-<script src="resources/js/template.js"></script>
-<script src="resources/js/common.js"></script>
-<script src="resources/js/script.js"></script>
+<script src="/js/setting.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/template.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/script.js"></script>
 </html>

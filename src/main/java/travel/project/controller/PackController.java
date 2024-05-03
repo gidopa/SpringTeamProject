@@ -101,89 +101,12 @@ public class PackController {
 		return null;
 	}
 	
-	
-	
-//	@PostMapping("/upload/files")
-//    public String uploadFiles(@RequestParam("files") MultipartFile[] files, RedirectAttributes redirectAttributes) {
-//        StringBuilder message = new StringBuilder();
-//
-//        for (MultipartFile file : files) {
-//            if (file.isEmpty()) {
-//                continue;
-//            }
-//
-//            try {
-//                byte[] bytes = file.getBytes();
-//                Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-//                Files.write(path, bytes);
-//
-//                message.append("You successfully uploaded '").append(file.getOriginalFilename()).append("'\n");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        redirectAttributes.addFlashAttribute("message", message.toString());
-//        return "redirect:/hotels";
-//    }
-	
-	
-	
-//	@PostMapping(value = "/hotels1", consumes = "multipart/form-data")
-//	public void hotels1(@RequestParam("files") MultipartFile[] files) {
-//		StringBuilder fileNames = new StringBuilder();
-//		
-//		for (MultipartFile file : files) {
-//            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-//            fileNames.append(file.getOriginalFilename() + " ");
-//
-//            try {
-//                Files.write(path, file.getBytes());
-//            } catch (IOException e) {
-//            	log.error("Failed to save file: " + file.getOriginalFilename(), e);
-//            }
-//        }
-//		
-//	}
-	
-	
-//	@PostMapping(value = "/hotels", consumes = "multipart/form-data")
-//	public String hotels(@RequestBody Hotels hotels, Model model, @RequestParam("hotelImage") MultipartFile[] files){
-//		
-//		Hotels saveHotel = packService.saveHotel(hotels);
-//		
-//		List<String> imgNames = new ArrayList<>();
-//		StringBuilder fileNames = new StringBuilder();
-//		count = (int) saveHotel.getHotelId();
-//		String hotelFolderPath = UPLOADED_FOLDER + count + "//";
-//		
-//		// 호텔별 폴더가 없을 경우 생성
-//	    Path hotelDirectory = Paths.get(hotelFolderPath);
-//	    if (!Files.exists(hotelDirectory)) {
-//	        try {
-//	            Files.createDirectories(hotelDirectory);
-//	        } catch (IOException e) {
-//	            log.error("Failed to create directory for hotel: " + hotelFolderPath, e);
-//	            return main; // 폴더 생성 실패시 메인 페이지로 리다이렉트 할 수도 있습니다.
-//	        }
-//	     }
-//	    
-//		 for (MultipartFile file : files) {
-//			 	imgNames.add(file.getOriginalFilename());
-//	            Path path = Paths.get(hotelDirectory + file.getOriginalFilename());
-//	            fileNames.append(file.getOriginalFilename() + " ");
-//
-//	            try {
-//	                Files.write(path, file.getBytes());
-//	            } catch (IOException e) {
-//	            	log.error("Failed to save file: " + file.getOriginalFilename(), e);
-//	            }
-//	        }
-//		 
-//		 packService.saveHotelImg(imgNames, saveHotel.getHotelId());
-//		 
-//		return main;
-//	}
-	
+	@GetMapping("/package/list")
+	public String getAllPackageList(Model model){
+//		packService.getAllPackageList();
+		model.addAttribute("center","../pack/AllPackageList.jsp");
+		return "main/main";
+	}
+
 	
 }
