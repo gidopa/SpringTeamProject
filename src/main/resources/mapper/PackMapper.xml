@@ -44,7 +44,7 @@
 	</select>
 
 	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
-		SELECT * from trips WHERE destination_name LIKE CONCAT('%', #{destination}, '%')
+		SELECT * from trips WHERE destination_name LIKE CONCAT(#{destination}, '%')
 	</select>
 
 
