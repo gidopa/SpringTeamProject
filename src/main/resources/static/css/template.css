@@ -684,7 +684,7 @@ body.body-hidden { overflow: hidden; }
 .btnset:disabled, .btnset.disabled { color: var(--text-color4); background-color: var(--bg-color); border-color: var(--bg-color); } 
 .btnset.btnset-xl { min-width: 18rem; padding: 0 3.2rem; height: var(--ht-xl); font-size: var(--fs-h6); } 
 .btnset.btnset-lg { min-width: 18rem; padding: 0 2.8rem; height: var(--ht-lg); font-size: var(--fs-p1); } 
-.btnset2.btnset-lg { min-width: 9.4rem; padding: 0 2.8rem; height: var(--ht-lg); font-size: var(--fs-h6); } 
+.btnset2.btnset-lg { min-width: 9.4rem; padding: 0 21rem; height: var(--ht-lg); font-size: var(--fs-h6); }
 .btnset.btnset-sm { min-width: 9rem; padding: 0 2rem; height: var(--ht-sm); font-size: var(--fs-p2); } 
 .btnset.btnset-xs { min-width: 6.8rem; padding: 0 1.6rem; height: var(--ht-xs); font-size: var(--fs-p2); } 
 .btnset.btnset-block { width: 100%; } 

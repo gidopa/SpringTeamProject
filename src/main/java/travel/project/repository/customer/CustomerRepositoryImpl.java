@@ -6,6 +6,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Customer;
 import travel.project.mapper.CustomerMapper;
+
+
+import java.util.Optional;
+
+// 뭐 시발
+
 @Slf4j
 @RequiredArgsConstructor
 @Repository
@@ -14,12 +20,20 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     private final CustomerMapper customerMapper;
 
 
+
     //회원가입 요청
+  @Override
+    public Customer save(Customer customer) {
+        customerMapper.save(customer);
+        return customer;
+    }
+    // 회원 한명 insert 하고 다시 리턴
     @Override
     public Customer save(Customer customer) {
         customerMapper.save(customer);
         return customer;
     }
+
 
     //회원가입시 아이디 중복검사
 	@Override
@@ -38,6 +52,23 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 	public String verificationPhoneNumber(int phoneNumber) {
 		return customerMapper.verificationPhoneNumber(phoneNumber);
 	}
+
+
+    // 로그인하는 id, pwd 받고 Optional로 리턴
+    @Override
+    public Optional<Customer> login(String customerId, String password) {
+        return Optional.ofNullable(customerMapper.findById(customerId));
+    }
+
+    @Override
+    public Optional<Customer> findById(String id) {
+        return Optional.ofNullable(customerMapper.findById(id));
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        customerMapper.update(customer);
+    }
 
 
 

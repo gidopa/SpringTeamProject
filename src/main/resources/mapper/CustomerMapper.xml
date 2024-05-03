@@ -10,6 +10,7 @@
     </insert>
 
 
+
 	<select id="verificationId" parameterType="String" resultType="java.lang.String">
 	        SELECT 
 	            CASE 
@@ -47,6 +48,18 @@
 		        WHERE 
 		            phone_Number = #{phoneNumber}
 	</select>
+
+    <select id="findById" resultType="Customer">
+        select * from customer
+        where customer_id = #{customerId}
+    </select>
+
+    <update id="update">
+        update customer set name = #{name}, email = #{email}, phone_number = #{phoneNumber}, address = #{address}
+        where customer_id = #{customerId}
+    </update>
+
+
 
 
 

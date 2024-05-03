@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Hotels {
     private long hotelId;
     private String hotelName;
-    private String location;
+    private String destinationName;
     private int starRating; // 몇성급인지
     private String description;
 }

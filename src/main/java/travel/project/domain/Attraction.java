@@ -12,9 +12,9 @@ import lombok.Setter;
 public class Attraction { // 관광지 목적지에 어떤 관광지가 있는지
     private long attractionId;
     private long destinationId;
-    private String name;
+    private String attractionName; // 열명 변경
     private String type;
-    private String description;
+    private String attractionDescription; // 열명 변경
 
 
 }

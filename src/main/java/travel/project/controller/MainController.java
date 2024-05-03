@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class MainController {
 
+
 	String main = "main/main";
 
 
@@ -28,11 +29,12 @@ public class MainController {
 		return "main/main";
 	}
 
-	@GetMapping("/login")
-	public String login(Model model){
-		model.addAttribute("center", "../member/loginForm.jsp");
+	@GetMapping("/aboutus")
+	public String aboutus(Model model){
+		model.addAttribute("center", "aboutus.jsp");
 		return main;
 	}
+
 
 	@GetMapping("/member")
 	public String join(Model model) {
