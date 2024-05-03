@@ -1,5 +1,6 @@
 package travel.project.repository.pack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 import travel.project.mapper.CustomerMapper;
 import travel.project.mapper.PackMapper;
 import travel.project.repository.customer.CustomerRepositoryImpl;
@@ -36,6 +38,24 @@ public class PackRepositoryImpl implements PackRepository{
 	@Override
 	public void saveHotelAmenities(List<String> amenities, Long id) {
 		packMapper.saveHotelAmenities(amenities, id);
+	}
+
+	@Override
+	public List<Pack> findAllPacks() {
+		return packMapper.findAllPacks();
+	}
+
+	@Override
+	public List<Pack> findPackList(String destination) {
+		List<Pack> packList = new ArrayList<>();
+		// PathVariable 이 All 이면 모든 리스트 보여줌
+		if(destination.equals("all")){
+			packList = packMapper.findAllPacks();
+		}else{
+			// PathVariable 이 특정 목적지면 해당 목적지의 리스트 보여줌
+			packList = packMapper.findPacksByDestination(destination);
+		}
+		return packList;
 	}
 
 }

@@ -9,7 +9,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-public class Trips {
+public class Pack {
     private long tripId;
     private String destination;
     private String tripType;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import travel.project.domain.Customer;
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 
 public interface PackRepository {
 	
@@ -15,5 +16,8 @@ public interface PackRepository {
     
     // 호텔 편의시설 등록
     void saveHotelAmenities(List<String> amenities, Long id);
-    
+
+    List<Pack> findAllPacks();
+
+    List<Pack> findPackList(String destination);
 }

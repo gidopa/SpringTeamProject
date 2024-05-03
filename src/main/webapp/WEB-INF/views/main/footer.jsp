@@ -23,22 +23,22 @@
             <ul class="footer-snslist">
                 <li class="footer-snsitem">
                     <a class="footer-snslink" href="javascript:void(0)">
-                        <img src="resources/icons/ico_instagram_lightgrey.svg" alt="인스타그램">
+                        <img src="/icons/ico_instagram_lightgrey.svg" alt="인스타그램">
                     </a>
                 </li>
                 <li class="footer-snsitem">
                     <a class="footer-snslink" href="javascript:void(0)">
-                        <img src="resources/icons/ico_youtube_lightgrey.svg" alt="유튜브">
+                        <img src="/icons/ico_youtube_lightgrey.svg" alt="유튜브">
                     </a>
                 </li>
                 <li class="footer-snsitem">
                     <a class="footer-snslink" href="javascript:void(0)">
-                        <img src="resources/icons/ico_facebook_lightgrey.svg" alt="페이스북">
+                        <img src="/icons/ico_facebook_lightgrey.svg" alt="페이스북">
                     </a>
                 </li>
                 <li class="footer-snsitem">
                     <a class="footer-snslink" href="javascript:void(0)">
-                        <img src="resources/icons/ico_kakao_lightgrey.svg" alt="카카오톡">
+                        <img src="/icons/ico_kakao_lightgrey.svg" alt="카카오톡">
                     </a>
                 </li>
             </ul>
@@ -49,7 +49,7 @@
             <div class="footer-left">
                 <h1 class="footer-logo">
                     <a href="javascript:void(0)">
-                        <img src="resources/images/img_logo_lightgray.png" alt="로고">
+                        <img src="/images/img_logo_lightgray.png" alt="로고">
                     </a>
                 </h1>
                 <div class="footer-txtgroup">

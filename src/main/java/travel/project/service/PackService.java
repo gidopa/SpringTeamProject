@@ -3,6 +3,7 @@ package travel.project.service;
 import java.util.List;
 
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 
 public interface PackService {
 	
@@ -14,4 +15,6 @@ public interface PackService {
 	
 	// 호텔 편의시설 등록
 	public void saveHotelAmenities(List<String> amenities, Long id);
+
+	List<Pack> getPackageListByDestination(String destination);
 }

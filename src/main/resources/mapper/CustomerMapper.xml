@@ -9,7 +9,7 @@
         values (#{customerId},#{name}, #{email}, #{phoneNumber}, #{address})
     </insert>
 
-    <select id="findByLoginId" resultType="Customer">
+    <select id="findById" resultType="Customer">
         select * from customer
         where customer_id = #{customerId}
     </select>

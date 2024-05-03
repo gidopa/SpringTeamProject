@@ -11,7 +11,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-    static-path-pattern: /resources/**
+    static-path-pattern: /**
     hiddenmethod:
       filter:
         enabled: true
