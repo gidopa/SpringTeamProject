@@ -40,6 +40,9 @@ public interface PackMapper {
     // restaurant 등록
     void saveRestaurant(@Param("restaurants") Restaurants restaurants, @Param("destination_Id") long destination_Id);
     
+    // 식당, 명소, 관광지 이미지 등록
+    void saveImg(@Param("imgNames") List<String> imgNames, @Param("type")String type, @Param("id")long id);
+    
     // Attraction 등록
     void saveAttraction(@Param("attraction") Attraction attraction, @Param("id") long id);
 }

@@ -60,10 +60,18 @@
 		SELECT * FROM destinations
 	</select>
 	
-	<!-- restaurant 등록 -->
+	<!-- Restaurant 등록 -->
 	<insert id="saveRestaurant" parameterType="Restaurants">
 		INSERT INTO Restaurants(Destination_ID, restaurant_Name, Cuisine, restaurant_Description)
 		VALUES (#{destination_Id}, #{restaurants.restaurantName}, #{restaurants.cuisine}, #{restaurants.restaurantDescription})
+	</insert>
+	
+	<!-- 식당, 명소, 관광지 이미지 등록 -->
+	<insert id="saveImg" >
+		INSERT INTO destinations_img(Img_Name, category, destination_Id) VALUES
+		 <foreach item="imgName" collection="imgNames" separator=",">
+            (#{imgName}, #{type}, #{id})
+        </foreach> 
 	</insert>
 
 	<!-- Attraction 등록 -->

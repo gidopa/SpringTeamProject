@@ -29,7 +29,7 @@ import travel.project.repository.pack.PackRepositoryImpl;
 public class PackServiceImpl implements PackService{
 	
 	private final PackRepository packRepository;
-    private static String UPLOADED_FOLDER = "C://temp//hotel//";
+    private static String UPLOADED_FOLDER = "C://temp//";
     private int count = 0;
 
 	
@@ -56,20 +56,20 @@ public class PackServiceImpl implements PackService{
 		return packRepository.findPackList(destination);
 	}
 	
-	// 호텔 이미지 업로드
+	// 이미지 업로드
 	@Override
-	public List<String> uploadHotelImage(MultipartFile[] files, long id) {
+	public List<String> uploadImage(MultipartFile[] files, long id, String category) {
 		List<String> imgNames = new ArrayList<>();
 		count = (int)id;
-		String hotelFolderPath = UPLOADED_FOLDER + count + "//";
+		String FolderPath = UPLOADED_FOLDER + category + "//" + count + "//";
 		
 		// 호텔별 폴더가 없을 경우 생성
-	    Path hotelDirectory = Paths.get(hotelFolderPath);
-	    if (!Files.exists(hotelDirectory)) {
+	    Path Directory = Paths.get(FolderPath);
+	    if (!Files.exists(Directory)) {
 	        try {
-	            Files.createDirectories(hotelDirectory);
+	            Files.createDirectories(Directory);
 	        } catch (IOException e) {
-	            log.error("Failed to create directory for hotel: " + hotelFolderPath, e);
+	            log.error("Failed to create directory for hotel: " + FolderPath, e);
 	        }
 	     }
 	    for (MultipartFile file : files) {
@@ -80,7 +80,7 @@ public class PackServiceImpl implements PackService{
 	          try {
 	        	  imgNames.add(file.getOriginalFilename());
 	              byte[] bytes = file.getBytes();
-	              Path path = Paths.get(hotelFolderPath + file.getOriginalFilename());
+	              Path path = Paths.get(FolderPath + file.getOriginalFilename());
 	              Files.write(path, bytes);
 
 	          } catch (IOException e) {
@@ -109,11 +109,16 @@ public class PackServiceImpl implements PackService{
 		packRepository.saveRestaurant(restaurants, destination_Id);
 	}
 	
+	// 식당, 명소, 관광지 이미지 등록
+	@Override
+	public void saveImg(List<String> imgNames, String type, long id) {
+		packRepository.saveImg(imgNames, type, id);
+	}
+	
 	// Attraction 등록
 	@Override
 	public void saveAttraction(Attraction attraction, long id) {
 		packRepository.saveAttraction(attraction, id);
-		
 	}
 	
 }

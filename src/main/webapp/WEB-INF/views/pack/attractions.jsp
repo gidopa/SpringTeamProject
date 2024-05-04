@@ -36,7 +36,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">명소 정보 입력</h2>
-                    <form method="POST" action="/attractions/${id}">
+                    <form method="POST" action="/attractions/${id}" enctype="multipart/form-data">
                     
                      	<!-- 명소 이름 -->
                         <div class="input-group">
@@ -54,6 +54,12 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
+                        
+                        <!-- 명소 이미지 -->
+                        <label for="attractionsImage">식당 이미지:</label> 
+         				<input type="file" id="attractionsImage" name="attractionsImage" accept="image/*" multiple>
+                        
+                        <br><br>
                         
                         <!-- 명소 설명 -->
                         <div class="input-group">

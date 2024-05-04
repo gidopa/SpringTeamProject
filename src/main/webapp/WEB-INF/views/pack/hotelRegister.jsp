@@ -39,7 +39,7 @@
         <select id="destinationName" name="destinationName">
 		    <option value="KOREA ICN">인천(ICN)</option>
 		    <option value="JAPAN NRT">도쿄(NRT)</option>
-		    <option value="JAPAN HND">도쿄(하네다)(HND)</option>
+		    <option value="JAPAN HND">하네다(HND)</option>
 		    <option value="JAPAN KIX">오사카(KIX)</option>
 		    <option value="JAPAN CTS">삿포로(CTS)</option>
 		    <option value="EASTSOUTHASIA BKK">방콕(BKK)</option>

@@ -132,6 +132,11 @@
                                 <span>명소 등록</span>
                             </a>
                         </li>
+                        <li class="header-subitem">
+                            <a class="header-sublink" href="/packages">
+                                <span>패키지 등록</span>
+                            </a>
+                        </li>
                     </ul>
                     <!-- <ul class="header-sublist">
                     <li class="header-subitem">

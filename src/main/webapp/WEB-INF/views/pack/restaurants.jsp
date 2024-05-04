@@ -36,7 +36,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">식당 정보 입력</h2>
-                    <form method="POST" action="/restaurants/${destination_Id}">
+                    <form method="POST" action="/restaurants/${destination_Id}" enctype="multipart/form-data">
                     
                      	<!-- 식당 이름 -->
                         <div class="input-group">
@@ -57,6 +57,11 @@
                             </div>
                         </div>
                         
+                        <!-- 식당 이미지 -->
+                        <label for="restaurantsImage">식당 이미지:</label> 
+         				<input type="file" id="restaurantslImage" name="restaurantsImage" accept="image/*" multiple>
+                        
+                        <br><br>
                         <!-- 식당 설명 -->
                         <div class="input-group">
                             <input class="input--style-2" type="text" placeholder="Restaurants_description" name="restaurantDescription" required>

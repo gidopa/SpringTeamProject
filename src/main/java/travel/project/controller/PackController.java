@@ -57,7 +57,7 @@ public class PackController {
 		packService.saveHotelAmenities(amenities, savedHotels.getHotelId());
 		
 		// 호텔 이미지 업로드
-		List<String> imgNames = packService.uploadHotelImage(files, savedHotels.getHotelId());
+		List<String> imgNames = packService.uploadImage(files, savedHotels.getHotelId(), "hotel");
 		
 		// 호텔 이미지 등록
         packService.saveHotelImg(imgNames, savedHotels.getHotelId());
@@ -100,7 +100,16 @@ public class PackController {
 	
 	// restaurants 등록
 	@PostMapping("/restaurants/{destination_Id}")
-	public String restaurants(@ModelAttribute Restaurants restaurants, @PathVariable("destination_Id") long destination_Id){
+	public String restaurants(@ModelAttribute Restaurants restaurants, @PathVariable("destination_Id") long destination_Id,
+							  @RequestParam(value = "restaurantsImage", required = true)  MultipartFile[] files){
+		
+		// 이미지 업로드
+		List<String> imgNames = packService.uploadImage(files, destination_Id, "restaurants");
+		
+		// 이미지 등록
+		packService.saveImg(imgNames, "restaurants", destination_Id);
+		
+		// 레스토랑 등록
 		packService.saveRestaurant(restaurants, destination_Id);
 		
 		return main;
@@ -126,12 +135,26 @@ public class PackController {
 	
 	// attractions 등록
 	@PostMapping("/attractions/{id}")
-	public String attractions(@ModelAttribute Attraction attraction, @PathVariable("id") long id) {
+	public String attractions(@ModelAttribute Attraction attraction, @PathVariable("id") long id,
+							  @RequestParam(value = "attractionsImage", required = true) MultipartFile[] files) {
+		
+		// 이미지 업로드
+		List<String> imgNames = packService.uploadImage(files, id, "attractions");
+		
+		// 이미지 등록
+		packService.saveImg(imgNames, attraction.getType(), id);
+		
+		// attractions 등록
 		packService.saveAttraction(attraction, id);
 		return main;
 	}
 	
-	
+	// package 등록 화면
+	@GetMapping("/packages")
+	public String packages(Model model) {
+		model.addAttribute("center", "../pack/packages.jsp");
+		return main;
+	}
 	
 	// 지역별 패키지의 리스트
 	@GetMapping("/package/list/{destination}")

@@ -33,6 +33,9 @@ public interface PackRepository {
     // Restaurants 등록
     void saveRestaurant(Restaurants restaurants, long destination_Id);
     
+    // 식당, 명소, 관광지 이미지 등록
+    void saveImg(List<String> imgNames, String type, long id);
+    
     // Attraction 등록
     void saveAttraction(Attraction attraction, long id);
 }

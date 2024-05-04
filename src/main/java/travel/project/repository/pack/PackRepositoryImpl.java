@@ -60,6 +60,12 @@ public class PackRepositoryImpl implements PackRepository{
 	public void saveRestaurant(Restaurants restaurants, long destination_Id) {
 		packMapper.saveRestaurant(restaurants, destination_Id);
 	}
+	
+	// 식당, 명소, 관광지 이미지 등록
+	@Override
+	public void saveImg(List<String> imgNames, String type, long id) {
+		packMapper.saveImg(imgNames, type, id);
+	}
 
 	@Override
 	public List<Pack> findAllPacks() {
@@ -82,8 +88,6 @@ public class PackRepositoryImpl implements PackRepository{
 	// Attraction 등록
 	@Override
 	public void saveAttraction(Attraction attraction, long id) {
-		
-		System.out.println(attraction.getAttractionName());
 		packMapper.saveAttraction(attraction, id);
 	}
 

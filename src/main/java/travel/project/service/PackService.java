@@ -24,8 +24,8 @@ public interface PackService {
 	
 	public void saveHotelAmenities(List<String> amenities, long id);
 	
-	// 호텔 이미지 업로드
-	public List<String> uploadHotelImage(MultipartFile[] files, long id);
+	// 이미지 업로드
+	public List<String> uploadImage(MultipartFile[] files, long id, String category);
 	
 	// Destination 등록
 	public long saveDestination(Destination destination);
@@ -36,7 +36,11 @@ public interface PackService {
 	// Restaurants 등록
 	public void saveRestaurant(Restaurants restaurants, long destination_Id);
 	
+	// 식당, 명소, 관광지 이미지 등록
+	public void saveImg(List<String> imgNames, String type, long id);
+	
 	// Attraction 등록
 	public void saveAttraction(Attraction attraction, long id);
+	
 
 }
