@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import travel.project.domain.Attraction;
 import travel.project.domain.Customer;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
@@ -45,4 +46,13 @@ public interface PackMapper {
     
     // Attraction 등록
     void saveAttraction(@Param("attraction") Attraction attraction, @Param("id") long id);
+    
+    // Pack 등록
+    long savePack(Pack pack);
+    
+    // Pack id 조회
+    Pack findByIdPack(long packId);
+    
+	// 호텔 모든 열 지역으로 검색
+    List<HotelView> findByDestinationHotels(String destinationName);
 }

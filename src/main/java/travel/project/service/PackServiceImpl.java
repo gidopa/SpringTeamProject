@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
@@ -119,6 +123,34 @@ public class PackServiceImpl implements PackService{
 	@Override
 	public void saveAttraction(Attraction attraction, long id) {
 		packRepository.saveAttraction(attraction, id);
+	}
+	
+	// sql Date 타입 변경
+	@Override
+	public LocalDate replaceSqlDate(String date) {
+		date = date.substring(0, date.length() -1);
+		date = date.replace(".", "-");
+		
+		LocalDate localDate = LocalDate.parse(date);
+		return localDate;
+	}
+	
+	// 두 날짜 차이 계산
+	@Override
+	public long dayDifference(Date startDate, Date endDate) {
+		return ChronoUnit.DAYS.between(startDate.toLocalDate(), endDate.toLocalDate());
+	}
+	
+	// Pack 등록
+	@Override
+	public Pack savePack(Pack pack) {
+		return packRepository.savePack(pack);
+	}
+	
+	// 호텔 모든 열 지역으로 검색
+	@Override
+	public List<HotelView> findByDestinationHotels(String destinationName) {
+		return packRepository.findByDestinationHotels(destinationName);
 	}
 	
 }

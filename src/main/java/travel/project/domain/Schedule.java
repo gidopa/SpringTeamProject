@@ -10,8 +10,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Schedule {
     private long scheduleId;
-    private long tripId;
+    private long packId;
     private int dayNumber; // ex) 2일차 스케쥴, 3일차 스케쥴
+    private String scheduleType; // 명소, 식당, 호텔
     private String description;
 
 }

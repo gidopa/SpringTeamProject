@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
@@ -89,6 +90,19 @@ public class PackRepositoryImpl implements PackRepository{
 	@Override
 	public void saveAttraction(Attraction attraction, long id) {
 		packMapper.saveAttraction(attraction, id);
+	}
+	
+	// Pack 등록 후 리턴
+	@Override
+	public Pack savePack(Pack pack) {
+		long packId = packMapper.savePack(pack);
+		return packMapper.findByIdPack(packId);
+	}
+	
+	// 호텔 모든 열 지역으로 검색
+	@Override
+	public List<HotelView> findByDestinationHotels(String destinationName) {
+		return packMapper.findByDestinationHotels(destinationName);
 	}
 
 }

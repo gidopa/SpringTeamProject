@@ -5,6 +5,7 @@ import java.util.List;
 import travel.project.domain.Attraction;
 import travel.project.domain.Customer;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
@@ -38,4 +39,10 @@ public interface PackRepository {
     
     // Attraction 등록
     void saveAttraction(Attraction attraction, long id);
+    
+    // Pack 등록 후 조회
+    Pack savePack(Pack pack);
+    
+	// 호텔 모든 열 지역으로 검색
+    List<HotelView> findByDestinationHotels(String destinationName);
 }

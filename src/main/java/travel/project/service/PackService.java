@@ -1,11 +1,14 @@
 package travel.project.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
@@ -42,5 +45,15 @@ public interface PackService {
 	// Attraction 등록
 	public void saveAttraction(Attraction attraction, long id);
 	
+	// sql Date 타입 변경
+	public LocalDate replaceSqlDate(String date);
+	
+	// 두 날짜 차이 계산
+	public long dayDifference(Date startDate, Date endDate);
+	
+	// Pack 등록
+	public Pack savePack(Pack pack);
 
+	// 호텔 모든 열 지역으로 검색
+	public List<HotelView> findByDestinationHotels(String destinationName);
 }

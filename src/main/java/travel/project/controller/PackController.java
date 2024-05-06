@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
@@ -156,6 +160,34 @@ public class PackController {
 		return main;
 	}
 	
+	@PostMapping("/packages")
+	public String packages(@ModelAttribute Pack pack,
+							@RequestParam("sDate") String sDate,
+							@RequestParam("eDate") String eDate,
+							Model model) {
+		// sql Date 타입 변경
+		LocalDate startDate = packService.replaceSqlDate(sDate);
+		LocalDate endDate = packService.replaceSqlDate(eDate);
+		pack.setStartDate(Date.valueOf(startDate));
+		pack.setEndDate(Date.valueOf(endDate));
+		System.out.println(pack.getPackName());
+		
+		// 두 날짜 차이 계산
+		long daysDifference = packService.dayDifference(pack.getStartDate(), pack.getEndDate());
+		
+		// pack 등록
+		Pack savedPack= packService.savePack(pack);
+		
+		// 호텔 모든 열 지역으로 검색
+		List<HotelView> hotelViews = packService.findByDestinationHotels(pack.getDestinationName());
+		
+		// 목적지 명소 등 조회
+		
+		model.addAttribute("hotelView", hotelViews);
+		model.addAttribute("center", "../pack/packagesDetail.jsp");
+		return main;
+	}
+	
 	// 지역별 패키지의 리스트
 	@GetMapping("/package/list/{destination}")
 	public String getAllPackageList(Model model,@PathVariable("destination") String destination){
@@ -170,6 +202,8 @@ public class PackController {
 	public String packDetail(@PathVariable long tripId, Model model){
 
 	}*/
+	
+	
 
 
 	
