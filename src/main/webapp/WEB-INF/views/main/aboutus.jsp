@@ -60,7 +60,7 @@
                         <ul class="info-content">
                             <li>
                                 <figure class="icon">
-                                    <img src="../resources/icons/icon_map_blod_black.svg" alt="아이콘">
+                                    <img src="..//icons/icon_map_blod_black.svg" alt="아이콘">
                                 </figure>
                                 <dl class="textset">
                                     <dt class="textset-tit">주소</dt>
@@ -69,7 +69,7 @@
                             </li>
                             <li>
                                 <figure class="icon">
-                                    <img src="../resources/icons/icon_tel.svg" alt="아이콘">
+                                    <img src="..//icons/icon_tel.svg" alt="아이콘">
                                 </figure>
                                 <dl class="textset">
                                     <dt class="textset-tit"> 전화번호</dt>
@@ -87,7 +87,7 @@
                             </li>
                             <li>
                                 <figure class="icon">
-                                    <img src="../resources/icons/icon_map_blod_black.svg" alt="아이콘">
+                                    <img src="..//icons/icon_map_blod_black.svg" alt="아이콘">
                                 </figure>
                                 <dl class="textset">
                                     <dt class="textset-tit">이메일</dt>

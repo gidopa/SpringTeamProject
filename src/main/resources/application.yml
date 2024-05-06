@@ -3,6 +3,7 @@ spring:
     name: project
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+
     url: jdbc:mysql://localhost:3306/TRAVEL?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: Abcd123@
@@ -11,7 +12,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-    static-path-pattern: /resources/**
+    static-path-pattern: /**
     hiddenmethod:
       filter:
         enabled: true
@@ -29,6 +30,10 @@ spring:
             enable: true
   
   # 추가
+
+
+
+# 추가
   servlet:
     multipart:
       enabled: true

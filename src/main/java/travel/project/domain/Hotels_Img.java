@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter @Setter
 public class Hotels_Img {
-    private long id;
+    private long hotelsImgId;
     private String imgName;
     private long hotelId;
 }

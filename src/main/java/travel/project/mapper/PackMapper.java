@@ -5,8 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import travel.project.domain.Customer;
-import travel.project.domain.Hotels;
+import travel.project.domain.*;
 
 @Mapper
 public interface PackMapper {
@@ -22,4 +21,15 @@ public interface PackMapper {
     
     // 호텔 편의시설 등록
     void saveHotelAmenities(@Param("amenities") List<String> amenities,@Param("id") Long id);
+    List<Pack> findAllPacks();
+
+    List<Pack> findPacksByDestination(String destination);
+
+    List<Destination> findAllDestination();
+
+    long saveDestination(Destination destination);
+
+    void saveRestaurant(Restaurants restaurants, long destinationId);
+
+    Pack findPackById(long tripId);
 }

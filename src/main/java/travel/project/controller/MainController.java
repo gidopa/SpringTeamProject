@@ -5,9 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-//aaa
+
 @Slf4j
+@RequiredArgsConstructor
 @Controller
 public class MainController {
 
@@ -30,6 +32,13 @@ public class MainController {
 	@GetMapping("/aboutus")
 	public String aboutus(Model model){
 		model.addAttribute("center", "aboutus.jsp");
+		return main;
+	}
+
+
+	@GetMapping("/member")
+	public String join(Model model) {
+		model.addAttribute("center", "../member/MembershipJoin.jsp");
 		return main;
 	}
 

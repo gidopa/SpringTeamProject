@@ -34,10 +34,11 @@ public class EmailController {
                             RedirectAttributes redirectAttributes) {
 		
 		// 제대로 나오는지 확인
-		System.out.println(recipientEmail+" "+emailTitle+" "+emailContent);
+//		System.out.println(recipientEmail+" "+emailTitle+" "+emailContent);
 		
         try {
             emailService.sendMail(recipientEmail, emailTitle, emailContent);
+            // 보내기 버튼 옆에 띄워줌
             redirectAttributes.addFlashAttribute("successMessage", "Email sent successfully!");
         } catch (Exception e) {
             log.error("Failed to send email to {}: {}", recipientEmail, e.getMessage());
