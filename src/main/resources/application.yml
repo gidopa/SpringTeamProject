@@ -31,19 +31,14 @@ spring:
   
   # 추가
 
-
-
 # 추가
   servlet:
     multipart:
-      enabled: true
-      max-file-size: 2MB
-      max-request-size: 10MB
+      max-file-size: 50MB
+      max-request-size: 50MB
 
 server:
   port: 8081
-
-
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -51,7 +46,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
-logging:
+logging.:
   level:
     travel.project.repository: trace
     travel.project.service: debug

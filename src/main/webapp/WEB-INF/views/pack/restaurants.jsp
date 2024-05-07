@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +36,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">식당 정보 입력</h2>
-                    <form method="POST" action="/restaurants">
+                    <form method="POST" action="/restaurants/${destination_Id}" enctype="multipart/form-data">
                     
                      	<!-- 식당 이름 -->
                         <div class="input-group">
@@ -45,8 +46,8 @@
                     	<!-- cuisine 요리 이름 -->
                     	<div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
+                            	요리 타입:
                                 <select  name="cuisine" required>
-                                    <option disabled="disabled" selected="selected">Cuisine_name</option>
                                     <option value="koreaFood">한식</option>
 								    <option value="chinaFood">중식</option>
 								    <option value="japanFood">일식</option>
@@ -56,13 +57,18 @@
                             </div>
                         </div>
                         
+                        <!-- 식당 이미지 -->
+                        <label for="restaurantsImage">식당 이미지:</label> 
+         				<input type="file" id="restaurantslImage" name="restaurantsImage" accept="image/*" multiple>
+                        
+                        <br><br>
                         <!-- 식당 설명 -->
                         <div class="input-group">
                             <input class="input--style-2" type="text" placeholder="Restaurants_description" name="restaurantDescription" required>
                         </div>
                        
                        <!-- destination_id -->
-                       <input type="hidden" name="destinationId" value="${destinationId }">
+<%--                        <input type="hidden" name="desti_Id" value="${destination_Id}"> --%>
                         <div class="p-t-30">
                             <button class="btn btn--radius btn--green" type="submit">저장</button>
                         </div>

@@ -60,14 +60,66 @@
 		SELECT * FROM destinations
 	</select>
 	
+	<!-- Restaurant 등록 -->
 	<insert id="saveRestaurant" parameterType="Restaurants">
 		INSERT INTO Restaurants(Destination_ID, restaurant_Name, Cuisine, restaurant_Description)
-		VALUES (#{id}, #{restaurantName}, #{cuisine}, #{restaurantDescription})
+		VALUES (#{destination_Id}, #{restaurants.restaurantName}, #{restaurants.cuisine}, #{restaurants.restaurantDescription})
 	</insert>
+	
+	<!-- 식당, 명소, 관광지 이미지 등록 -->
+	<insert id="saveImg" >
+		INSERT INTO destinations_img(Img_Name, category, destination_Id) VALUES
+		 <foreach item="imgName" collection="imgNames" separator=",">
+            (#{imgName}, #{type}, #{id})
+        </foreach> 
+	</insert>
+
+
+	<!-- Attraction 등록 -->
+	<insert id="saveAttraction" parameterType="Attraction">
+		INSERT INTO attractions(Destination_ID, attraction_Name, Type, attraction_Description)
+		VALUES (#{id}, #{attraction.attractionName}, #{attraction.type}, #{attraction.attractionDescription})
+	</insert>
+	
+	<!-- Pack 등록 -->
+	<insert id="savePack" parameterType="Pack" useGeneratedKeys="true" keyProperty="packId">
+		INSERT INTO pack(Pack_Name, Destination_Name, pack_Type, Start_Date, End_Date, Price)
+		VALUES (#{packName}, #{destinationName}, #{packType}, #{startDate}, #{endDate}, #{price})
+	</insert>
+	
+	<!-- Pack id 조회  -->
+	<select id="findByIdPack" parameterType="long">
+		SELECT * FROM pack where pack_id=#{packId}
+	</select>
+	
+	<!-- 호텔 모든 열 지역으로 검색  -->
+	<select id="findByDestinationHotels" resultType="HotelView" parameterType="String">
+		 SELECT 
+        H.Hotel_ID,
+        H.Hotel_Name,
+        H.Destination_name,
+        H.Star_Rating,
+        H.Description,
+        GROUP_CONCAT(DISTINCT A.Amenity ORDER BY A.Amenity_ID ASC SEPARATOR ', ') AS hotel_Amenities,
+        GROUP_CONCAT(DISTINCT I.Img_Name ORDER BY I.hotels_Img_Id ASC SEPARATOR ', ') AS hotel_Images
+    FROM 
+        Hotels H
+    INNER JOIN 
+        HotelAmenities A ON H.Hotel_ID = A.Hotel_ID
+    INNER JOIN 
+        hotels_img I ON H.Hotel_ID = I.Hotel_Id
+    WHERE
+        H.Destination_name LIKE CONCAT('%', #{destinationName}, '%')
+    GROUP BY 
+        H.Hotel_ID,
+        H.Hotel_Name,
+        H.Destination_name,
+        H.Star_Rating,
+        H.Description
+	</select>
 
 	<select id="findPackById">
 		SELECT * from trips where trip_id = #{tripId}
 	</select>
-
 
 </mapper>

@@ -17,11 +17,11 @@
   <meta property="og:image" content="https://웹사이트/images/opengraph.png">
   <meta property="og:url" content="https://웹사이트">
   <title>Reservation | aaa</title>
-  <link rel="stylesheet" href="resources/css/setting.css">
-  <link rel="stylesheet" href="resources/css/plugin.css">
-  <link rel="stylesheet" href="resources/css/template.css">
-  <link rel="stylesheet" href="resources/css/common.css">
-  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="/css/setting.css">
+  <link rel="stylesheet" href="/css/plugin.css">
+  <link rel="stylesheet" href="/css/template.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
                       <div class="inputset inputset-lg">
                         <input id="CheckIN-pc" type="text" class="date-range200 inputset-input form-control" value="" readonly>
                         <figure class="icon">
-                          <img src="resources/icons/icon_calendar.svg" alt="아이콘">
+                          <img src="/icons/icon_calendar.svg" alt="아이콘">
                         </figure>
                       </div>
                     </div>
@@ -76,7 +76,7 @@
                       <label class="label" for="CheckOut-pc"></label>체크아웃 <div class="inputset inputset-lg">
                         <input id="CheckOut-pc" type="text" class="date-range201 inputset-input form-control" value="" readonly>
                         <figure class="icon">
-                          <img src="resources/icons/icon_calendar.svg" alt="아이콘">
+                          <img src="/icons/icon_calendar.svg" alt="아이콘">
                         </figure>
                       </div>
                     </div>
@@ -84,11 +84,11 @@
                       <label class="label">객실수</label>
                       <div class="inputset inputset-lg">
                         <button class="btnset" type="button">
-                          <img src="resources/icons/icon_minus_black.svg" alt="-">
+                          <img src="/icons/icon_minus_black.svg" alt="-">
                         </button>
                         <input type="text" class="inputset-input form-control" value="객실 1 "readonly>
                         <button class="btnset" type="button">
-                          <img src="resources/icons/icon_plus_black.svg" alt="+">
+                          <img src="/icons/icon_plus_black.svg" alt="+">
                         </button>
                       </div>
                     </div>
@@ -96,11 +96,11 @@
                       <label class="label">성인</label>
                       <div class="inputset inputset-lg">
                         <button class="btnset" type="button">
-                          <img src="resources/icons/icon_minus_black.svg" alt="-">
+                          <img src="/icons/icon_minus_black.svg" alt="-">
                         </button>
                         <input type="text" class="inputset-input form-control" value="성인 3" readonly>
                         <button class="btnset" type="button">
-                          <img src="resources/icons/icon_plus_black.svg" alt="+">
+                          <img src="/icons/icon_plus_black.svg" alt="+">
                         </button>
                       </div>
                     </div>
@@ -108,11 +108,11 @@
                       <label class="label">어린이</label>
                       <div class="inputset inputset-lg">
                         <button class="btnset" type="button">
-                          <img src="resources/icons/icon_minus_black.svg" alt="-">
+                          <img src="/icons/icon_minus_black.svg" alt="-">
                         </button>
                         <input type="text" class="inputset-input form-control" value="어린이 1" readonly>
                         <button class="btnset" type="button">
-                          <img src="resources/icons/icon_plus_black.svg" alt="+">
+                          <img src="/icons/icon_plus_black.svg" alt="+">
                         </button>
                       </div>
                     </div>
@@ -125,11 +125,11 @@
                         <label class="label">성인</label>
                         <div class="inputset inputset-lg d-flex justify-content-between">
                           <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
+                            <img src="/icons/icon_minus_black.svg" alt="-">
                           </button>
                           <input type="text" class="inputset-input form-control" value="2">
                           <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
+                            <img src="/icons/icon_plus_black.svg" alt="+">
                           </button>
                         </div>
                       </div>
@@ -137,11 +137,11 @@
                         <label class="label">어린이</label>
                         <div class="inputset inputset-lg d-flex justify-content-between">
                           <button class="btnset btnset-rect disabled" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
+                            <img src="/icons/icon_minus_black.svg" alt="-">
                           </button>
                           <input type="text" class="inputset-input form-control" value="0">
                           <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
+                            <img src="/icons/icon_plus_black.svg" alt="+">
                           </button>
                         </div>
                       </div>
@@ -152,11 +152,11 @@
                         <label class="label">성인</label>
                         <div class="inputset inputset-lg d-flex justify-content-between">
                           <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
+                            <img src="/icons/icon_minus_black.svg" alt="-">
                           </button>
                           <input type="text" class="inputset-input form-control" value="1">
                           <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
+                            <img src="/icons/icon_plus_black.svg" alt="+">
                           </button>
                         </div>
                       </div>
@@ -164,11 +164,11 @@
                         <label class="label">어린이</label>
                         <div class="inputset inputset-lg d-flex justify-content-between">
                           <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
+                            <img src="/icons/icon_minus_black.svg" alt="-">
                           </button>
                           <input type="text" class="inputset-input form-control" value="1">
                           <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
+                            <img src="/icons/icon_plus_black.svg" alt="+">
                           </button>
                         </div>
                       </div>
@@ -193,9 +193,9 @@
   <!-- [S]bloomcity-N2 -->
 
   <!-- [E]bloomcity-N2 -->
-  <script src="resources/js/setting.js"></script>
-  <script src="resources/js/plugin.js"></script>
-  <script src="resources/js/template.js"></script>
-  <script src="resources/js/common.js"></script>
-  <script src="resources/js/script.js"></script>
+  <script src="/js/setting.js"></script>
+  <script src="/js/plugin.js"></script>
+  <script src="/js/template.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/script.js"></script>
 </body>
