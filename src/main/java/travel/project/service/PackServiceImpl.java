@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
@@ -28,7 +33,7 @@ import travel.project.repository.pack.PackRepositoryImpl;
 public class PackServiceImpl implements PackService{
 	
 	private final PackRepository packRepository;
-    private static String UPLOADED_FOLDER = "C://temp//hotel//";
+    private static String UPLOADED_FOLDER = "C://temp//";
     private int count = 0;
 
 	
@@ -55,25 +60,21 @@ public class PackServiceImpl implements PackService{
 	public List<Pack> getPackageListByDestination(String destination) {
 		return packRepository.findPackList(destination);
 	}
-
-
-
 	
-	// 호텔 이미지 업로드
+	// 이미지 업로드
 	@Override
-	public List<String> uploadHotelImage(MultipartFile[] files, long id) {
+	public List<String> uploadImage(MultipartFile[] files, long id, String category) {
 		List<String> imgNames = new ArrayList<>();
 		count = (int)id;
-		String hotelFolderPath = UPLOADED_FOLDER + count + "//";
+		String FolderPath = UPLOADED_FOLDER + category + "//" + count + "//";
 		
 		// 호텔별 폴더가 없을 경우 생성
-	    Path hotelDirectory = Paths.get(hotelFolderPath);
-	    if (!Files.exists(hotelDirectory)) {
+	    Path Directory = Paths.get(FolderPath);
+	    if (!Files.exists(Directory)) {
 	        try {
-	            Files.createDirectories(hotelDirectory);
+	            Files.createDirectories(Directory);
 	        } catch (IOException e) {
-	            log.error("Failed to create directory for hotel: " + hotelFolderPath, e);
-	            return null;
+	            log.error("Failed to create directory for hotel: " + FolderPath, e);
 	        }
 	     }
 	    for (MultipartFile file : files) {
@@ -84,7 +85,7 @@ public class PackServiceImpl implements PackService{
 	          try {
 	        	  imgNames.add(file.getOriginalFilename());
 	              byte[] bytes = file.getBytes();
-	              Path path = Paths.get(hotelFolderPath + file.getOriginalFilename());
+	              Path path = Paths.get(FolderPath + file.getOriginalFilename());
 	              Files.write(path, bytes);
 
 	          } catch (IOException e) {
@@ -113,9 +114,53 @@ public class PackServiceImpl implements PackService{
 		packRepository.saveRestaurant(restaurants, destination_Id);
 	}
 
+	
+	// 식당, 명소, 관광지 이미지 등록
+	@Override
+	public void saveImg(List<String> imgNames, String type, long id) {
+		packRepository.saveImg(imgNames, type, id);
+	}
+	
+	// Attraction 등록
+	@Override
+	public void saveAttraction(Attraction attraction, long id) {
+		packRepository.saveAttraction(attraction, id);
+	}
+	
+	// sql Date 타입 변경
+	@Override
+	public LocalDate replaceSqlDate(String date) {
+		date = date.substring(0, date.length() -1);
+		date = date.replace(".", "-");
+		
+		LocalDate localDate = LocalDate.parse(date);
+		return localDate;
+	}
+	
+	// 두 날짜 차이 계산
+	@Override
+	public long dayDifference(Date startDate, Date endDate) {
+		return ChronoUnit.DAYS.between(startDate.toLocalDate(), endDate.toLocalDate());
+	}
+	
+	// Pack 등록
+	@Override
+	public Pack savePack(Pack pack) {
+		return packRepository.savePack(pack);
+	}
+	
+	// 호텔 모든 열 지역으로 검색
+	@Override
+	public List<HotelView> findByDestinationHotels(String destinationName) {
+		return packRepository.findByDestinationHotels(destinationName);
+	}
+	
+
+
 	@Override
 	public Pack findPackById(long tripId) {
 		return packRepository.findPackById(tripId);
 	}
+
 
 }

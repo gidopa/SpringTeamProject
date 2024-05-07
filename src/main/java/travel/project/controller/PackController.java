@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,12 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Attraction;
+import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
+import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
+import travel.project.domain.Restaurants;
 import travel.project.domain.*;
 import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
@@ -56,7 +65,7 @@ public class PackController {
 		packService.saveHotelAmenities(amenities, savedHotels.getHotelId());
 		
 		// 호텔 이미지 업로드
-		List<String> imgNames = packService.uploadHotelImage(files, savedHotels.getHotelId());
+		List<String> imgNames = packService.uploadImage(files, savedHotels.getHotelId(), "hotel");
 		
 		// 호텔 이미지 등록
         packService.saveHotelImg(imgNames, savedHotels.getHotelId());
@@ -79,8 +88,8 @@ public class PackController {
 		return main;
 	}
 	
-	// 목적지 리스트 페이지 요청
-	@GetMapping("/destinationsList")
+	// restaurants 등록을 위한 Destination 리스트 페이지
+	@GetMapping("/restaurants")
 	public String destiNames(Model model){
 		List<Destination> destinations = packService.findAllDestination();
 		model.addAttribute("destinations", destinations);
@@ -88,27 +97,104 @@ public class PackController {
 		return main;
 	}
 	
-	
 	// restaurants 페이지 요청
 	@GetMapping("/restaurants/{id}")
 	public String restaurants(@PathVariable("id") long id, Model model){
-		log.info("packController");
 		
 		model.addAttribute("destination_Id", id);
 		model.addAttribute("center", "../pack/restaurants.jsp");
-		
 		return main;
 	}
 	
-	@PostMapping("/restaurants")
-	public String restaurants(@ModelAttribute Restaurants restaurants, @RequestParam("destinationId") long destination_Id){
+	// restaurants 등록
+	@PostMapping("/restaurants/{destination_Id}")
+	public String restaurants(@ModelAttribute Restaurants restaurants, @PathVariable("destination_Id") long destination_Id,
+							  @RequestParam(value = "restaurantsImage", required = true)  MultipartFile[] files){
+		
+		// 이미지 업로드
+		List<String> imgNames = packService.uploadImage(files, destination_Id, "restaurants");
+		
+		// 이미지 등록
+		packService.saveImg(imgNames, "restaurants", destination_Id);
+		
+		// 레스토랑 등록
 		packService.saveRestaurant(restaurants, destination_Id);
 		
 		return main;
 	}
+	
+	// attractions 등록을 위한 Destination 리스트 페이지
+	@GetMapping("/attractions")
+	public String attractions(Model model) {
+		List<Destination> destinations = packService.findAllDestination();
+		model.addAttribute("destinations", destinations);
+		model.addAttribute("center", "../pack/destinationList2.jsp");
+		
+		return main;
+	}
+	
+	// attractions 페이지 요청
+	@GetMapping("/attractions/{id}")
+	public String attractions(@PathVariable("id") long id, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("center", "../pack/attractions.jsp");
+		return main;
+	}
+	
+	// attractions 등록
+	@PostMapping("/attractions/{id}")
+	public String attractions(@ModelAttribute Attraction attraction, @PathVariable("id") long id,
+							  @RequestParam(value = "attractionsImage", required = true) MultipartFile[] files) {
+		
+		// 이미지 업로드
+		List<String> imgNames = packService.uploadImage(files, id, "attractions");
+		
+		// 이미지 등록
+		packService.saveImg(imgNames, attraction.getType(), id);
+		
+		// attractions 등록
+		packService.saveAttraction(attraction, id);
+		return main;
+	}
+	
+	// package 등록 화면
+	@GetMapping("/packages")
+	public String packages(Model model) {
+		model.addAttribute("center", "../pack/packages.jsp");
+		return main;
+	}
+	
+	@PostMapping("/packages")
+	public String packages(@ModelAttribute Pack pack,
+							@RequestParam("sDate") String sDate,
+							@RequestParam("eDate") String eDate,
+							Model model) {
+		// sql Date 타입 변경
+		LocalDate startDate = packService.replaceSqlDate(sDate);
+		LocalDate endDate = packService.replaceSqlDate(eDate);
+		pack.setStartDate(Date.valueOf(startDate));
+		pack.setEndDate(Date.valueOf(endDate));
+		System.out.println(pack.getPackName());
+		
+		// 두 날짜 차이 계산
+		long daysDifference = packService.dayDifference(pack.getStartDate(), pack.getEndDate());
+		
+		// pack 등록
+		Pack savedPack= packService.savePack(pack);
+		
+		// 호텔 모든 열 지역으로 검색
+		List<HotelView> hotelViews = packService.findByDestinationHotels(pack.getDestinationName());
+		
+		// 목적지 명소 등 조회
+		// 레스토랑 모든 열 조회
+		
+		model.addAttribute("hotelView", hotelViews);
+		model.addAttribute("center", "../pack/packagesDetail.jsp");
+		return main;
+	}
+	
 	// 지역별 패키지의 리스트
 	@GetMapping("/package/list/{destination}")
-
 	public String getAllPackageList(Model model,@PathVariable String destination){
 		// PathVariable로 destination을 받아 해당 destination에 따른 list 보여줌
 		List<Pack> packs = packService.getPackageListByDestination(destination);
@@ -116,6 +202,13 @@ public class PackController {
 		model.addAttribute("list", packs);
 		return "main/main";
 	}
+
+
+/*	@GetMapping("/package/{tripId}")
+	public String packDetail(@PathVariable long tripId, Model model){
+
+	}*/
+	
 
 	@GetMapping("/package/{tripId}")
 	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
@@ -133,6 +226,7 @@ public class PackController {
 		log.info("scheduleList.size() = {}", scheduleList.size());
 		return null;
 	}
+
 
 
 	

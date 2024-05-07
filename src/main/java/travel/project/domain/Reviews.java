@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Reviews {
     private long reviewId;
     private String customerId;
-    private long tripId;
+    private long packId;
     private int rating; // 리뷰 평점
     private String comments;
 
