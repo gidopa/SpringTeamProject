@@ -233,16 +233,16 @@ public class PackController {
 			List<Attraction> attractionDayNum = scheduleService.findAttractionByDayNum(i,packId);
 			Hotels hotelDayNum = scheduleService.findHotelByDayNum(i,packId);
 			List<Restaurants> restaurantsDayNum = scheduleService.findRestaurantByDayNum(i,packId);
-			System.out.println("restaurantsDayNum.size() = " + restaurantsDayNum.size());
+			long hotelId = hotelDayNum.getHotelId();
+			List<Hotels_Img> hotelsImgs = scheduleService.getHotelImages(hotelId);
+			map.add(i,new ItemWrapper(hotelsImgs,"hotelImages"));
 			map.add(i,new ItemWrapper(hotelDayNum, "hotel"));
 			// 호텔과 관광 명소 리스트를 하나의 리스트로 합치기
-			List<ItemWrapper> attractionList = new ArrayList<>();
 			for (Attraction attraction : attractionDayNum) {
 				map.add(i,new ItemWrapper(attraction, "attraction"));
 			}
 
 			// 레스토랑 정보를 리스트에 담아 MultiValueMap에 추가
-			List<ItemWrapper> restaurantList = new ArrayList<>();
 			for (Restaurants restaurant : restaurantsDayNum) {
 				map.add(i,new ItemWrapper(restaurant, "restaurant"));
 			}

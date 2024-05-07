@@ -32,6 +32,9 @@
         select * from view_restaurants_dayNum where day_number = #{i} and pack_id = #{packId}
     </select>
 
+    <select id="getHotelImages" resultType="Hotels_Img">
+        select * from hotels_img where hotel_id=#{hotelId}
+    </select>
 
 
 </mapper>

@@ -37,6 +37,9 @@
             <c:choose>
                 <c:when test="${itemWrapper.type == 'hotel'}">
                     <li>Hotel: ${itemWrapper.item.hotelName} - ${itemWrapper.item.destinationName}</li>
+                    <c:when test="${itemWrapper.type == 'hotelImages'}">
+                        <li>Hotel Image: ${itemWrapper.item.imgName}</li>
+                    </c:when>
                 </c:when>
                 <c:when test="${itemWrapper.type == 'attraction'}">
                     <li>Attraction: ${itemWrapper.item.attractionName} - ${itemWrapper.item.attractionDescription}</li>

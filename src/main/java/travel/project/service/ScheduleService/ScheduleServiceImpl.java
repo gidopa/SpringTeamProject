@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import travel.project.domain.Attraction;
 import travel.project.domain.Hotels;
+import travel.project.domain.Hotels_Img;
 import travel.project.domain.Schedule;
 import travel.project.repository.Schedule.ScheduleRepository;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Slf4j
 @Service
 public class ScheduleServiceImpl implements ScheduleService{
+
 
     private final ScheduleRepository scheduleRepository;
 
@@ -40,5 +42,10 @@ public class ScheduleServiceImpl implements ScheduleService{
     @Override
     public List findRestaurantByDayNum(int i,long packId) {
         return scheduleRepository.findRestaurantByDayNum(i,packId);
+    }
+
+    @Override
+    public List<Hotels_Img> getHotelImages(long hotelId) {
+        return scheduleRepository.getHotelImages(hotelId);
     }
 }
