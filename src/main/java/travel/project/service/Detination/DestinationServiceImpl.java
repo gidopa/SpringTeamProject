@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
+import travel.project.domain.Restaurants;
 import travel.project.repository.DestinationRepository.DestinationRepository;
 
 import java.util.List;
@@ -23,5 +24,10 @@ public class DestinationServiceImpl implements DestinationService{
     @Override
     public List<Attraction> findAttractionById(long destId) {
         return destinationRepository.findAttractionById(destId);
+    }
+
+    @Override
+    public List<Restaurants> findRestaurantsById(long destId) {
+        return destinationRepository.findRestaurantsById(destId);
     }
 }

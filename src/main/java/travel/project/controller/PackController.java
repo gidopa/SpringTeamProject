@@ -22,7 +22,7 @@ import travel.project.service.PackService;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import travel.project.service.ScheduleService.ScheduleService;
 
 
 @Slf4j
@@ -32,6 +32,7 @@ public class PackController {
 	
     private final PackService packService;
 	private final DestinationService destinationService;
+	private final ScheduleService scheduleService;
 	String main = "main/main";
 	
 	// 호텔 등록 페이지
@@ -107,6 +108,7 @@ public class PackController {
 	}
 	// 지역별 패키지의 리스트
 	@GetMapping("/package/list/{destination}")
+
 	public String getAllPackageList(Model model,@PathVariable String destination){
 		// PathVariable로 destination을 받아 해당 destination에 따른 list 보여줌
 		List<Pack> packs = packService.getPackageListByDestination(destination);
@@ -119,8 +121,16 @@ public class PackController {
 	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
 		Destination destination = destinationService.findDestByName(destinationName);
 		long destId = destination.getDestinationId();
+		// 여행 목적지에 관한 attraction(관광지)에 대한 정보 가져옴
 		List<Attraction> attractionList = destinationService.findAttractionById(destId);
-		System.out.println("attractionList.size() = " + attractionList.size());
+		List<Restaurants> restaurantsList = destinationService.findRestaurantsById(destId);
+		List<Schedule> scheduleList = scheduleService.findScheduleById(tripId);
+		for(Attraction a : attractionList){
+			log.info(a.getAttractionName());
+		}
+		log.info("restaurantsList.size() = {}" , restaurantsList.size());
+		log.info("attractionList.size() = {}" , attractionList.size());
+		log.info("scheduleList.size() = {}", scheduleList.size());
 		return null;
 	}
 
