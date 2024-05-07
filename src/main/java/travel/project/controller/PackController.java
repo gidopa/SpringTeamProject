@@ -182,6 +182,7 @@ public class PackController {
 		List<HotelView> hotelViews = packService.findByDestinationHotels(pack.getDestinationName());
 		
 		// 목적지 명소 등 조회
+		// 레스토랑 모든 열 조회
 		
 		model.addAttribute("hotelView", hotelViews);
 		model.addAttribute("center", "../pack/packagesDetail.jsp");

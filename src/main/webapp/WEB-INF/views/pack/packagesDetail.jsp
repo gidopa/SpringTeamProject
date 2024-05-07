@@ -34,7 +34,11 @@
     </style>
     <script type="text/javascript">
         function setHotelField(hotelId, index) {
-            document.getElementById('hotelName_' + index).value = hotelId;
+            document.getElementById('hotel_' + index).value = hotelId;
+        }
+        
+        function setRestaurantField(restaurantId, index) {
+            document.getElementById('restaurant_' + index).value = restaurantId;
         }
     </script>
 </head>
@@ -51,7 +55,7 @@
                         <c:forEach var="i" begin="1" end="2">
                         	<h4>${i} 일차 일정</h4>
                         	호텔:
-                        	<input type="text" id="hotelName_${i}" name="hotelName_${i}" value="" required>
+                        	<input type="text" id="hotel_${i}" name="hotel_${i}" value="" required>
                             <div class="input-group">
                                 <table class="styled-table">
 						            <thead>
@@ -84,9 +88,37 @@
                             </div>
 
 							식당:
-                            <div class="input-group">
-                                <input class="input--style-2" type="text" placeholder="식당 이름" name="restaurantName_${i}" required>
-                            </div>
+<%-- 							<input type="text" id="restaurant_${i}" name="restaurant_${i}" value="" required> --%>
+<!--                             <div class="input-group"> -->
+<!--                             	<table class="styled-table"> -->
+<!-- 						            <thead> -->
+<!-- 						                <tr> -->
+<!-- 						                    <th>Select</th> -->
+<!-- 						                    <th>Hotel Name</th> -->
+<!-- 						                    <th>Destination Name</th> -->
+<!-- 						                    <th>Star Rating</th> -->
+<!-- 						                    <th>Description</dt> -->
+<!-- 						                    <th>Hotel Amenities</dt> -->
+<!-- 						                    <th>Hotel Img</dt> -->
+<!-- 						                </tr> -->
+<!-- 						            </thead> -->
+<!-- 						            <tbody> -->
+<%-- 						                <c:forEach var="item" items="${restaurant}"> --%>
+<!-- 						                    <tr> -->
+<!-- 						                        <td>  -->
+<%-- 						                        	<input type="radio" name="restaurantId_${i}" value="${item.hotelId}" onclick="setRestaurantField('${item.restaurantId}', ${i})"> --%>
+<!-- 						                        </td> -->
+<%-- 						                        <td>${item.hotelName}</td> --%>
+<%-- 						                        <td>${item.destinationName}</td> --%>
+<%-- 						                        <td>${item.starRating}</dt> --%>
+<%-- 						                        <td>${item.description}</dt> --%>
+<%-- 						                        <td>${item.hotelAmenities}</dt> --%>
+<%-- 						                        <td>${item.hotelImages}</dt> --%>
+<!-- 						                    </tr> -->
+<%-- 						                </c:forEach> --%>
+<!-- 						            </tbody> -->
+<!-- 						        </table> -->
+<!--                             </div> -->
 							
 							관광지:
 							<div class="input--style-2" type="text" placeholder="관광지 이름" name="touristSpot_${i}" required>
