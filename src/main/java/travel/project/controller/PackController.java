@@ -220,9 +220,9 @@ public class PackController {
 		Destination destination = destinationService.findDestByName(destinationName);
 		long destId = destination.getDestinationId();
 		// 여행 목적지에 관한 attraction(관광지)에 대한 정보 가져옴
-		List<Schedule> scheduleList = scheduleService.findScheduleById(packId);
+		/*List<Schedule> scheduleList = scheduleService.findScheduleById(packId);
 		List<Attraction> attractionList = destinationService.findAttractionById(destId);
-		List<Restaurants> restaurantsList = destinationService.findRestaurantsById(destId);
+		List<Restaurants> restaurantsList = destinationService.findRestaurantsById(destId);*/
 
 		// 여기부터 시도
 		MultiValueMap<Integer, Object> map = new LinkedMultiValueMap<>();
@@ -230,33 +230,45 @@ public class PackController {
 		log.info("maxDayNum = {}", maxDayNum);
 		 // packId에 대한 것도 같이 매개변수로 넘겨야 할 것 같음 .
 		for (int i = 1; i <= maxDayNum; i++) {
-			List attractionDayNum = scheduleService.findAttractionByDayNum(i,packId);
+			List<Attraction> attractionDayNum = scheduleService.findAttractionByDayNum(i,packId);
 			Hotels hotelDayNum = scheduleService.findHotelByDayNum(i,packId);
-			List restaurantsDayNum = scheduleService.findRestaurantByDayNum(i,packId);
+			List<Restaurants> restaurantsDayNum = scheduleService.findRestaurantByDayNum(i,packId);
 			System.out.println("restaurantsDayNum.size() = " + restaurantsDayNum.size());
+			map.add(i,new ItemWrapper(hotelDayNum, "hotel"));
 			// 호텔과 관광 명소 리스트를 하나의 리스트로 합치기
-			List<Object> items = new ArrayList<>();
+			List<ItemWrapper> attractionList = new ArrayList<>();
+			for (Attraction attraction : attractionDayNum) {
+				map.add(i,new ItemWrapper(attraction, "attraction"));
+			}
+
+			// 레스토랑 정보를 리스트에 담아 MultiValueMap에 추가
+			List<ItemWrapper> restaurantList = new ArrayList<>();
+			for (Restaurants restaurant : restaurantsDayNum) {
+				map.add(i,new ItemWrapper(restaurant, "restaurant"));
+			}
+
+			/*List<Object> items = new ArrayList<>();
 			items.add(new ItemWrapper(hotelDayNum, "hotel"));
 			for (Attraction attraction : (List<Attraction>)attractionDayNum) {
 				items.add(new ItemWrapper(attraction, "attraction"));
 			}
 			for (Restaurants restaurants : (List<Restaurants>)restaurantsDayNum){
 				items.add(new ItemWrapper(restaurants, "restaurant"));
-			}
+			}*/
 
 			// 모든 항목을 map에 저장
-			map.put(i,items);
+//			map.put(i,items);
 
 		}
 
-		for(Attraction a : attractionList){
-			log.info(a.getAttractionName());
-		}
+//		for(Attraction a : attractionList){
+//			log.info(a.getAttractionName());
+//		}
 		List<HotelView> hotelsList = packService.findHotelsByDestinationName(destinationName);
 		log.info("hotelList.size() = {}", hotelsList.size());
-		log.info("restaurantsList.size() = {}" , restaurantsList.size());
-		log.info("attractionList.size() = {}" , attractionList.size());
-		log.info("scheduleList.size() = {}", scheduleList.size());
+//		log.info("restaurantsList.size() = {}" , restaurantsList.size());
+//		log.info("attractionList.size() = {}" , attractionList.size());
+//		log.info("scheduleList.size() = {}", scheduleList.size());
 		model.addAttribute("map",map);
 		return "test";
 	}
