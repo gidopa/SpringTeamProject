@@ -140,7 +140,7 @@ table.dataTable th, table.dataTable td {
 							</nav>
 						</div> -->
 						<div class="sb-sidenav-menu-heading">Customer Service</div>
-						<a class="nav-link" href="charts.html">
+						<a class="nav-link" href="/email">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 이메일 알림

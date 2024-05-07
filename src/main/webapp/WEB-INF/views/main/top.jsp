@@ -41,6 +41,20 @@
                 </li>
             </ul>
             <%
+            } else if(id == "admin") {
+            %>
+            	<ul class="header-member">
+                <li>
+                    <a href="javascript:void(0)">로그아웃</a>
+                </li>
+                <li>
+                    <a href="/admin">관리자 페이지</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">마이페이지</a>
+                </li>
+            </ul>
+            <%	
             } else {
             %>
             <ul class="header-member">
@@ -222,6 +236,18 @@
                     </li>
                 </ul>
                 <%
+                    } else if(id.equals("admin")) {
+                %>
+                <ul class="fullmenu-member">	
+                	<li>
+                        <a href="/logout">로그아웃</a>
+                    </li>
+                    <li>
+                        <a href="/admin">관리자 페이지</a>
+                    </li>
+                </ul>
+                	
+                <%    	
                     }else{
                 %>
                 <ul class="fullmenu-member">

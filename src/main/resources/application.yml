@@ -16,6 +16,20 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+        
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: team.project.adm333
+    password: jllmruglygbbfefq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  
+  # 추가
 
 
 
