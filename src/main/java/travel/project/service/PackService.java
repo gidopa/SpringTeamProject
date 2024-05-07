@@ -11,6 +11,7 @@ import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
 
 public interface PackService {
@@ -56,4 +57,7 @@ public interface PackService {
 
 	// 호텔 모든 열 지역으로 검색
 	public List<HotelView> findByDestinationHotels(String destinationName);
+	
+	// 레스토랑 모든 열 지역으로 검색
+	public List<RestaurantView> findByDestinationRestaurant(String destinationName);
 }

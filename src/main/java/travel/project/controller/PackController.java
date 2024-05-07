@@ -23,6 +23,7 @@ import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
 import travel.project.service.PackService;
 
@@ -182,9 +183,11 @@ public class PackController {
 		List<HotelView> hotelViews = packService.findByDestinationHotels(pack.getDestinationName());
 		
 		// 목적지 명소 등 조회
-		// 레스토랑 모든 열 조회
+		// 레스토랑 모든 열 지역으로 검색
+		List<RestaurantView> restaurantViews = packService.findByDestinationRestaurant(pack.getDestinationName());
 		
 		model.addAttribute("hotelView", hotelViews);
+		model.addAttribute("restaurantView", restaurantViews);
 		model.addAttribute("center", "../pack/packagesDetail.jsp");
 		return main;
 	}

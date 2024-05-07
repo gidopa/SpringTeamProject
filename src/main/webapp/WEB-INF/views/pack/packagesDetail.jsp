@@ -88,37 +88,36 @@
                             </div>
 
 							식당:
-<%-- 							<input type="text" id="restaurant_${i}" name="restaurant_${i}" value="" required> --%>
-<!--                             <div class="input-group"> -->
-<!--                             	<table class="styled-table"> -->
-<!-- 						            <thead> -->
-<!-- 						                <tr> -->
-<!-- 						                    <th>Select</th> -->
-<!-- 						                    <th>Hotel Name</th> -->
-<!-- 						                    <th>Destination Name</th> -->
-<!-- 						                    <th>Star Rating</th> -->
-<!-- 						                    <th>Description</dt> -->
-<!-- 						                    <th>Hotel Amenities</dt> -->
-<!-- 						                    <th>Hotel Img</dt> -->
-<!-- 						                </tr> -->
-<!-- 						            </thead> -->
-<!-- 						            <tbody> -->
-<%-- 						                <c:forEach var="item" items="${restaurant}"> --%>
-<!-- 						                    <tr> -->
-<!-- 						                        <td>  -->
-<%-- 						                        	<input type="radio" name="restaurantId_${i}" value="${item.hotelId}" onclick="setRestaurantField('${item.restaurantId}', ${i})"> --%>
-<!-- 						                        </td> -->
-<%-- 						                        <td>${item.hotelName}</td> --%>
-<%-- 						                        <td>${item.destinationName}</td> --%>
-<%-- 						                        <td>${item.starRating}</dt> --%>
-<%-- 						                        <td>${item.description}</dt> --%>
-<%-- 						                        <td>${item.hotelAmenities}</dt> --%>
-<%-- 						                        <td>${item.hotelImages}</dt> --%>
-<!-- 						                    </tr> -->
-<%-- 						                </c:forEach> --%>
-<!-- 						            </tbody> -->
-<!-- 						        </table> -->
-<!--                             </div> -->
+							<input type="text" id="restaurant_${i}" name="restaurant_${i}" value="" required>
+                            <div class="input-group">
+                            	<table class="styled-table">
+						            <thead>
+						                <tr>
+						                    <th>Select</th>
+						                    <th>Restaurant Name</th>
+						                    <th>Destination Name</dt>
+						                    <th>Restaurant Cuisine</th>
+						                    <th>Restaurant Description</th>
+						                    <th>Restaurant Img</dt>
+						                    
+						                </tr>
+						            </thead>
+						            <tbody>
+						                <c:forEach var="item" items="${restaurantView}">
+						                    <tr>
+						                        <td> 
+						                        	<input type="radio" name="restaurantId_${i}" value="${item.restaurantId}" onclick="setRestaurantField('${item.restaurantId}', ${i})">
+						                        </td>
+						                        <td>${item.restaurantName}</td>
+						                        <td>${item.destinationName}</dt>
+						                        <td>${item.cuisine}</td>
+						                        <td>${item.restaurantDescription}</dt>
+						                        <td>${item.restaurantImages}</dt>
+						                    </tr>
+						                </c:forEach>
+						            </tbody>
+						        </table>
+                            </div>
 							
 							관광지:
 							<div class="input--style-2" type="text" placeholder="관광지 이름" name="touristSpot_${i}" required>

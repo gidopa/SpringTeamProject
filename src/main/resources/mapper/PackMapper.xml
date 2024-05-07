@@ -40,11 +40,11 @@
 	</insert>
 
 	<select id="findAllPacks" resultType="Pack">
-		select * from trips
+		select * from pack
 	</select>
 
 	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
-		SELECT * from trips WHERE destination LIKE CONCAT('%', #{destination}, '%')
+		SELECT * from pack WHERE destination LIKE CONCAT('%', #{destination}, '%')
 	</select>
 
 
@@ -116,4 +116,36 @@
         H.Star_Rating,
         H.Description
 	</select>
+	
+	<!-- 레스토랑 모든 열 지역으로 검색 -->
+	<select id="findByDestinationRestaurant" resultType="RestaurantView" parameterType="String">
+		SELECT 
+		    D.Destination_ID,
+		    D.Destination_name,
+		    D.Country,
+		    D.destination_description,
+		    R.Restaurant_ID,
+		    R.restaurant_Name,
+		    R.Cuisine,
+		    R.restaurant_Description,
+		    GROUP_CONCAT(DISTINCT I.Img_Name ORDER BY I.Destinations_Img_Id ASC SEPARATOR ', ') AS restaurant_Images
+		FROM
+			destinations D
+		INNER JOIN 
+			restaurants R ON D.Destination_ID = R.Destination_ID
+		INNER JOIN 
+			destinations_img I ON D.Destination_ID = I.Destination_ID
+		WHERE
+			 D.Destination_name LIKE CONCAT('%', #{destinationName}, '%') AND I.category = 'restaurants'
+		GROUP BY
+		    D.Destination_ID,
+		    D.Destination_name,
+		    D.Country,
+		    D.destination_description,
+		    R.Restaurant_ID,
+		    R.restaurant_Name,
+		    R.Cuisine,
+		    R.restaurant_Description;
+	</select>
+	
 </mapper>

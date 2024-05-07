@@ -21,6 +21,7 @@ import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
 import travel.project.mapper.PackMapper;
 import travel.project.repository.pack.PackRepository;
@@ -151,6 +152,12 @@ public class PackServiceImpl implements PackService{
 	@Override
 	public List<HotelView> findByDestinationHotels(String destinationName) {
 		return packRepository.findByDestinationHotels(destinationName);
+	}
+	
+	// 레스토랑 모든 열 지역으로 검색
+	@Override
+	public List<RestaurantView> findByDestinationRestaurant(String destinationName) {
+		return packRepository.findByDestinationRestaurant(destinationName);
 	}
 	
 }
