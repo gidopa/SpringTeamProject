@@ -49,8 +49,8 @@ public interface PackRepository {
     
 	// 호텔 모든 열 지역으로 검색
     List<HotelView> findByDestinationHotels(String destinationName);
-
-
-    Pack findPackById(long tripId);
-
+    // 패키지 조회 (id)로
+    Pack findPackById(long packId);
+    // Destination에 묶여있는 호텔 리스트 조회
+    List<HotelView> findHotelsByDestinationName(String destinationName);
 }

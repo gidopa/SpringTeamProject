@@ -24,8 +24,7 @@ public interface PackService {
 	// 호텔 편의시설 등록
   public void saveHotelAmenities(List<String> amenities, long id);
 
-	List<Pack> getPackageListByDestination(String destination);
-	
+
 	List<Pack> getPackageListByDestination(String destination);
 
 	
@@ -60,6 +59,9 @@ public interface PackService {
 	// 호텔 모든 열 지역으로 검색
 	public List<HotelView> findByDestinationHotels(String destinationName);
 
-	Pack findPackById(long tripId);
+	Pack findPackById(long packId);
 
+
+
+	List<HotelView> findHotelsByDestinationName(String destinationName);
 }

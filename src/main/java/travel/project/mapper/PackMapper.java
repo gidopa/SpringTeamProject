@@ -40,8 +40,7 @@ public interface PackMapper {
     long saveDestination(Destination destination); 
     
     // Destination 리스트 반환
-    List<Destination> findAllDestination();
-    
+
     // restaurant 등록
     void saveRestaurant(@Param("restaurants") Restaurants restaurants, @Param("destination_Id") long destination_Id);
     
@@ -63,10 +62,8 @@ public interface PackMapper {
 
     List<Destination> findAllDestination();
 
-    long saveDestination(Destination destination);
 
-    void saveRestaurant(Restaurants restaurants, long destinationId);
+    Pack findPackById(long packId);
 
-    Pack findPackById(long tripId);
-
+    List<HotelView> findHotelsByDestinationName(String destinationName);
 }

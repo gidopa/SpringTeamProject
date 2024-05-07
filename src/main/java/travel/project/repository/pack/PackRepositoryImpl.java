@@ -107,8 +107,13 @@ public class PackRepositoryImpl implements PackRepository{
 	}
 
 	@Override
-	public Pack findPackById(long tripId) {
-		return packMapper.findPackById(tripId);
+	public Pack findPackById(long packId) {
+		return null;
+	}
+
+	@Override
+	public List<HotelView> findHotelsByDestinationName(String destinationName) {
+		return packMapper.findHotelsByDestinationName(destinationName);
 	}
 
 }
