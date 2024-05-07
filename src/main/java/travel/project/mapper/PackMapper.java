@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+
 import travel.project.domain.Attraction;
 import travel.project.domain.Customer;
 import travel.project.domain.Destination;
@@ -13,6 +14,8 @@ import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
+import travel.project.domain.*;
+
 
 @Mapper
 public interface PackMapper {
@@ -32,6 +35,7 @@ public interface PackMapper {
     List<Pack> findAllPacks();
 
     List<Pack> findPacksByDestination(String destination);
+
     
     // Destination 등록
     long saveDestination(Destination destination); 
@@ -59,4 +63,9 @@ public interface PackMapper {
     
 	// 레스토랑 모든 열 지역으로 검색
     List<RestaurantView> findByDestinationRestaurant(String destinationName);
+
+    Pack findPackById(long tripId);
+
+    // 관광지 모든 열 지역으로 검색
+    List<AttractionView> findByDestinationAttraction(String destinationName, String type);
 }

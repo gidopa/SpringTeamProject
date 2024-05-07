@@ -9,13 +9,16 @@
 </head>
 
 <%
+
 	String contextPath = request.getContextPath();
+
 %>
 <header class="bloomcity-N1" data-bid="jFlvm1V1Ec">
     <div class="header-container container-lg">
         <div class="header-left">
             <h1 class="header-title">
                 <a href="/">
+
                     <img src="/images/img_logo_black.png" alt="로고">
                 </a>
             </h1>
@@ -38,6 +41,20 @@
                 </li>
             </ul>
             <%
+            } else if(id == "admin") {
+            %>
+            	<ul class="header-member">
+                <li>
+                    <a href="javascript:void(0)">로그아웃</a>
+                </li>
+                <li>
+                    <a href="/admin">관리자 페이지</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">마이페이지</a>
+                </li>
+            </ul>
+            <%	
             } else {
             %>
             <ul class="header-member">
@@ -225,10 +242,22 @@
                         <a href="/login">로그인</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">회원가입</a>
+                        <a href="/member">회원가입</a>
                     </li>
                 </ul>
                 <%
+                    } else if(id.equals("admin")) {
+                %>
+                <ul class="fullmenu-member">	
+                	<li>
+                        <a href="/logout">로그아웃</a>
+                    </li>
+                    <li>
+                        <a href="/admin">관리자 페이지</a>
+                    </li>
+                </ul>
+                	
+                <%    	
                     }else{
                 %>
                 <ul class="fullmenu-member">

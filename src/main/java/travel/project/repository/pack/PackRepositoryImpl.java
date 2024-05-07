@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Attraction;
+import travel.project.domain.AttractionView;
 import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
@@ -69,6 +70,7 @@ public class PackRepositoryImpl implements PackRepository{
 		packMapper.saveImg(imgNames, type, id);
 	}
 
+
 	@Override
 	public List<Pack> findAllPacks() {
 		return packMapper.findAllPacks();
@@ -110,6 +112,17 @@ public class PackRepositoryImpl implements PackRepository{
 	@Override
 	public List<RestaurantView> findByDestinationRestaurant(String destinationName) {
 		return packMapper.findByDestinationRestaurant(destinationName);
+	}
+
+	@Override
+	public Pack findPackById(long tripId) {
+		return packMapper.findPackById(tripId);
+	}
+	
+	// 관광지 모든 열 지역으로 검색
+	@Override
+	public List<AttractionView> findByDestinationAttraction(String destinationName, String type) {
+		return packMapper.findByDestinationAttraction(destinationName, type);
 	}
 
 }

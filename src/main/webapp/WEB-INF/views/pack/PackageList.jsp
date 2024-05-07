@@ -52,8 +52,8 @@
         .course-info {
             padding: 15px;
             text-align: left;
-            /*             overflow: auto; /* 내용이 넘칠 경우 스크롤바 표시 */ */
-        max-height: 30%; /* 카드 내에서 정보 섹션의 최대 높이 제한 */
+            /*             overflow: auto; /* 내용이 넘칠 경우 스크롤바 표시 */
+            max-height: 30%; /* 카드 내에서 정보 섹션의 최대 높이 제한 */
         }
         .description {
             overflow: auto; /* 컨테이너 너비를 넘어가는 텍스트 숨기기 */
@@ -78,10 +78,10 @@
             </c:if>
             <td>
                 <div class="course-container">
-                    <a href="/package/${list.tripId}">
+                    <a href="/package/${list.packId}?destinationName=${list.destinationName}">
                         <img src="/images/travel.jpg">
                         <div class="course-info">
-                            <p><strong>여행지</strong> : ${list.destination}</p>
+                            <p><strong>여행지</strong> : ${list.destinationName}</p>
                         </div>
                     </a>
                 </div>

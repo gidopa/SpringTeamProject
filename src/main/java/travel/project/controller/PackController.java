@@ -25,12 +25,14 @@ import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
+import travel.project.domain.*;
+import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import travel.project.service.ScheduleService.ScheduleService;
 
 
 @Slf4j
@@ -39,6 +41,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class PackController {
 	
     private final PackService packService;
+	private final DestinationService destinationService;
+	private final ScheduleService scheduleService;
 	String main = "main/main";
 	
 	// 호텔 등록 페이지
@@ -186,6 +190,9 @@ public class PackController {
 		// 레스토랑 모든 열 지역으로 검색
 		List<RestaurantView> restaurantViews = packService.findByDestinationRestaurant(pack.getDestinationName());
 		
+		// 관광지 모든 열 지역으로 검색
+		List<AttractionView> attractionViews = packService.findByDestinationAttraction(pack.getDestinationName(), "tourist");
+		
 		model.addAttribute("hotelView", hotelViews);
 		model.addAttribute("restaurantView", restaurantViews);
 		model.addAttribute("center", "../pack/packagesDetail.jsp");
@@ -202,13 +209,48 @@ public class PackController {
 		return "main/main";
 	}
 
+
 /*	@GetMapping("/package/{tripId}")
 	public String packDetail(@PathVariable long tripId, Model model){
 
 	}*/
 	
-	
 
+	@GetMapping("/package/{tripId}")
+	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
+		Destination destination = destinationService.findDestByName(destinationName);
+		long destId = destination.getDestinationId();
+		// 여행 목적지에 관한 attraction(관광지)에 대한 정보 가져옴
+		List<Attraction> attractionList = destinationService.findAttractionById(destId);
+		List<Restaurants> restaurantsList = destinationService.findRestaurantsById(destId);
+		List<Schedule> scheduleList = scheduleService.findScheduleById(tripId);
+		for(Attraction a : attractionList){
+			log.info(a.getAttractionName());
+		}
+		log.info("restaurantsList.size() = {}" , restaurantsList.size());
+		log.info("attractionList.size() = {}" , attractionList.size());
+		log.info("scheduleList.size() = {}", scheduleList.size());
+		return null;
+	}
+
+	public String abc() {
+		
+		int daynum = 3;
+		String hotel = "hotel";
+		String att = "att";
+		String res = "res";
+		
+		
+		for(int i=1; i<=daynum; i++) {
+			// 호텔
+			// 명소
+			// 식당
+		}
+		
+		
+		
+		return null;
+	}
 
 	
 }

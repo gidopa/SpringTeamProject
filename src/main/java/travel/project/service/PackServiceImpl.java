@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Attraction;
+import travel.project.domain.AttractionView;
 import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
@@ -49,7 +50,8 @@ public class PackServiceImpl implements PackService{
 	public void saveHotelImg(List<String> imgNames, long id) {
 		packRepository.saveHotelImg(imgNames, id);
 	}
-	
+
+
 	// 호텔 편의시설 등록
 	@Override
 	public void saveHotelAmenities(List<String> amenities, long id) {
@@ -113,6 +115,7 @@ public class PackServiceImpl implements PackService{
 	public void saveRestaurant(Restaurants restaurants, long destination_Id) {
 		packRepository.saveRestaurant(restaurants, destination_Id);
 	}
+
 	
 	// 식당, 명소, 관광지 이미지 등록
 	@Override
@@ -159,5 +162,16 @@ public class PackServiceImpl implements PackService{
 	public List<RestaurantView> findByDestinationRestaurant(String destinationName) {
 		return packRepository.findByDestinationRestaurant(destinationName);
 	}
+	@Override
+	public Pack findPackById(long tripId) {
+		return packRepository.findPackById(tripId);
+	}
 	
+	// 관광지 모든 열 지역으로 검색
+	@Override
+	public List<AttractionView> findByDestinationAttraction(String destinationName, String type) {
+		return packRepository.findByDestinationAttraction(destinationName, type);
+	}
+
+
 }

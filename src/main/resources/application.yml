@@ -3,12 +3,11 @@ spring:
     name: project
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
+
     url: jdbc:mysql://localhost:3306/TRAVEL?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: Abcd123@
-    
-  
-    
+
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -17,6 +16,20 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+        
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: team.project.adm333
+    password: jllmruglygbbfefq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  
+  # 추가
 
 # 추가
   servlet:

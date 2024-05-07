@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import travel.project.domain.Attraction;
+import travel.project.domain.AttractionView;
 import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
@@ -23,10 +24,10 @@ public interface PackService {
 	public void saveHotelImg(List<String> imgNames, long id);
 	
 	// 호텔 편의시설 등록
+	public void saveHotelAmenities(List<String> amenities, long id);
 
 	List<Pack> getPackageListByDestination(String destination);
-	
-	public void saveHotelAmenities(List<String> amenities, long id);
+
 	
 	// 이미지 업로드
 	public List<String> uploadImage(MultipartFile[] files, long id, String category);
@@ -60,4 +61,10 @@ public interface PackService {
 	
 	// 레스토랑 모든 열 지역으로 검색
 	public List<RestaurantView> findByDestinationRestaurant(String destinationName);
+
+	Pack findPackById(long tripId);
+	
+	// 관광지 모든 열 지역으로 검색
+	public List<AttractionView> findByDestinationAttraction(String destinationName, String type);
+
 }

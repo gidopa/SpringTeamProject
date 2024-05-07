@@ -98,7 +98,6 @@
 						                    <th>Destination Name</dt>
 						                    <th>Restaurant Cuisine</th>
 						                    <th>Restaurant Description</th>
-						                    <th>Restaurant Img</dt>
 						                    
 						                </tr>
 						            </thead>
@@ -112,7 +111,6 @@
 						                        <td>${item.destinationName}</dt>
 						                        <td>${item.cuisine}</td>
 						                        <td>${item.restaurantDescription}</dt>
-						                        <td>${item.restaurantImages}</dt>
 						                    </tr>
 						                </c:forEach>
 						            </tbody>

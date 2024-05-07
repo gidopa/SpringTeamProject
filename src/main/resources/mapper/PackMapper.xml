@@ -74,6 +74,7 @@
         </foreach> 
 	</insert>
 
+
 	<!-- Attraction 등록 -->
 	<insert id="saveAttraction" parameterType="Attraction">
 		INSERT INTO attractions(Destination_ID, attraction_Name, Type, attraction_Description)
@@ -93,59 +94,21 @@
 	
 	<!-- 호텔 모든 열 지역으로 검색  -->
 	<select id="findByDestinationHotels" resultType="HotelView" parameterType="String">
-		 SELECT 
-        H.Hotel_ID,
-        H.Hotel_Name,
-        H.Destination_name,
-        H.Star_Rating,
-        H.Description,
-        GROUP_CONCAT(DISTINCT A.Amenity ORDER BY A.Amenity_ID ASC SEPARATOR ', ') AS hotel_Amenities,
-        GROUP_CONCAT(DISTINCT I.Img_Name ORDER BY I.hotels_Img_Id ASC SEPARATOR ', ') AS hotel_Images
-    FROM 
-        Hotels H
-    INNER JOIN 
-        HotelAmenities A ON H.Hotel_ID = A.Hotel_ID
-    INNER JOIN 
-        hotels_img I ON H.Hotel_ID = I.Hotel_Id
-    WHERE
-        H.Destination_name LIKE CONCAT('%', #{destinationName}, '%')
-    GROUP BY 
-        H.Hotel_ID,
-        H.Hotel_Name,
-        H.Destination_name,
-        H.Star_Rating,
-        H.Description
+		SELECT * FROM view_hotels WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
 	</select>
 	
 	<!-- 레스토랑 모든 열 지역으로 검색 -->
 	<select id="findByDestinationRestaurant" resultType="RestaurantView" parameterType="String">
-		SELECT 
-		    D.Destination_ID,
-		    D.Destination_name,
-		    D.Country,
-		    D.destination_description,
-		    R.Restaurant_ID,
-		    R.restaurant_Name,
-		    R.Cuisine,
-		    R.restaurant_Description,
-		    GROUP_CONCAT(DISTINCT I.Img_Name ORDER BY I.Destinations_Img_Id ASC SEPARATOR ', ') AS restaurant_Images
-		FROM
-			destinations D
-		INNER JOIN 
-			restaurants R ON D.Destination_ID = R.Destination_ID
-		INNER JOIN 
-			destinations_img I ON D.Destination_ID = I.Destination_ID
-		WHERE
-			 D.Destination_name LIKE CONCAT('%', #{destinationName}, '%') AND I.category = 'restaurants'
-		GROUP BY
-		    D.Destination_ID,
-		    D.Destination_name,
-		    D.Country,
-		    D.destination_description,
-		    R.Restaurant_ID,
-		    R.restaurant_Name,
-		    R.Cuisine,
-		    R.restaurant_Description;
+		SELECT * FROM view_restaurants WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
+	</select>
+
+	<select id="findPackById">
+		SELECT * from trips where trip_id = #{tripId}
 	</select>
 	
+	<!-- 관광지 모든 열 지역으로 검색 -->
+	<select id="findByDestinationAttraction" parameterType="String">
+		SELECT * FROM view_view_attractions WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%') and type LIKE CONCAT('%', #{type}, '%')
+	</select>
+
 </mapper>
