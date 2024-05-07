@@ -24,6 +24,8 @@ import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
+import travel.project.domain.*;
+import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -38,6 +40,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class PackController {
 	
     private final PackService packService;
+	private final DestinationService destinationService;
 	String main = "main/main";
 	
 	// 호텔 등록 페이지
@@ -199,12 +202,22 @@ public class PackController {
 		return "main/main";
 	}
 
+
 /*	@GetMapping("/package/{tripId}")
 	public String packDetail(@PathVariable long tripId, Model model){
 
 	}*/
 	
-	
+
+	@GetMapping("/package/{tripId}")
+	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
+		Destination destination = destinationService.findDestByName(destinationName);
+		long destId = destination.getDestinationId();
+		List<Attraction> attractionList = destinationService.findAttractionById(destId);
+		System.out.println("attractionList.size() = " + attractionList.size());
+		return null;
+	}
+
 
 
 	

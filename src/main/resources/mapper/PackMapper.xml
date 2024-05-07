@@ -44,7 +44,7 @@
 	</select>
 
 	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
-		SELECT * from trips WHERE destination LIKE CONCAT('%', #{destination}, '%')
+		SELECT * from trips WHERE destination_name LIKE CONCAT(#{destination}, '%')
 	</select>
 
 
@@ -73,6 +73,7 @@
             (#{imgName}, #{type}, #{id})
         </foreach> 
 	</insert>
+
 
 	<!-- Attraction 등록 -->
 	<insert id="saveAttraction" parameterType="Attraction">
@@ -116,4 +117,9 @@
         H.Star_Rating,
         H.Description
 	</select>
+
+	<select id="findPackById">
+		SELECT * from trips where trip_id = #{tripId}
+	</select>
+
 </mapper>

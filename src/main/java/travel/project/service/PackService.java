@@ -22,10 +22,12 @@ public interface PackService {
 	public void saveHotelImg(List<String> imgNames, long id);
 	
 	// 호텔 편의시설 등록
+  public void saveHotelAmenities(List<String> amenities, long id);
 
 	List<Pack> getPackageListByDestination(String destination);
 	
-	public void saveHotelAmenities(List<String> amenities, long id);
+	List<Pack> getPackageListByDestination(String destination);
+
 	
 	// 이미지 업로드
 	public List<String> uploadImage(MultipartFile[] files, long id, String category);
@@ -54,6 +56,10 @@ public interface PackService {
 	// Pack 등록
 	public Pack savePack(Pack pack);
 
+
 	// 호텔 모든 열 지역으로 검색
 	public List<HotelView> findByDestinationHotels(String destinationName);
+
+	Pack findPackById(long tripId);
+
 }

@@ -48,7 +48,8 @@ public class PackServiceImpl implements PackService{
 	public void saveHotelImg(List<String> imgNames, long id) {
 		packRepository.saveHotelImg(imgNames, id);
 	}
-	
+
+
 	// 호텔 편의시설 등록
 	@Override
 	public void saveHotelAmenities(List<String> amenities, long id) {
@@ -112,6 +113,7 @@ public class PackServiceImpl implements PackService{
 	public void saveRestaurant(Restaurants restaurants, long destination_Id) {
 		packRepository.saveRestaurant(restaurants, destination_Id);
 	}
+
 	
 	// 식당, 명소, 관광지 이미지 등록
 	@Override
@@ -153,4 +155,12 @@ public class PackServiceImpl implements PackService{
 		return packRepository.findByDestinationHotels(destinationName);
 	}
 	
+
+
+	@Override
+	public Pack findPackById(long tripId) {
+		return packRepository.findPackById(tripId);
+	}
+
+
 }

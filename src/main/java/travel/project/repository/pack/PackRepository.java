@@ -2,6 +2,7 @@ package travel.project.repository.pack;
 
 import java.util.List;
 
+
 import travel.project.domain.Attraction;
 import travel.project.domain.Customer;
 import travel.project.domain.Destination;
@@ -9,6 +10,8 @@ import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
+import travel.project.domain.*;
+
 
 public interface PackRepository {
 	
@@ -33,6 +36,7 @@ public interface PackRepository {
     
     // Restaurants 등록
     void saveRestaurant(Restaurants restaurants, long destination_Id);
+
     
     // 식당, 명소, 관광지 이미지 등록
     void saveImg(List<String> imgNames, String type, long id);
@@ -45,4 +49,8 @@ public interface PackRepository {
     
 	// 호텔 모든 열 지역으로 검색
     List<HotelView> findByDestinationHotels(String destinationName);
+
+
+    Pack findPackById(long tripId);
+
 }

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +18,6 @@
 	rel="stylesheet" />
 <link href="resources/admin/css/styles.css" rel="stylesheet" />
 <style type="text/css">
-/* body {
-	font-size: 140%;
-}
-
-h2 {
-	text-align: center;
-	padding: 20px 0;
-} */
 
 table caption {
 	padding: .5em 0;
@@ -38,6 +33,7 @@ table.dataTable th, table.dataTable td {
 	font-size: 14px;
 }
 </style>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
 </head>
@@ -62,7 +58,7 @@ table.dataTable th, table.dataTable td {
 			</div>
 		</form>
 		<!-- Navbar-->
-		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+		<!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
 				role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -74,7 +70,7 @@ table.dataTable th, table.dataTable td {
 					<li><hr class="dropdown-divider" /></li>
 					<li><a class="dropdown-item" href="#!">Logout</a></li>
 				</ul></li>
-		</ul>
+		</ul> -->
 	</nav>
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
@@ -83,41 +79,37 @@ table.dataTable th, table.dataTable td {
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Membership</div>
-						<a class="nav-link" href="/index.html">
+						<a class="nav-link" href="admin/membership">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 회원관리
 						</a>
 						<div class="sb-sidenav-menu-heading">Travel Package</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseLayouts" aria-expanded="false"
-							aria-controls="collapseLayouts">
+						<a class="nav-link collapsed" href="<%=contextPath %>/admin/reservation" >
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 예약관리
-							<div class="sb-sidenav-collapse-arrow">
+							<!-- <div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
-							</div>
+							</div> -->
 						</a>
-						<div class="collapse" id="collapseLayouts"
+						<!-- <div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="layout-static.html">Static
 									Navigation</a> <a class="nav-link" href="layout-sidenav-light.html">Light
 									Sidenav</a>
 							</nav>
-						</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
+						</div> -->
+						<a class="nav-link collapsed" href="<%=contextPath %>/admin/travelpackage">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
 							</div> 여행상품 관리
-							<div class="sb-sidenav-collapse-arrow">
+							<!-- <div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
-							</div>
+							</div> -->
 						</a>
-						<div class="collapse" id="collapsePages"
+						<!-- <div class="collapse" id="collapsePages"
 							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
@@ -144,19 +136,11 @@ table.dataTable th, table.dataTable td {
 										<i class="fas fa-angle-down"></i>
 									</div>
 								</a>
-								<div class="collapse" id="pagesCollapseError"
-									aria-labelledby="headingOne"
-									data-bs-parent="#sidenavAccordionPages">
-									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="401.html">401 Page</a> <a
-											class="nav-link" href="404.html">404 Page</a> <a
-											class="nav-link" href="500.html">500 Page</a>
-									</nav>
-								</div>
+								
 							</nav>
-						</div>
+						</div> -->
 						<div class="sb-sidenav-menu-heading">Customer Service</div>
-						<a class="nav-link" href="charts.html">
+						<a class="nav-link" href="/email">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 이메일 알림
@@ -311,7 +295,6 @@ table.dataTable th, table.dataTable td {
 							<div class="row">
 								<div class="col-xs-12">
 									<table
-										summary="This table shows how to create responsive tables using Datatables' extended functionality"
 										class="table table-bordered table-hover dt-responsive">
 										<thead>
 											<tr>
@@ -413,11 +396,6 @@ table.dataTable th, table.dataTable td {
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script src="resources/admin/js/datatables-simple-demo.js"></script>
-	<script type="text/javascript">
-		$('table').DataTable();
 
-		// See:
-		// http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions
-	</script>
 </body>
 </html>

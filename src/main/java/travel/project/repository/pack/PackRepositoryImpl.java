@@ -68,6 +68,7 @@ public class PackRepositoryImpl implements PackRepository{
 		packMapper.saveImg(imgNames, type, id);
 	}
 
+
 	@Override
 	public List<Pack> findAllPacks() {
 		return packMapper.findAllPacks();
@@ -103,6 +104,11 @@ public class PackRepositoryImpl implements PackRepository{
 	@Override
 	public List<HotelView> findByDestinationHotels(String destinationName) {
 		return packMapper.findByDestinationHotels(destinationName);
+	}
+
+	@Override
+	public Pack findPackById(long tripId) {
+		return packMapper.findPackById(tripId);
 	}
 
 }
