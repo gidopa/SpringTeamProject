@@ -1,7 +1,7 @@
 package travel.project.repository.pack;
 
 import java.util.List;
-
+import java.util.Map;
 
 import travel.project.domain.Attraction;
 import travel.project.domain.Customer;
@@ -46,7 +46,7 @@ public interface PackRepository {
     void saveAttraction(Attraction attraction, long id);
     
     // Pack 등록 후 조회
-    Pack savePack(Pack pack);
+    long savePack(Pack pack);
     
 	// 호텔 모든 열 지역으로 검색
     List<HotelView> findByDestinationHotels(String destinationName);
@@ -59,4 +59,13 @@ public interface PackRepository {
 
     // 관광지 모든 열 지역으로 검색
     List<AttractionView> findByDestinationAttraction(String destinationName, String type);
+    
+    // 호텔 상세일정 등록
+ 	void saveScheduleHotel(int hotelIds, int dayNum, long packId);
+ 	
+ 	// 호텔 each 테이블 등록
+ 	void saveEachHotel(int hotelsIds, int dayNum, long packId);
+
+ 	// 레스토랑 상세일정 등록
+ 	void saveScheduleRestaurant(List<int[]> restaurantIds, int dayNum, long packId);
 }

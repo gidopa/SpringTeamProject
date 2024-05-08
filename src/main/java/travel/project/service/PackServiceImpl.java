@@ -8,7 +8,11 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -147,7 +151,7 @@ public class PackServiceImpl implements PackService{
 	
 	// Pack 등록
 	@Override
-	public Pack savePack(Pack pack) {
+	public long savePack(Pack pack) {
 		return packRepository.savePack(pack);
 	}
 	
@@ -172,6 +176,22 @@ public class PackServiceImpl implements PackService{
 	public List<AttractionView> findByDestinationAttraction(String destinationName, String type) {
 		return packRepository.findByDestinationAttraction(destinationName, type);
 	}
-
-
+	
+	// 호텔 상세일정 등록
+	@Override
+	public void saveScheduleHotel(int hotelIds, int dayNum, long packId) {
+		packRepository.saveScheduleHotel(hotelIds, dayNum, packId);
+	}
+	
+	// 호텔 each 테이블 등록
+	@Override
+	public void saveEachHotel(int hotelIds, int dayNum, long packId) {
+		packRepository.saveEachHotel(hotelIds, dayNum, packId);
+	}
+	
+	// 레스토랑 상세일정 등록
+	@Override
+	public void saveScheduleRestaurant(List<int[]> restaurantIds, int dayNum, long packId) {
+		packRepository.saveScheduleRestaurant(restaurantIds, dayNum, packId);
+	}
 }

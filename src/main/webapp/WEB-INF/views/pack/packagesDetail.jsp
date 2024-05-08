@@ -38,7 +38,45 @@
         }
         
         function setRestaurantField(restaurantId, index) {
-            document.getElementById('restaurant_' + index).value = restaurantId;
+        	var inputField = document.getElementById('restaurant_' + index);
+            var currentValue = inputField.value;
+            if (document.querySelector('input[name="restaurantId_' + index + '"][value="' + restaurantId + '"]').checked) {
+                // 체크된 경우, ID 추가
+                if (!currentValue.includes(restaurantId + " ")) { // ID가 이미 있지 않은 경우에만 추가
+                    inputField.value += restaurantId + " ";
+                }
+            } else {
+                // 체크 해제된 경우, ID 제거
+                inputField.value = currentValue.replace(restaurantId + " ", ""); // 해당 ID를 빈 문자열로 대체
+            }
+        }
+        
+        function setTouristField(attractionId, index) {
+        	var inputField = document.getElementById('Tourist_' + index);
+            var currentValue = inputField.value;
+            if (document.querySelector('input[name="TouristId_' + index + '"][value="' + attractionId + '"]').checked) {
+                // 체크된 경우, ID 추가
+                if (!currentValue.includes(attractionId + " ")) { // ID가 이미 있지 않은 경우에만 추가
+                    inputField.value += attractionId + " ";
+                }
+            } else {
+                // 체크 해제된 경우, ID 제거
+                inputField.value = currentValue.replace(attractionId + " ", ""); // 해당 ID를 빈 문자열로 대체
+            }
+        }
+        
+        function setActivityField(attractionId, index) {
+        	var inputField = document.getElementById('Activity_' + index);
+            var currentValue = inputField.value;
+            if (document.querySelector('input[name="ActivityId_' + index + '"][value="' + attractionId + '"]').checked) {
+                // 체크된 경우, ID 추가
+                if (!currentValue.includes(attractionId + " ")) { // ID가 이미 있지 않은 경우에만 추가
+                    inputField.value += attractionId + " ";
+                }
+            } else {
+                // 체크 해제된 경우, ID 제거
+                inputField.value = currentValue.replace(attractionId + " ", ""); // 해당 ID를 빈 문자열로 대체
+            }
         }
     </script>
 </head>
@@ -51,11 +89,12 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">일차 별 상세 일정 입력</h2>
-                    <form method="POST" action="/restaurants/${destination_Id}" enctype="multipart/form-data">
-                        <c:forEach var="i" begin="1" end="2">
+                    <form method="POST" action="/packages/${packId}" enctype="multipart/form-data">
+                        <c:forEach var="i" begin="1" end="${daysDifference}">
+                        <input type="hidden" name="days" value="${daysDifference}">
                         	<h4>${i} 일차 일정</h4>
                         	호텔:
-                        	<input type="text" id="hotel_${i}" name="hotel_${i}" value="" required>
+                        	<input type="text" id="hotel_${i}" name="hotel[${i }]" value="" >
                             <div class="input-group">
                                 <table class="styled-table">
 						            <thead>
@@ -88,7 +127,7 @@
                             </div>
 
 							식당:
-							<input type="text" id="restaurant_${i}" name="restaurant_${i}" value="" required>
+							<input type="text" id="restaurant_${i}" name="restaurant[${i}]" value="" >
                             <div class="input-group">
                             	<table class="styled-table">
 						            <thead>
@@ -105,7 +144,7 @@
 						                <c:forEach var="item" items="${restaurantView}">
 						                    <tr>
 						                        <td> 
-						                        	<input type="radio" name="restaurantId_${i}" value="${item.restaurantId}" onclick="setRestaurantField('${item.restaurantId}', ${i})">
+						                        	<input type="checkbox" name="restaurantId_${i}" value="${item.restaurantId}" onclick="setRestaurantField('${item.restaurantId}', ${i})">
 						                        </td>
 						                        <td>${item.restaurantName}</td>
 						                        <td>${item.destinationName}</dt>
@@ -118,12 +157,64 @@
                             </div>
 							
 							관광지:
-							<div class="input--style-2" type="text" placeholder="관광지 이름" name="touristSpot_${i}" required>
+							<input type="text" id="Tourist_${i}" name="tourist[${i}]" value="" >
+                            <div class="input-group">
+                            	<table class="styled-table">
+						            <thead>
+						                <tr>
+						                    <th>Select</th>
+						                    <th>Tourist Name</th>
+						                    <th>Tourist Type</dt>
+						                    <th>Tourist Description</th>
+						                    <th>Destination Name</th>
+						                    
+						                </tr>
+						            </thead>
+						            <tbody>
+						                <c:forEach var="item" items="${attractionView}">
+						                    <tr>
+						                        <td> 
+						                        	<input type="checkbox" name="TouristId_${i}" value="${item.attractionId}" onclick="setTouristField('${item.attractionId}', ${i})">
+						                        </td>
+						                        <td>${item.attractionName}</td>
+						                        <td>${item.type}</dt>
+						                        <td>${item.attractionDescription}</td>
+						                        <td>${item.destinationName}</dt>
+						                    </tr>
+						                </c:forEach>
+						            </tbody>
+						        </table>
                             </div>
                             
-                            액티비티:
-                            <div class="input--style-2" type="text" placeholder="액티비티 이름" name="activity_${i}" required>
-                            </div>				
+<!--                             액티비티: -->
+<%--                             <input type="text" id="Activity_${i}" name="activity[${i}]" value="" > --%>
+<!--                             <div class="input-group"> -->
+<!--                             	<table class="styled-table"> -->
+<!-- 						            <thead> -->
+<!-- 						                <tr> -->
+<!-- 						                    <th>Select</th> -->
+<!-- 						                    <th>Activity Name</th> -->
+<!-- 						                    <th>Activity Type</dt> -->
+<!-- 						                    <th>Activity Description</th> -->
+<!-- 						                    <th>Destination Name</th> -->
+						                    
+<!-- 						                </tr> -->
+<!-- 						            </thead> -->
+<!-- 						            <tbody> -->
+<%-- 						                <c:forEach var="item" items="${activityView}"> --%>
+<!-- 						                    <tr> -->
+<!-- 						                        <td>  -->
+<%-- 						                        	<input type="checkbox" name="ActivityId_${i}" value="${item.attractionId}" onclick="setActivityField('${item.attractionId}', ${i})"> --%>
+<!-- 						                        </td> -->
+<%-- 						                        <td>${item.attractionName}</td> --%>
+<%-- 						                        <td>${item.type}</dt> --%>
+<%-- 						                        <td>${item.attractionDescription}</td> --%>
+<%-- 						                        <td>${item.destinationName}</dt> --%>
+<!-- 						                    </tr> -->
+<%-- 						                </c:forEach> --%>
+<!-- 						            </tbody> -->
+<!-- 						        </table> -->
+<!--                             </div>			 -->
                             <br><br>
                         </c:forEach>
                         <div class="p-t-30">

@@ -2,6 +2,7 @@ package travel.project.repository.pack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -97,9 +98,9 @@ public class PackRepositoryImpl implements PackRepository{
 	
 	// Pack 등록 후 리턴
 	@Override
-	public Pack savePack(Pack pack) {
-		long packId = packMapper.savePack(pack);
-		return packMapper.findByIdPack(packId);
+	public long savePack(Pack pack) {
+		packMapper.savePack(pack);
+		return packMapper.selectLastPack();
 	}
 	
 	// 호텔 모든 열 지역으로 검색
@@ -125,4 +126,21 @@ public class PackRepositoryImpl implements PackRepository{
 		return packMapper.findByDestinationAttraction(destinationName, type);
 	}
 
+    // 호텔 상세일정 등록
+	@Override
+	public void saveScheduleHotel(int hotelIds, int dayNum, long packId) {
+		packMapper.saveScheduleHotel(hotelIds, dayNum, packId);
+	}
+	
+	// 호텔 each 테이블 등록
+	@Override
+	public void saveEachHotel(int hotelsIds, int dayNum, long packId) {
+		packMapper.saveEachHotel(hotelsIds, dayNum, packId);
+	}
+	
+	// 레스토랑 상세일정 등록
+	@Override
+	public void saveScheduleRestaurant(List<int[]> restaurantIds, int dayNum, long packId) {
+		packMapper.saveScheduleRestaurant(restaurantIds, dayNum, packId);
+	}
 }

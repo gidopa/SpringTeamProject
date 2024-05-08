@@ -1,6 +1,7 @@
 package travel.project.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -53,7 +54,10 @@ public interface PackMapper {
     void saveAttraction(@Param("attraction") Attraction attraction, @Param("id") long id);
     
     // Pack 등록
-    long savePack(Pack pack);
+    void savePack(Pack pack);
+    
+    // Pack 인덱스 반환
+    long selectLastPack();
     
     // Pack id 조회
     Pack findByIdPack(long packId);
@@ -67,5 +71,14 @@ public interface PackMapper {
     Pack findPackById(long tripId);
 
     // 관광지 모든 열 지역으로 검색
-    List<AttractionView> findByDestinationAttraction(String destinationName, String type);
+    List<AttractionView> findByDestinationAttraction(@Param("destinationName")String destinationName, @Param("type")String type);
+    
+    // 호텔 상세일정 등록
+    void saveScheduleHotel(@Param("hotelIds")int hotelIds, @Param("dayNum")int dayNum, @Param("packId")long packId);
+    
+    // 호텔 each 테이블 등록
+    void saveEachHotel(@Param("hotelIds")int hotelIds, @Param("dayNum")int dayNum, @Param("packId")long packId);
+    
+    // 레스토랑 상세일정 등록
+    void saveScheduleRestaurant(@Param("restaurantIds")List<int[]> restaurantIds, @Param("dayNum")int dayNum, @Param("packId")long packId);
 }

@@ -3,8 +3,6 @@ package travel.project;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
