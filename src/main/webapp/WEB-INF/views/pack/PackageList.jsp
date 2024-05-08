@@ -78,7 +78,7 @@
             </c:if>
             <td>
                 <div class="course-container">
-                    <a href="/package/${list.tripId}?destinationName=${list.destinationName}">
+                    <a href="/package/${list.packId}?destinationName=${list.destinationName}">
                         <img src="/images/travel.jpg">
                         <div class="course-info">
                             <p><strong>여행지</strong> : ${list.destinationName}</p>

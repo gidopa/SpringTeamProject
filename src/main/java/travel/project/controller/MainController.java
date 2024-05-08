@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Customer;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -38,6 +39,7 @@ public class MainController {
 
 	@GetMapping("/member")
 	public String join(Model model) {
+		model.addAttribute("customer", new Customer());
 		model.addAttribute("center", "../member/MembershipJoin.jsp");
 		return main;
 	}

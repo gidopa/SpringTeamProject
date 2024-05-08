@@ -40,11 +40,11 @@
 	</insert>
 
 	<select id="findAllPacks" resultType="Pack">
-		select * from trips
+		select * from pack
 	</select>
 
 	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
-		SELECT * from trips WHERE destination_name LIKE CONCAT(#{destination}, '%')
+		SELECT * from pack WHERE destination_name LIKE CONCAT(#{destination}, '%')
 	</select>
 
 
@@ -94,32 +94,15 @@
 	
 	<!-- 호텔 모든 열 지역으로 검색  -->
 	<select id="findByDestinationHotels" resultType="HotelView" parameterType="String">
-		 SELECT 
-        H.Hotel_ID,
-        H.Hotel_Name,
-        H.Destination_name,
-        H.Star_Rating,
-        H.Description,
-        GROUP_CONCAT(DISTINCT A.Amenity ORDER BY A.Amenity_ID ASC SEPARATOR ', ') AS hotel_Amenities,
-        GROUP_CONCAT(DISTINCT I.Img_Name ORDER BY I.hotels_Img_Id ASC SEPARATOR ', ') AS hotel_Images
-    FROM 
-        Hotels H
-    INNER JOIN 
-        HotelAmenities A ON H.Hotel_ID = A.Hotel_ID
-    INNER JOIN 
-        hotels_img I ON H.Hotel_ID = I.Hotel_Id
-    WHERE
-        H.Destination_name LIKE CONCAT('%', #{destinationName}, '%')
-    GROUP BY 
-        H.Hotel_ID,
-        H.Hotel_Name,
-        H.Destination_name,
-        H.Star_Rating,
-        H.Description
+		SELECT * FROM view_hotels WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
 	</select>
 
-	<select id="findPackById">
-		SELECT * from trips where trip_id = #{tripId}
+	<select id="findHotelsBypackId" resultType="HotelView">
+		SELECT * FROM view_hotels WHERE pack_id = #{packId}
+	</select>
+
+	<select id="findHotelsByDestinationName">
+		SELECT * from pack where destination_name = #{destinationName}
 	</select>
 
 </mapper>

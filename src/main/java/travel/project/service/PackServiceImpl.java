@@ -158,9 +158,15 @@ public class PackServiceImpl implements PackService{
 
 
 	@Override
-	public Pack findPackById(long tripId) {
-		return packRepository.findPackById(tripId);
+	public Pack findPackById(long packId) {
+		return packRepository.findPackById(packId);
 	}
+
+	@Override
+	public List<HotelView> findHotelsByDestinationName(String destinationName) {
+		return packRepository.findHotelsByDestinationName(destinationName);
+	}
+
 
 
 }
