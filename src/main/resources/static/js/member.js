@@ -62,14 +62,15 @@ document.getElementById("password").addEventListener("input", function() {
         formSubmitListener(e);
     } else {
         passwordInput.innerHTML = "";
+
     }
 });
 
 // 비밀번호 확인란에서 포커스 아웃 될 때 유효성 검사 수행
-document.getElementById("confirm_password").addEventListener("blur", function() {
+document.getElementById("confirmPassword").addEventListener("blur", function() {
     var password = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("confirm_password").value;
-    var confirm_passwordInput = document.getElementById("confirm_passwordInput");
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var confirm_passwordInput = document.getElementById("confirmPasswordInput");
 
     if (password !== confirmPassword) {
         confirm_passwordInput.innerHTML = "비밀번호가 일치하지 않습니다. 다시 입력해주세요.";
