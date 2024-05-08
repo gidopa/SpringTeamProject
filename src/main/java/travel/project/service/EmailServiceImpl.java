@@ -15,10 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
-
+	
+	
 	private final JavaMailSender javaMailSender;
-	
-	
 	
 	@Override
 	public void sendMail(String emailRecipient, String emailTitle, String emailContent) {

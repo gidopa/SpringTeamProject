@@ -13,7 +13,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.eclipse.tags.shaded.org.apache.xpath.SourceTree;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,7 @@ import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
+import travel.project.mapper.ScheduleMapper;
 import travel.project.domain.*;
 import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
@@ -48,6 +51,7 @@ public class PackController {
     private final PackService packService;
 	private final DestinationService destinationService;
 	private final ScheduleService scheduleService;
+	private final ScheduleMapper scheduleMapper;
 	String main = "main/main";
 	
 	// 호텔 등록 페이지
@@ -215,83 +219,10 @@ public class PackController {
 	public String packages(@PathVariable long packId,
 						@RequestParam long days,
 						@RequestParam Map<String, String> params
-//						@RequestParam(required = false, defaultValue = "{}") String[] hotel,
-//	                       @RequestParam(required = false, defaultValue = "{}") String[] restaurant,
-//	                       @RequestParam(required = false, defaultValue = "{}") String[] tourist,
-//	                       @RequestParam(required = false, defaultValue = "{}") String[] activity
-//                        @RequestParam String[] restaurant,
-//                        @RequestParam String[] tourist,
-//                        @RequestParam String[] activity
 						) {
+		packService.saveSchedule(packId, days, params);
 		
-//		 printParams(params);
-		
-		Map<String, String> filteredParams = params.entrySet().stream()
-		        .filter(entry -> entry.getKey().matches("hotel\\[\\d+\\]|restaurant\\[\\d+\\]|tourist\\[\\d+\\]"))
-		        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-		    // 필터링된 파라미터 사용
-		    filteredParams.forEach((key, value) -> System.out.println(key + " : " + value));
-		 
-//		 for (Map.Entry<String, String> entry : params.entrySet()) {
-//			 String key = (String)entry.getKey();
-//			 String value = (String)entry.getValue();
-//			 System.out.println("key : " + key);
-//			 System.out.println("value : " + value);
-//		        // key에서 일차 정보 추출 및 처리
-//		    }
-//		int[] hotelIds = convertToIntArray(hotel);
-//		List<int[]> restaurantIdsList = new ArrayList<>();
-		
-//	    for (String restaurantEntry : restaurant) {
-//	        int[] restaurantIds = convertSpaceSeparatedStringToIntArray(restaurantEntry);
-//	        restaurantIdsList.add(restaurantIds);
-//	        System.out.println("변환된 레스토랑 ID 배열: ");
-//	        for (int id : restaurantIds) {
-//	            System.out.print(id + " ");
-//	        }
-//	        System.out.println();
-//	    }
-	    
-//	    // 모든 배열의 원소를 하나의 배열로 합치기
-//	    int totalSize = 0;
-//	    for (int[] array : restaurantIdsList) {
-//	        totalSize += array.length;
-//	    }
-//
-//	    // 새 배열 생성
-//	    int[] combinedRestaurantIds = new int[totalSize];
-//	    int currentIndex = 0;
-//	    for (int[] array : restaurantIdsList) {
-//	        System.arraycopy(array, 0, combinedRestaurantIds, currentIndex, array.length);
-//	        currentIndex += array.length;
-//	    }
-//
-//	    // 새 배열 출력
-//	    System.out.print("합쳐진 레스토랑 ID 배열: ");
-//	    for (int id : combinedRestaurantIds) {
-//	        System.out.print(id + " ");
-//	    }
-//	    System.out.println();
-	    
-		
-//	    System.out.println("모든 레스토랑 ID 배열:");
-//	    for (int[] ids : restaurantIdsList) {
-//	        for (int id : ids) {
-//	            System.out.print(id + " ");
-//	        }
-//	        System.out.println();  // 각 배열의 끝에서 줄바꿈
-//	    }
-		
-		
-//		for(int i=0; i<days; i++) {
-//			packService.saveScheduleHotel(hotelIds[i], i+1, packId);
-//			packService.saveEachHotel(hotelIds[i], i+1, packId);
-//			
-//			packService.saveScheduleRestaurant(restaurantIdsList, i+1, packId);
-//		}
-		
-		return null;
+		return main;
 	}
 	
 	// 지역별 패키지의 리스트
@@ -303,13 +234,6 @@ public class PackController {
 		model.addAttribute("list", packs);
 		return "main/main";
 	}
-
-
-/*	@GetMapping("/package/{tripId}")
-	public String packDetail(@PathVariable long tripId, Model model){
-
-	}*/
-	
 
 	@GetMapping("/package/{tripId}")
 	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
@@ -328,71 +252,4 @@ public class PackController {
 		return null;
 	}
 	
-	// 문자배열 > 숫자배열 변경
-//	private int[] convertToIntArray(String[] stringArray) {
-//	    ArrayList<Integer> tempList = new ArrayList<>();
-//	    for (String item : stringArray) {
-//	        if (!item.isEmpty()) {
-//	            try {
-//	                tempList.add(Integer.parseInt(item));
-//	            } catch (NumberFormatException e) {
-//	                // 로그 출력, 오류 처리, 또는 기본값 설정
-//	                System.out.println("Invalid integer format for input string: '" + item + "'");
-//	                tempList.add(0);  // 기본값으로 0을 사용하거나 이 부분을 적절히 조정
-//	            }
-//	        }
-//	    }
-//	    // ArrayList를 기본 int 배열로 변환
-//	    int[] intArray = new int[tempList.size()];
-//	    for (int i = 0; i < tempList.size(); i++) {
-//	        intArray[i] = tempList.get(i);
-//	    }
-//	    return intArray;
-//	}
-	
-	private void printParams(Map<String, Object> params) {
-	    for (Map.Entry<String, Object> entry : params.entrySet()) {
-	        String key = entry.getKey();
-	        Object value = entry.getValue();
-	        
-	        // 값이 String 배열인지 확인
-	        if (value instanceof String[]) {
-	            String[] values = (String[]) value;
-	            System.out.println(key + " (String array): " + Arrays.toString(values));
-	        } else if (value instanceof String) {
-	            // 값이 String 인지 확인
-	            String singleValue = (String) value;
-	            System.out.println(key + " (String): " + singleValue);
-	        } else {
-	            // 그 외 타입에 대한 처리
-	            System.out.println(key + " (Unknown type): " + value.toString());
-	        }
-	    }
-	}
-	
-	private int[] convertSpaceSeparatedStringToIntArray(String spaceSeparatedNumbers) {
-	    String[] numbers = spaceSeparatedNumbers.trim().split("\\s+");
-	    int[] result = new int[numbers.length];
-	    for (int i = 0; i < numbers.length; i++) {
-	        result[i] = Integer.parseInt(numbers[i]);
-	    }
-	    return result;
-	}
-
-	private int[] convertToIntArray(String[] stringArray) {
-	    List<Integer> temp = new ArrayList<>();
-	    for (String str : stringArray) {
-	        if (!str.isEmpty()) {
-	            String[] parts = str.split("\\s+");
-	            for (String part : parts) {
-	                try {
-	                    temp.add(Integer.parseInt(part));
-	                } catch (NumberFormatException e) {
-	                    System.out.println("Invalid input for conversion: " + part);
-	                }
-	            }
-	        }
-	    }
-	    return temp.stream().mapToInt(i -> i).toArray();
-	}
 }

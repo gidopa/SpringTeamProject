@@ -1,8 +1,11 @@
 package travel.project.repository.pack;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +19,7 @@ import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
+import travel.project.domain.Schedule;
 import travel.project.mapper.CustomerMapper;
 import travel.project.mapper.PackMapper;
 import travel.project.repository.customer.CustomerRepositoryImpl;
@@ -125,22 +129,42 @@ public class PackRepositoryImpl implements PackRepository{
 	public List<AttractionView> findByDestinationAttraction(String destinationName, String type) {
 		return packMapper.findByDestinationAttraction(destinationName, type);
 	}
+	
+	// Schedule 등록
+	@Override
+	public void saveSchedule(long packId, long days, Map<String, String> params) {
+		// 필터링된 파라미터 사용
+	    Map<String, List<Integer>> filteredParams = params.entrySet().stream()
+	        .filter(entry -> entry.getKey().matches("hotel\\[\\d+\\]|restaurant\\[\\d+\\]|tourist\\[\\d+\\]|activity\\[\\d+\\]"))
+	        .collect(Collectors.toMap(
+	            Map.Entry::getKey,
+	            entry -> Arrays.stream(entry.getValue().split("\\s+"))
+	                           .filter(s -> !s.isEmpty())
+	                           .map(Integer::parseInt)
+	                           .collect(Collectors.toList())
+	     ));
+	    
+	    // dayCounts 맵을 받은 'days' 매개변수에 기반하여 동적으로 초기화
+	    Map<Integer, Integer> dayCounts = IntStream.rangeClosed(1, (int)days)
+	        .boxed()
+	        .collect(Collectors.toMap(day -> day, day -> 0));
 
-    // 호텔 상세일정 등록
-	@Override
-	public void saveScheduleHotel(int hotelIds, int dayNum, long packId) {
-		packMapper.saveScheduleHotel(hotelIds, dayNum, packId);
-	}
-	
-	// 호텔 each 테이블 등록
-	@Override
-	public void saveEachHotel(int hotelsIds, int dayNum, long packId) {
-		packMapper.saveEachHotel(hotelsIds, dayNum, packId);
-	}
-	
-	// 레스토랑 상세일정 등록
-	@Override
-	public void saveScheduleRestaurant(List<int[]> restaurantIds, int dayNum, long packId) {
-		packMapper.saveScheduleRestaurant(restaurantIds, dayNum, packId);
+	    for (Map.Entry<String, List<Integer>> entry : filteredParams.entrySet()) {
+	        String eventType = entry.getKey().split("\\[")[0];
+	        int dayIndex = Integer.parseInt(entry.getKey().split("\\[")[1].replaceAll("\\D", ""));
+	        List<Integer> eventIds = entry.getValue();
+
+	        // 각 이벤트 ID에 대해 처리
+	        for (Integer eventId : eventIds) {
+	            dayCounts.put(dayIndex, dayCounts.get(dayIndex) + 1);
+	            Schedule schedule = new Schedule();
+	            schedule.setPackId(packId);
+	            schedule.setDayNumber(dayIndex);
+	            schedule.setScheduleType(eventType);
+	            schedule.setEventId(eventId);
+	            
+	            packMapper.insertSchedule(schedule);
+	        }
+	    }
 	}
 }

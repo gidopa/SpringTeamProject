@@ -60,12 +60,6 @@ public interface PackRepository {
     // 관광지 모든 열 지역으로 검색
     List<AttractionView> findByDestinationAttraction(String destinationName, String type);
     
-    // 호텔 상세일정 등록
- 	void saveScheduleHotel(int hotelIds, int dayNum, long packId);
- 	
- 	// 호텔 each 테이블 등록
- 	void saveEachHotel(int hotelsIds, int dayNum, long packId);
-
- 	// 레스토랑 상세일정 등록
- 	void saveScheduleRestaurant(List<int[]> restaurantIds, int dayNum, long packId);
+    // Schedule 등록
+    void saveSchedule(long packId, long days, Map<String, String>params);
 }

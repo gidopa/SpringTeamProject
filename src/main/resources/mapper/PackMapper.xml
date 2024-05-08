@@ -116,26 +116,10 @@
 		SELECT * FROM view_attractions WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%') and type LIKE CONCAT('%', #{type}, '%')
 	</select>
 	
-	<!-- 호텔 상세일정 등록 -->
-	<insert id="saveScheduleHotel">
-	    INSERT INTO SCHEDULE (Pack_ID, Day_Number, Schedule_Type, event_id)
-	    VALUES (#{packId}, #{dayNum}, 'hotels', #{hotelIds})
-	</insert>
-	
-	<!-- 호텔 each 테이블 등록 -->
-	<insert id="saveEachHotel">
-		INSERT INTO hotel_each_day (pack_id, day_number, hotel_id)
-		VALUES (#{packId}, #{dayNum}, #{hotelIds})
-	</insert>
-	
-	<!-- 레스토랑 상세일정 등록 -->
-	<insert id="saveScheduleRestaurant">
-    INSERT INTO SCHEDULE (Pack_ID, Day_Number, Schedule_Type, event_id) VALUES
-    <foreach collection="restaurantIds" item="restaurantArray" separator=",">
-        <foreach item="restaurantId" collection="restaurantArray" separator="," open="(" close=")">
-            #{packId}, #{dayNum}, 'restaurants', #{restaurantId}
-        </foreach>
-    </foreach>;
-	</insert>
+	<!-- Schedule 등록 -->
+	<insert id="insertSchedule" parameterType="Schedule">
+        INSERT INTO Schedule (pack_id, day_number, schedule_Type, event_id)
+        VALUES (#{packId}, #{dayNumber}, #{scheduleType}, #{eventId})
+    </insert>
 
 </mapper>

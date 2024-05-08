@@ -186,35 +186,35 @@
 						        </table>
                             </div>
                             
-<!--                             액티비티: -->
-<%--                             <input type="text" id="Activity_${i}" name="activity[${i}]" value="" > --%>
-<!--                             <div class="input-group"> -->
-<!--                             	<table class="styled-table"> -->
-<!-- 						            <thead> -->
-<!-- 						                <tr> -->
-<!-- 						                    <th>Select</th> -->
-<!-- 						                    <th>Activity Name</th> -->
-<!-- 						                    <th>Activity Type</dt> -->
-<!-- 						                    <th>Activity Description</th> -->
-<!-- 						                    <th>Destination Name</th> -->
+                            액티비티:
+                            <input type="text" id="Activity_${i}" name="activity[${i}]" value="" >
+                            <div class="input-group">
+                            	<table class="styled-table">
+						            <thead>
+						                <tr>
+						                    <th>Select</th>
+						                    <th>Activity Name</th>
+						                    <th>Activity Type</dt>
+						                    <th>Activity Description</th>
+						                    <th>Destination Name</th>
 						                    
-<!-- 						                </tr> -->
-<!-- 						            </thead> -->
-<!-- 						            <tbody> -->
-<%-- 						                <c:forEach var="item" items="${activityView}"> --%>
-<!-- 						                    <tr> -->
-<!-- 						                        <td>  -->
-<%-- 						                        	<input type="checkbox" name="ActivityId_${i}" value="${item.attractionId}" onclick="setActivityField('${item.attractionId}', ${i})"> --%>
-<!-- 						                        </td> -->
-<%-- 						                        <td>${item.attractionName}</td> --%>
-<%-- 						                        <td>${item.type}</dt> --%>
-<%-- 						                        <td>${item.attractionDescription}</td> --%>
-<%-- 						                        <td>${item.destinationName}</dt> --%>
-<!-- 						                    </tr> -->
-<%-- 						                </c:forEach> --%>
-<!-- 						            </tbody> -->
-<!-- 						        </table> -->
-<!--                             </div>			 -->
+						                </tr>
+						            </thead>
+						            <tbody>
+						                <c:forEach var="item" items="${activityView}">
+						                    <tr>
+						                        <td> 
+						                        	<input type="checkbox" name="ActivityId_${i}" value="${item.attractionId}" onclick="setActivityField('${item.attractionId}', ${i})">
+						                        </td>
+						                        <td>${item.attractionName}</td>
+						                        <td>${item.type}</dt>
+						                        <td>${item.attractionDescription}</td>
+						                        <td>${item.destinationName}</dt>
+						                    </tr>
+						                </c:forEach>
+						            </tbody>
+						        </table>
+                            </div>			
                             <br><br>
                         </c:forEach>
                         <div class="p-t-30">

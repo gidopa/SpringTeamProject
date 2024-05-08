@@ -177,21 +177,9 @@ public class PackServiceImpl implements PackService{
 		return packRepository.findByDestinationAttraction(destinationName, type);
 	}
 	
-	// 호텔 상세일정 등록
+	// Schedule 등록
 	@Override
-	public void saveScheduleHotel(int hotelIds, int dayNum, long packId) {
-		packRepository.saveScheduleHotel(hotelIds, dayNum, packId);
-	}
-	
-	// 호텔 each 테이블 등록
-	@Override
-	public void saveEachHotel(int hotelIds, int dayNum, long packId) {
-		packRepository.saveEachHotel(hotelIds, dayNum, packId);
-	}
-	
-	// 레스토랑 상세일정 등록
-	@Override
-	public void saveScheduleRestaurant(List<int[]> restaurantIds, int dayNum, long packId) {
-		packRepository.saveScheduleRestaurant(restaurantIds, dayNum, packId);
+	public void saveSchedule(long packId, long days, Map<String, String> params) {
+		packRepository.saveSchedule(packId, days, params);
 	}
 }
