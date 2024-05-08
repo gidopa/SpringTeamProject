@@ -36,5 +36,12 @@
         select * from hotels_img where hotel_id=#{hotelId}
     </select>
 
+    <select id="getDestinationImages" resultType="destinations_img">
+        select * from destinations_img where destination_id = #{destId}
+    </select>
+
+    <select id="getHotelAmenities" resultType="HotelAmenities">
+        select * from HotelAmenities where hotel_id = #{hotelId}
+    </select>
 
 </mapper>

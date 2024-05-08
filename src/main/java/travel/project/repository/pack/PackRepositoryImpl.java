@@ -108,7 +108,7 @@ public class PackRepositoryImpl implements PackRepository{
 
 	@Override
 	public Pack findPackById(long packId) {
-		return null;
+		return packMapper.findByIdPack(packId);
 	}
 
 	@Override

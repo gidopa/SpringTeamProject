@@ -1,9 +1,6 @@
 package travel.project.service.ScheduleService;
 
-import travel.project.domain.Attraction;
-import travel.project.domain.Hotels;
-import travel.project.domain.Hotels_Img;
-import travel.project.domain.Schedule;
+import travel.project.domain.*;
 
 import java.util.List;
 
@@ -20,4 +17,8 @@ public interface ScheduleService {
     List findRestaurantByDayNum(int i,long packId);
 
     List<Hotels_Img> getHotelImages(long hotelId);
+
+    List<destinations_Img> getDestinationImages(long destId);
+
+    List<HotelAmenities> getHotelAmenities(long hotelId);
 }

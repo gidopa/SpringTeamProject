@@ -1,20 +1,10 @@
 package travel.project.controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.tags.shaded.org.apache.xpath.SourceTree;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -22,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.w3c.dom.Attr;
 import travel.project.domain.Attraction;
 import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
@@ -34,8 +23,6 @@ import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import travel.project.service.ScheduleService.ScheduleService;
 
 
@@ -208,36 +195,37 @@ public class PackController {
 		return "main/main";
 	}
 
-
-/*	@GetMapping("/package/{packId}")
-	public String packDetail(@PathVariable long packId, Model model){
-
-	}*/
-	
-
+	// 상세화면
 	@GetMapping("/package/{packId}")
 	public String packDetail(@PathVariable long packId, Model model, @RequestParam String destinationName){
+		// 일차별이 아닌 공통으로 필요한 데이터 addAttribute
 		Destination destination = destinationService.findDestByName(destinationName);
 		long destId = destination.getDestinationId();
-		// 여행 목적지에 관한 attraction(관광지)에 대한 정보 가져옴
-		/*List<Schedule> scheduleList = scheduleService.findScheduleById(packId);
-		List<Attraction> attractionList = destinationService.findAttractionById(destId);
-		List<Restaurants> restaurantsList = destinationService.findRestaurantsById(destId);*/
-
-		// 여기부터 시도
+		Pack pack = packService.findPackById(packId);
+		List<destinations_Img> imageList = scheduleService.getDestinationImages(destId);
+		model.addAttribute("imageList",imageList);
+		model.addAttribute("pack",pack);
+		// 일차별로 필요한 데이터들 담아 multivaluemap으로 담음
+		// key 가 1,2 이렇게 올라가고 해당 키값에 따라 일차별로 데이터를 나눔
+		// join하고 DTO로 만들면 list 갯수 줄일 수 있을듯 ..
 		MultiValueMap<Integer, Object> map = new LinkedMultiValueMap<>();
 		int maxDayNum = scheduleService.getMaxDayNum(packId);
-		log.info("maxDayNum = {}", maxDayNum);
-		 // packId에 대한 것도 같이 매개변수로 넘겨야 할 것 같음 .
 		for (int i = 1; i <= maxDayNum; i++) {
 			List<Attraction> attractionDayNum = scheduleService.findAttractionByDayNum(i,packId);
 			Hotels hotelDayNum = scheduleService.findHotelByDayNum(i,packId);
 			List<Restaurants> restaurantsDayNum = scheduleService.findRestaurantByDayNum(i,packId);
 			long hotelId = hotelDayNum.getHotelId();
-			List<Hotels_Img> hotelsImgs = scheduleService.getHotelImages(hotelId);
-			map.add(i,new ItemWrapper(hotelsImgs,"hotelImages"));
+			List<Hotels_Img> hotelImageList = scheduleService.getHotelImages(hotelId);
+			List<HotelAmenities> hotelAmenitiesList = scheduleService.getHotelAmenities(hotelId);
+			// 호텔 관련 정보를 리스트에 담아 MultiValueMap에 추가
 			map.add(i,new ItemWrapper(hotelDayNum, "hotel"));
-			// 호텔과 관광 명소 리스트를 하나의 리스트로 합치기
+			for(HotelAmenities hotelAmenities : hotelAmenitiesList){
+				map.add(i,new ItemWrapper(hotelAmenities,"hotelAmenities"));
+			}
+			for(Hotels_Img hotelImages : hotelImageList){
+				map.add(i,new ItemWrapper(hotelImages,"hotelImages"));
+			}
+			// 관광지 정보를 리스트에 담아 MultiValueMap에 추가
 			for (Attraction attraction : attractionDayNum) {
 				map.add(i,new ItemWrapper(attraction, "attraction"));
 			}
@@ -246,31 +234,10 @@ public class PackController {
 			for (Restaurants restaurant : restaurantsDayNum) {
 				map.add(i,new ItemWrapper(restaurant, "restaurant"));
 			}
-
-			/*List<Object> items = new ArrayList<>();
-			items.add(new ItemWrapper(hotelDayNum, "hotel"));
-			for (Attraction attraction : (List<Attraction>)attractionDayNum) {
-				items.add(new ItemWrapper(attraction, "attraction"));
-			}
-			for (Restaurants restaurants : (List<Restaurants>)restaurantsDayNum){
-				items.add(new ItemWrapper(restaurants, "restaurant"));
-			}*/
-
-			// 모든 항목을 map에 저장
-//			map.put(i,items);
-
 		}
-
-//		for(Attraction a : attractionList){
-//			log.info(a.getAttractionName());
-//		}
-		List<HotelView> hotelsList = packService.findHotelsByDestinationName(destinationName);
-		log.info("hotelList.size() = {}", hotelsList.size());
-//		log.info("restaurantsList.size() = {}" , restaurantsList.size());
-//		log.info("attractionList.size() = {}" , attractionList.size());
-//		log.info("scheduleList.size() = {}", scheduleList.size());
 		model.addAttribute("map",map);
-		return "test";
+		model.addAttribute("center", "../packageDetail.jsp");
+		return main;
 	}
 
 

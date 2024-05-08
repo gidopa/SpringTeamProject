@@ -3,10 +3,7 @@ package travel.project.repository.Schedule;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
-import travel.project.domain.Attraction;
-import travel.project.domain.Hotels;
-import travel.project.domain.Hotels_Img;
-import travel.project.domain.Schedule;
+import travel.project.domain.*;
 import travel.project.mapper.ScheduleMapper;
 
 import java.util.List;
@@ -46,5 +43,15 @@ public class ScheduleRepositoryImpl implements ScheduleRepository {
     @Override
     public List<Hotels_Img> getHotelImages(long hotelId) {
         return scheduleMapper.getHotelImages(hotelId);
+    }
+
+    @Override
+    public List<destinations_Img> getDestinationImages(long destId) {
+        return scheduleMapper.getDestinationImages(destId);
+    }
+
+    @Override
+    public List<HotelAmenities> getHotelAmenities(long hotelId) {
+        return scheduleMapper.getHotelAmenities(hotelId);
     }
 }
