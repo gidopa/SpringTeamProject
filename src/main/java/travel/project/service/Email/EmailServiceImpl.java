@@ -1,6 +1,5 @@
-package travel.project.service;
+package travel.project.service.Email;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -16,10 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class EmailServiceImpl implements EmailService {
 
-	@Autowired
 	private final JavaMailSender javaMailSender;
-	
-	
 	
 	@Override
 	public void sendMail(String emailRecipient, String emailTitle, String emailContent) {

@@ -1,15 +1,10 @@
-package travel.project;
+package travel.project.repository.CustomerRepository;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-import lombok.RequiredArgsConstructor;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -27,7 +22,7 @@ import java.util.Optional;
 
 @Transactional
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
- class TestHi {
+ class CustomerRepositoryTest {
 
 
     @Autowired
