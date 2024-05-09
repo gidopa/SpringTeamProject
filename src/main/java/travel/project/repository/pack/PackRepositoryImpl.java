@@ -13,11 +13,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Attraction;
 import travel.project.domain.AttractionView;
+import travel.project.domain.Attraction_each_day;
 import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
+import travel.project.domain.Hotel_each_day;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.RestaurantView;
+import travel.project.domain.Restaurant_each_day;
 import travel.project.domain.Restaurants;
 import travel.project.domain.Schedule;
 import travel.project.mapper.CustomerMapper;
@@ -132,39 +135,25 @@ public class PackRepositoryImpl implements PackRepository{
 	
 	// Schedule 등록
 	@Override
-	public void saveSchedule(long packId, long days, Map<String, String> params) {
-		// 필터링된 파라미터 사용
-	    Map<String, List<Integer>> filteredParams = params.entrySet().stream()
-	        .filter(entry -> entry.getKey().matches("hotel\\[\\d+\\]|restaurant\\[\\d+\\]|tourist\\[\\d+\\]|activity\\[\\d+\\]"))
-	        .collect(Collectors.toMap(
-	            Map.Entry::getKey,
-	            entry -> Arrays.stream(entry.getValue().split("\\s+"))
-	                           .filter(s -> !s.isEmpty())
-	                           .map(Integer::parseInt)
-	                           .collect(Collectors.toList())
-	     ));
-	    
-	    // dayCounts 맵을 받은 'days' 매개변수에 기반하여 동적으로 초기화
-	    Map<Integer, Integer> dayCounts = IntStream.rangeClosed(1, (int)days)
-	        .boxed()
-	        .collect(Collectors.toMap(day -> day, day -> 0));
-
-	    for (Map.Entry<String, List<Integer>> entry : filteredParams.entrySet()) {
-	        String eventType = entry.getKey().split("\\[")[0];
-	        int dayIndex = Integer.parseInt(entry.getKey().split("\\[")[1].replaceAll("\\D", ""));
-	        List<Integer> eventIds = entry.getValue();
-
-	        // 각 이벤트 ID에 대해 처리
-	        for (Integer eventId : eventIds) {
-	            dayCounts.put(dayIndex, dayCounts.get(dayIndex) + 1);
-	            Schedule schedule = new Schedule();
-	            schedule.setPackId(packId);
-	            schedule.setDayNumber(dayIndex);
-	            schedule.setScheduleType(eventType);
-	            schedule.setEventId(eventId);
-	            
-	            packMapper.insertSchedule(schedule);
-	        }
-	    }
+	public void saveSchedule(Schedule schedule) {
+		packMapper.saveSchedule(schedule);
+	}
+	
+	// hotel_each_day 등록
+	@Override
+	public void saveEachHotel(Hotel_each_day hotel_each_day) {
+		packMapper.saveEachHotel(hotel_each_day);
+	}
+	
+	// Attraction_each_day 등록
+	@Override
+	public void saveEachAttraction(Attraction_each_day attraction_each_day) {
+		packMapper.saveEachAttraction(attraction_each_day);
+	}
+	
+	// Restaurant_each_day 등록
+	@Override
+	public void saveEachRestaurant(Restaurant_each_day restaurant_each_day) {
+		packMapper.saveEachRestaurant(restaurant_each_day);
 	}
 }

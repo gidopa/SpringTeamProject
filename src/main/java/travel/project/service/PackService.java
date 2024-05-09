@@ -71,4 +71,13 @@ public interface PackService {
 	// Schedule 등록
 	public void saveSchedule(long packId, long days, Map<String, String> params);
 	
+	// hotel_each_day 등록
+	public void saveEachHotel(long packId, long days, Map<String, String> params);
+	
+	// Attraction_each_day
+	public void saveEachAttraction(long packId, long days, Map<String, String> params);
+
+	// Restaurant_each_day
+	public void saveEachRestaurant(long packId, long days, Map<String, String> params);
+
 }

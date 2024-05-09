@@ -65,6 +65,15 @@ public interface PackMapper {
     List<AttractionView> findByDestinationAttraction(@Param("destinationName")String destinationName, @Param("type")String type);
     
     // Schedule 등록 
-    void insertSchedule(Schedule schedule);
+    void saveSchedule(Schedule schedule);
+    
+    // hotel_each_day 등록
+    void saveEachHotel(Hotel_each_day hotel_each_day);
+    
+    // Attraction_each_day 등록
+    void saveEachAttraction(Attraction_each_day attraction_each_day);
+    
+    // Restaurant_each_day 등록
+    void saveEachRestaurant(Restaurant_each_day restaurant_each_day);
 
 }

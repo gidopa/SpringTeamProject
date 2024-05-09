@@ -117,9 +117,26 @@
 	</select>
 	
 	<!-- Schedule 등록 -->
-	<insert id="insertSchedule" parameterType="Schedule">
+	<insert id="saveSchedule" parameterType="Schedule">
         INSERT INTO Schedule (pack_id, day_number, schedule_Type, event_id)
         VALUES (#{packId}, #{dayNumber}, #{scheduleType}, #{eventId})
     </insert>
-
+    
+    <!-- hotel_each_day 등록 -->
+	<insert id="saveEachHotel" parameterType="Hotel_each_day">
+		INSERT INTO hotel_each_day (pack_id, day_number, hotel_id)
+		VALUES (#{packId}, #{dayNumber}, #{hotelId})
+	</insert>
+	
+	 <!-- Attraction_each_day 등록 -->
+	<insert id="saveEachAttraction" parameterType="Attraction_each_day">
+		INSERT INTO attraction_each_day (pack_id, day_number, attraction_id)
+		VALUES (#{packId}, #{dayNumber}, #{attractionId})
+	</insert>
+	
+	 <!-- Restaurant_each_day 등록 -->
+	<insert id="saveEachRestaurant" parameterType="Restaurant_each_day">
+		INSERT INTO restaurant_each_day (pack_id, day_number, restaurant_id)
+		VALUES (#{packId}, #{dayNumber}, #{restaurantId})
+	</insert>
 </mapper>

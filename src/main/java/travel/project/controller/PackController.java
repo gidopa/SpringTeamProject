@@ -214,13 +214,24 @@ public class PackController {
 		return main;
 	}
 	
-	@Transactional
+	// 패키지 상세 일정 등록
 	@PostMapping("/packages/{packId}")
 	public String packages(@PathVariable long packId,
 						@RequestParam long days,
 						@RequestParam Map<String, String> params
 						) {
+		
+		// Schedule 등록
 		packService.saveSchedule(packId, days, params);
+		
+		// hotel_each_day 등록
+		packService.saveEachHotel(packId, days, params);
+		
+		// Attraction_each_day
+		packService.saveEachAttraction(packId, days, params);
+		
+		// Restaurant_each_day
+		packService.saveEachRestaurant(packId, days, params);
 		
 		return main;
 	}
