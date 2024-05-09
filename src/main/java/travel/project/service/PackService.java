@@ -17,29 +17,28 @@ import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
 
 public interface PackService {
-	
+
 	// 호텔 등록
 	public Hotels saveHotel(Hotels hotels);
-	
+
 	// 호텔 이미지 등록
 	public void saveHotelImg(List<String> imgNames, long id);
-	
+
 	// 호텔 편의시설 등록
 	public void saveHotelAmenities(List<String> amenities, long id);
 
 
 	List<Pack> getPackageListByDestination(String destination);
 
-	
 	// 이미지 업로드
 	public List<String> uploadImage(MultipartFile[] files, long id, String category);
 	
 	// Destination 등록
 	public long saveDestination(Destination destination);
-	
+
 	// Destination 리스트 반환
 	public List<Destination> findAllDestination();
-	
+
 	// Restaurants 등록
 	public void saveRestaurant(Restaurants restaurants, long destination_Id);
 	
@@ -65,8 +64,11 @@ public interface PackService {
 	public List<RestaurantView> findByDestinationRestaurant(String destinationName);
 
 
-	Pack findPackById(long tripId);
-	
+	Pack findPackById(long packId);
+
+	//패키지 조회
+	public List<Pack> reservationInquiry(String startDate,String endDate);
+
 	// 관광지 모든 열 지역으로 검색
 	public List<AttractionView> findByDestinationAttraction(String destinationName, String type);
 	

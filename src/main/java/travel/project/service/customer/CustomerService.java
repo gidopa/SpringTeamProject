@@ -1,12 +1,25 @@
 package travel.project.service.customer;
 
-import travel.project.domain.Customer;
-
 import java.util.Optional;
+
+import travel.project.domain.Customer;
 
 public interface CustomerService {
 
     Optional<Customer> findById(String id);
 
     void update(Customer customer);
+
+  //회원가입시 아이디 중복검사
+  	public String verificationId(String customerId);
+
+  	//회원가입시 이메일 중복검사
+  	public String verificationEmail(String email);
+
+  	//회원가입시 전화번호 중복검사
+  	public String verificationPhoneNumber(String phoneNumber);
+
+  	//회원가입 요청
+  	public void membershipJoin(Customer customer);
+
 }
