@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <% String contextPath = request.getContextPath();
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="/resources/admin/css/styles.css" rel="stylesheet" />
+<link href="/admin/css/styles.css" rel="stylesheet" />
 
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -169,13 +170,13 @@
 									<div class="mb-3">
 										<label for="exampleFormControlInput1" class="form-label">받는
 											사람</label> <input type="email" class="form-control"
-											id="emailRecipient" name="emailRecipient"
+											id="emailRecipient" name="emailRecipient" value="${param.emailAddress}"
 											placeholder="name@example.com">
 									</div>
 									<div class="mb-3">
 										<label for="exampleFormControlInput2" class="form-label">제목</label> <input type="text" class="form-control"
 											id="emailSubject" name="emailSubject"
-											placeholder="제목">
+											placeholder="제목" >
 									</div>
 									<div class="mb-3">
 										<label for="exampleFormControlTextarea1" class="form-label">내용</label>
@@ -211,10 +212,10 @@
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 			crossorigin="anonymous"></script>
-		<script src="/resources/admin/js/scripts.js"></script>
+		<script src="/admin/js/scripts.js"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 			crossorigin="anonymous"></script>
-		<script src="/resources/admin/js/datatables-simple-demo.js"></script>
+		<script src="/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>
