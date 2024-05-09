@@ -6,18 +6,21 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import travel.project.domain.*;
+import travel.project.domain.Destination;
+import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
+import travel.project.domain.Restaurants;
 
 
 @Mapper
 public interface PackMapper {
-	
+
 	// 호텔 등록
     void saveHotel(Hotels hotels);
-    
+
     // 호텔 이름으로 찾기
     Hotels selectOne(String hotelName);
-    
+
     // 호텔 이미지 등록
     void saveHotelImg(@Param("imgNames") List<String> imgNames, @Param("id") long id);
     
@@ -81,5 +84,10 @@ public interface PackMapper {
 
 
     List<HotelView> findHotelsByDestinationName(String destinationName);
+
+    Pack findPackById(long packId);
+
+    //패키지 조회
+    List<Pack> reservationInquiry(@Param("startDate") String startDate,@Param("endDate") String endDate);
 
 }

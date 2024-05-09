@@ -1,12 +1,13 @@
 package travel.project.service.customer;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 import travel.project.domain.Customer;
 import travel.project.repository.customer.CustomerRepository;
-
-import java.util.Optional;
 
 @Slf4j
 @AllArgsConstructor
@@ -25,4 +26,29 @@ public class CustomerServiceImpl implements CustomerService{
     public void update(Customer customer) {
         customerRepository.updateCustomer(customer);
     }
+
+
+  //회원가입시 아이디 중복검사
+  	@Override
+  	public String verificationId(String customerId) {
+  		return customerRepository.verificationId(customerId);
+  	}
+
+  	//회원가입시 이메일 중복검사
+  	@Override
+  	public String verificationEmail(String email) {
+  		return  customerRepository.verificationEmail(email);
+  	}
+
+  	//회원가입시 전화번호 중복검사
+  	@Override
+  	public String verificationPhoneNumber(String phoneNumber) {
+  		return customerRepository.verificationPhoneNumber(phoneNumber);
+  	}
+
+  	//회원가입 요청
+  	@Override
+  	public void membershipJoin(Customer customer) {
+  		customerRepository.save(customer);
+  	}
 }
