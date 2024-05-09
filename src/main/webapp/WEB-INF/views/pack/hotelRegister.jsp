@@ -22,30 +22,31 @@
 		        alert('호텔 이미지를 업로드해야 합니다.');
 		        return false;
 		    }
-		
+			
+		    alert("등록 완료");
 		    return true;
 		}
 	</script>
 </head>
 <body>
 <div class="abc">
-    <form id="hotelRegistrationForm" action="/hotels" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <form id="hotelRegistrationForm" action="/hotels" method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
         <h1>호텔 등록 페이지</h1>
         <label for="hotelName">호텔 이름:</label>
         <input type="text" id="hotelName" name="hotelName" required>
 
         <label for="destinationName">호텔 위치:</label>
         <select id="destinationName" name="destinationName">
-		    <option value="KOREA ICN">인천(ICN)</option>
-		    <option value="JAPAN NRT">도쿄(NRT)</option>
-		    <option value="JAPAN HND">도쿄(하네다)(HND)</option>
-		    <option value="JAPAN KIX">오사카(KIX)</option>
-		    <option value="JAPAN CTS">삿포로(CTS)</option>
-		    <option value="EASTSOUTHASIA BKK">방콕(BKK)</option>
-		    <option value="EASTSOUTHASIA SIN">싱가포르(SIN)</option>
-		    <option value="EASTSOUTHASIA KUL">쿠알라룸푸르(KUL)</option>
-		    <option value="EASTSOUTHASIA CGK">자카르타(CGK)</option>
-		    <option value="EASTSOUTHASIA HAN">하노이(HAN)</option>
+		    <option value="KOREA-ICN">인천(ICN)</option>
+		    <option value="JAPAN-NRT">도쿄(NRT)</option>
+		    <option value="JAPAN-HND">하네다(HND)</option>
+		    <option value="JAPAN-KIX">오사카(KIX)</option>
+		    <option value="JAPAN-CTS">삿포로(CTS)</option>
+		    <option value="EASTSOUTHASIA-BKK">방콕(BKK)</option>
+		    <option value="EASTSOUTHASIA-SIN">싱가포르(SIN)</option>
+		    <option value="EASTSOUTHASIA-KUL">쿠알라룸푸르(KUL)</option>
+		    <option value="EASTSOUTHASIA-CGK">자카르타(CGK)</option>
+		    <option value="EASTSOUTHASIA-HAN">하노이(HAN)</option>
 		</select>
 
         <label for="starRating">Hotel Stars:</label>

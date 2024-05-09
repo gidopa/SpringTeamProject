@@ -12,7 +12,7 @@
 .bloomcity-N1 .header-gnblink { padding: 2.7rem 3rem; font-size: var(--fs-p1); font-family: var(--ff-en); font-weight: 600; text-align: center; white-space: nowrap; }
 .bloomcity-N1 .header-gnblink span { position: relative; }
 .bloomcity-N1 .header-gnblink span::after { content: ""; height: 0.2rem; width: 100%; transition: 0.3s; transform: scaleX(0); }
-.bloomcity-N1 .header-sublist { min-height: 0; position: absolute; top: 100%; transition: 0.3s; opacity: 0; overflow: hidden; pointer-events: none; }
+.bloomcity-N1 .header-sublist { min-height: 0; position: absolute;  transition: 0.3s; opacity: 0; overflow: hidden; pointer-events: none; }
 .bloomcity-N1 .header-gnbitem:hover .header-sublist { min-height: auto; opacity: 1; overflow: hidden; pointer-events: auto; }
 .bloomcity-N1 .header-gnbitem:hover .header-gnblink span::after { content: ""; display: inline-block; position: absolute; left: 0; top: 100%; background-color: var(--body-color); transform: scaleX(1); }
 .bloomcity-N1 .header-subitem { width: 14rem; background-color: var(--white); overflow: hidden; }

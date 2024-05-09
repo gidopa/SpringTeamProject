@@ -3,7 +3,6 @@ package travel.project;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,14 +20,9 @@ import travel.project.repository.customer.CustomerRepository;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
-
-
-
-
 @Transactional
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
- class TestHi {
-
+public class TestHi {
 
     @Autowired
     private CustomerRepository customerRepository;

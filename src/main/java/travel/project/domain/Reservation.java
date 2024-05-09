@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Reservation {
     private long reservationId;
     private String customerId;
-    private long tripId;
+    private long packId;
     private long hotelId;
     private Date reservationDate;
     private int numberOfPeople;

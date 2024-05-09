@@ -17,11 +17,11 @@
   <meta property="og:image" content="https://웹사이트/images/opengraph.png">
   <meta property="og:url" content="https://웹사이트">
   <title>Reservation | aaa</title>
-  <link rel="stylesheet" href="resources/css/setting.css">
-  <link rel="stylesheet" href="resources/css/plugin.css">
-  <link rel="stylesheet" href="resources/css/template.css">
-  <link rel="stylesheet" href="resources/css/common.css">
-  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="/css/setting.css">
+  <link rel="stylesheet" href="/css/plugin.css">
+  <link rel="stylesheet" href="/css/template.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
                       <div class="inputset inputset-lg">
                         <input id="startDate" name="startDate" type="text" class="date-range200 inputset-input form-control" value="" >
                         <figure class="icon">
-                          <img src="icons/icon_calendar.svg" alt="아이콘">
+                          <img src="/icons/icon_calendar.svg" alt="아이콘">
                         </figure>
                       </div>
                     </div>
@@ -126,13 +126,11 @@
     <!-- [E]bloomcity-N9 -->
   </main>
   <!-- [S]bloomcity-N2 -->
-
-  <!-- [E]bloomcity-N2 -->
-  <script src="resources/js/setting.js"></script>
-  <script src="resources/js/plugin.js"></script>
-  <script src="resources/js/template.js"></script>
-  <script src="resources/js/common.js"></script>
-  <script src="resources/js/script.js"></script>
+  <script src="/js/setting.js"></script>
+  <script src="/js/plugin.js"></script>
+  <script src="/js/template.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/script.js"></script>
   <script type="text/javascript">
   function increaseQuantity(inputId) {
       var input = document.getElementById(inputId);
@@ -152,3 +150,4 @@
 </body>
 
 </html>
+  
