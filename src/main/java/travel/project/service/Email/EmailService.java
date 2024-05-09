@@ -1,4 +1,4 @@
-package travel.project.service;
+package travel.project.service.Email;
 
 
 public interface EmailService {
