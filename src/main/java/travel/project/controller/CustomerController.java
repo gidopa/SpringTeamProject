@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Customer;
-import travel.project.service.CustomerService;
+import travel.project.service.customer.CustomerService;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -42,7 +42,7 @@ public class CustomerController {
 	//회원가입시 회원이 입력한 핸드폰번호가 DB에 있는지 확인하는 유효성 검사
 	@PostMapping("/verificationphonenumber")
 	@ResponseBody
-	public ResponseEntity<String> verificationPhoneNumber(@RequestParam("phoneNumber") int phoneNumber){
+	public ResponseEntity<String> verificationPhoneNumber(@RequestParam("phoneNumber") String phoneNumber){
 	    String result = customerService.verificationPhoneNumber(phoneNumber);
 	    return new ResponseEntity<>(result, HttpStatus.OK);
 	}

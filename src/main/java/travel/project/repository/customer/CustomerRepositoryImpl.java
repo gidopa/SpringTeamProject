@@ -1,14 +1,13 @@
 package travel.project.repository.customer;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import travel.project.domain.Customer;
 import travel.project.mapper.CustomerMapper;
-
-
-import java.util.Optional;
 
 // 뭐 시발
 
@@ -42,7 +41,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
 	//회원가입시 핸드폰번호 중복검사
 	@Override
-	public String verificationPhoneNumber(int phoneNumber) {
+	public String verificationPhoneNumber(String phoneNumber) {
 		return customerMapper.verificationPhoneNumber(phoneNumber);
 	}
 
