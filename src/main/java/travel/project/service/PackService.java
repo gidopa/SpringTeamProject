@@ -10,29 +10,33 @@ import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
 
 public interface PackService {
-	
+
 	// 호텔 등록
 	public Hotels saveHotel(Hotels hotels);
-	
+
 	// 호텔 이미지 등록
 	public void saveHotelImg(List<String> imgNames, long id);
-	
+
 	// 호텔 편의시설 등록
 	public void saveHotelAmenities(List<String> amenities, long id);
 	List<Pack> getPackageListByDestination(String destination);
 
-	
+
 	// 호텔 이미지 업로드
 	public List<String> uploadHotelImage(MultipartFile[] files, long id);
-	
+
 	// Destination 등록
 	public long saveDestination(Destination destination);
-	
+
 	// Destination 리스트 반환
 	public List<Destination> findAllDestination();
-	
+
 	// Restaurants 등록
 	public void saveRestaurant(Restaurants restaurants, long destination_Id);
 
-	Pack findPackById(long tripId);
+	Pack findPackById(long packId);
+
+	//패키지 조회
+	public List<Pack> reservationInquiry(String startDate,String endDate);
+
 }

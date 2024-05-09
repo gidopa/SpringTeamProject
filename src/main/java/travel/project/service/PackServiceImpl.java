@@ -17,27 +17,25 @@ import travel.project.domain.Destination;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.Restaurants;
-import travel.project.mapper.PackMapper;
 import travel.project.repository.pack.PackRepository;
-import travel.project.repository.pack.PackRepositoryImpl;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
 @Transactional
 public class PackServiceImpl implements PackService{
-	
+
 	private final PackRepository packRepository;
     private static String UPLOADED_FOLDER = "C://temp//hotel//";
     private int count = 0;
 
-	
+
 	// 호텔 등록 후 반환
 	@Override
 	public Hotels saveHotel(Hotels hotels) {
 		return packRepository.saveHotel(hotels);
 	}
-	
+
 	// 호텔 이미지 등록
 	@Override
 	public void saveHotelImg(List<String> imgNames, long id) {
@@ -58,14 +56,14 @@ public class PackServiceImpl implements PackService{
 
 
 
-	
+
 	// 호텔 이미지 업로드
 	@Override
 	public List<String> uploadHotelImage(MultipartFile[] files, long id) {
 		List<String> imgNames = new ArrayList<>();
 		count = (int)id;
 		String hotelFolderPath = UPLOADED_FOLDER + count + "//";
-		
+
 		// 호텔별 폴더가 없을 경우 생성
 	    Path hotelDirectory = Paths.get(hotelFolderPath);
 	    if (!Files.exists(hotelDirectory)) {
@@ -91,22 +89,22 @@ public class PackServiceImpl implements PackService{
 	              e.printStackTrace();
 	          }
 	       }
-	    
+
 	    return imgNames;
 	}
-	
+
 	// Destination 등록
 	@Override
 	public long saveDestination(Destination destination) {
 		return packRepository.saveDestination(destination);
 	}
-	
+
 	// Destination 리스트 반환
 	@Override
 	public List<Destination> findAllDestination() {
 		return packRepository.findAllDestination();
 	}
-	
+
 	// Restaurants 등록
 	@Override
 	public void saveRestaurant(Restaurants restaurants, long destination_Id) {
@@ -114,8 +112,13 @@ public class PackServiceImpl implements PackService{
 	}
 
 	@Override
-	public Pack findPackById(long tripId) {
-		return packRepository.findPackById(tripId);
+	public Pack findPackById(long packId) {
+		return packRepository.findPackById(packId);
 	}
 
+	//패키지 조회
+	@Override
+	public List<Pack> reservationInquiry(String startDate,String endDate) {
+		return packRepository.reservationInquiry(startDate,endDate);
+	}
 }

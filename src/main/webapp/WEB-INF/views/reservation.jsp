@@ -35,26 +35,26 @@
         <div class="container-md">
           <div class="con-tit textset">
             <h2 class="textset-tit ff-po">Reservation</h2>
-            <p class="textset-desc">편안함과 여유를 선사하는 것으로 특별한 여유를 느낄 수 있는 객실에서 설레이는 여행의 시작과 끝을 블롬시티 호텔과 함께해보세요</p>
+            <p class="textset-desc">여행 패키지 조회</p>
           </div>
           <div class="content-group">
             <div class="form-wrap">
-              <form>
+            
+              <form action="reservationInquiry" method="get">
                 <div class="form-header">
                   <h3 class="form-tit">날짜를 선택하세요.</h3>
                   <fieldset class="mobile-check">
                     <div class="input-group">
-                      <label class="label" for="CheckIn-m">CHECK IN</label>
+                      <label class="label" for="CheckIn-m">Start Date</label>
                       <div class="inputset inputset-lg calendar">
-                        <input id="CheckIn-m" type="text" class="date-range200 inputset-input form-control" value="">
+                        <input id="CheckIn-m"  type="text" class="date-range200 inputset-input form-control" value="">
                       </div>
                     </div>
-                    <label class="inputset inputset-lg days-wrap">
-                      <input type="text" class="selected-days inputset-input" value="11"> 박 </label>
+                   
                     <div class="input-group">
-                      <label class="label" for="CheckOut-m">CHECK OUT</label>
+                      <label class="label" for="CheckOut-m">End Date</label>
                       <div class="inputset inputset-lg calendar">
-                        <input id="CheckOut-m" type="text" class="date-range201 inputset-input form-control" value="">
+                        <input id="CheckOut-m"  type="text" class="date-range201 inputset-input form-control" value="">
                       </div>
                     </div>
                   </fieldset>
@@ -64,123 +64,58 @@
                   <div class="calendar-wrap"></div>
                   <fieldset class="fieldset pc-form">
                     <div class="input-group">
-                      <label class="label" for="CheckIN-pc">체크인</label>
+                      <label class="label" for="CheckIN-pc">Start Date</label>
                       <div class="inputset inputset-lg">
-                        <input id="CheckIN-pc" type="text" class="date-range200 inputset-input form-control" value="" readonly>
+                        <input id="startDate" name="startDate" type="text" class="date-range200 inputset-input form-control" value="" >
                         <figure class="icon">
-                          <img src="resources/icons/icon_calendar.svg" alt="아이콘">
+                          <img src="icons/icon_calendar.svg" alt="아이콘">
                         </figure>
                       </div>
                     </div>
                     <div class="input-group">
-                      <label class="label" for="CheckOut-pc"></label>체크아웃 <div class="inputset inputset-lg">
-                        <input id="CheckOut-pc" type="text" class="date-range201 inputset-input form-control" value="" readonly>
+                      <label class="label" for="CheckOut-pc"></label>End Date<div class="inputset inputset-lg">
+                        <input id="endDate" name="endDate" type="text" class="date-range201 inputset-input form-control" value=""  >
                         <figure class="icon">
-                          <img src="resources/icons/icon_calendar.svg" alt="아이콘">
+                          <img src="icons/icon_calendar.svg" alt="아이콘">
                         </figure>
                       </div>
                     </div>
-                    <div class="input-group">
-                      <label class="label">객실수</label>
-                      <div class="inputset inputset-lg">
-                        <button class="btnset" type="button">
-                          <img src="resources/icons/icon_minus_black.svg" alt="-">
-                        </button>
-                        <input type="text" class="inputset-input form-control" value="객실 1 "readonly>
-                        <button class="btnset" type="button">
-                          <img src="resources/icons/icon_plus_black.svg" alt="+">
-                        </button>
-                      </div>
-                    </div>
-                    <div class="input-group">
-                      <label class="label">성인</label>
-                      <div class="inputset inputset-lg">
-                        <button class="btnset" type="button">
-                          <img src="resources/icons/icon_minus_black.svg" alt="-">
-                        </button>
-                        <input type="text" class="inputset-input form-control" value="성인 3" readonly>
-                        <button class="btnset" type="button">
-                          <img src="resources/icons/icon_plus_black.svg" alt="+">
-                        </button>
-                      </div>
-                    </div>
-                    <div class="input-group">
-                      <label class="label">어린이</label>
-                      <div class="inputset inputset-lg">
-                        <button class="btnset" type="button">
-                          <img src="resources/icons/icon_minus_black.svg" alt="-">
-                        </button>
-                        <input type="text" class="inputset-input form-control" value="어린이 1" readonly>
-                        <button class="btnset" type="button">
-                          <img src="resources/icons/icon_plus_black.svg" alt="+">
-                        </button>
-                      </div>
-                    </div>
+        
+                  <div class="input-group">
+        <label class="label">personnel</label>
+        <div class="inputset inputset-lg">
+            <button class="btnset" type="button" id="minus1">
+                <img src="icons/icon_minus_black.svg" alt="-" onclick="decreaseQuantity('quantityInput1')">
+            </button>
+            <input type="text" name="numberOfPeople" class="inputset-input form-control" id="quantityInput1" value="1" readonly>
+            <button class="btnset" type="button" id="plus1">
+                <img src="icons/icon_plus_black.svg" alt="+" onclick="increaseQuantity('quantityInput1')">
+            </button>
+        </div>
+    </div>
+                  
                   </fieldset>
-                  <fieldset class="fieldset mobile-form">
-                    <legend class="legend"> 객실 및 인원선택</legend>
-                    <fieldset class="fieldset list">
-                      <legend class="legend">객실1</legend>
-                      <div class="input-group">
-                        <label class="label">성인</label>
-                        <div class="inputset inputset-lg d-flex justify-content-between">
-                          <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
-                          </button>
-                          <input type="text" class="inputset-input form-control" value="2">
-                          <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
-                          </button>
-                        </div>
-                      </div>
-                      <div class="input-group">
-                        <label class="label">어린이</label>
-                        <div class="inputset inputset-lg d-flex justify-content-between">
-                          <button class="btnset btnset-rect disabled" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
-                          </button>
-                          <input type="text" class="inputset-input form-control" value="0">
-                          <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
-                          </button>
-                        </div>
-                      </div>
-                    </fieldset>
-                    <fieldset class="fieldset list">
-                      <legend class="legend">객실1</legend>
-                      <div class="input-group">
-                        <label class="label">성인</label>
-                        <div class="inputset inputset-lg d-flex justify-content-between">
-                          <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
-                          </button>
-                          <input type="text" class="inputset-input form-control" value="1">
-                          <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
-                          </button>
-                        </div>
-                      </div>
-                      <div class="input-group">
-                        <label class="label">어린이</label>
-                        <div class="inputset inputset-lg d-flex justify-content-between">
-                          <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_minus_black.svg" alt="-">
-                          </button>
-                          <input type="text" class="inputset-input form-control" value="1">
-                          <button class="btnset btnset-rect" type="button">
-                            <img src="resources/icons/icon_plus_black.svg" alt="+">
-                          </button>
-                        </div>
-                      </div>
-                    </fieldset>
-                    <a class="btnset btnset-line btnset-mono btnset-lg btnset-rect" href="javascript:void(0)">객실추가</a>
-                  </fieldset>
-                  <p>최대 3개 객실 예약 가능합니다.</p>
-                  <p>어린이 기준은 만40개월부터 만12세까지 가능합니다.</p>
+                <fieldset class="fieldset mobile-form">
+    <div class="input-group">
+        <label class="label">personnel</label>
+        <div class="inputset inputset-lg d-flex justify-content-between">
+            <button class="btnset btnset-rect" type="button" id="minus2">
+                <img src="icons/icon_minus_black.svg" alt="-" onclick="decreaseQuantity('quantityInput2')">
+            </button>
+            <input type="text" class="inputset-input form-control" id="quantityInput2" value="1" readonly>
+            <button class="btnset btnset-rect" type="button" id="plus2">
+                <img src="icons/icon_plus_black.svg" alt="+" onclick="increaseQuantity('quantityInput2')">
+            </button>
+        </div>
+    </div>
+</fieldset>
+
+  
                 </div>
                 <div class="btn-box">
-                  <a class="btnset btnset-line btnset-lg btnset-rect" href="javascript:void(0)">객실 조회하기</a>
-                  <a class="btnset btnset-lg btnset-rect" href="javascript:void(0)">객실 예약하기</a>
+                <button type="submit">
+                  <p class="btnset btnset-line btnset-lg btnset-rect">패키지 조회하기</p>
+                </button>
                 </div>
               </form>
             </div>
@@ -198,4 +133,22 @@
   <script src="resources/js/template.js"></script>
   <script src="resources/js/common.js"></script>
   <script src="resources/js/script.js"></script>
+  <script type="text/javascript">
+  function increaseQuantity(inputId) {
+      var input = document.getElementById(inputId);
+      var value = parseInt(input.value);
+      input.value = value + 1;
+  }
+
+  function decreaseQuantity(inputId) {
+      var input = document.getElementById(inputId);
+      var value = parseInt(input.value);
+      if (value > 1) {
+          input.value = value - 1;
+      }
+  }
+  </script>
+  
 </body>
+
+</html>
