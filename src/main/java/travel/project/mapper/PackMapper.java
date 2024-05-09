@@ -6,10 +6,18 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import travel.project.domain.Attraction;
+import travel.project.domain.AttractionView;
+import travel.project.domain.Attraction_each_day;
 import travel.project.domain.Destination;
+import travel.project.domain.HotelView;
+import travel.project.domain.Hotel_each_day;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.RestaurantView;
+import travel.project.domain.Restaurant_each_day;
 import travel.project.domain.Restaurants;
+import travel.project.domain.Schedule;
 
 
 @Mapper
@@ -64,7 +72,6 @@ public interface PackMapper {
     List<Destination> findAllDestination();
 
 
-    Pack findPackById(long packId);
 
 
     // 관광지 모든 열 지역으로 검색

@@ -64,7 +64,6 @@ public interface PackService {
 	public List<RestaurantView> findByDestinationRestaurant(String destinationName);
 
 
-	Pack findPackById(long packId);
 
 	//패키지 조회
 	public List<Pack> reservationInquiry(String startDate,String endDate);
