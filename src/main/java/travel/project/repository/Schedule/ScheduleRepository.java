@@ -19,7 +19,7 @@ public interface ScheduleRepository {
 
     List<Hotels_Img> getHotelImages(long hotelId);
 
-    List<destinations_Img> getDestinationImages(long destId);
+    List<Destinations_Img> getDestinationImages(long destId);
 
     List<HotelAmenities> getHotelAmenities(long hotelId);
 }

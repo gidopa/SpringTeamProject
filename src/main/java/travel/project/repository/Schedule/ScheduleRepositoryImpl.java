@@ -46,7 +46,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepository {
     }
 
     @Override
-    public List<destinations_Img> getDestinationImages(long destId) {
+    public List<Destinations_Img> getDestinationImages(long destId) {
         return scheduleMapper.getDestinationImages(destId);
     }
 

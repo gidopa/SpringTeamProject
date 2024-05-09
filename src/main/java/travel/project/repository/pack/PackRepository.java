@@ -24,7 +24,7 @@ public interface PackRepository {
     Hotels saveHotel(Hotels hotels);
 
     // 호텔 이미지 등록
-    void saveHotelImg(List<String> imgNames, Long id);
+    void saveHotelImg(List<String> imgNames, long id);
 
     // 호텔 편의시설 등록
     void saveHotelAmenities(List<String> amenities, long id);

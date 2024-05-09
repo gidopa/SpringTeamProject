@@ -46,7 +46,7 @@ public class ScheduleServiceImpl implements ScheduleService{
     }
 
     @Override
-    public List<destinations_Img> getDestinationImages(long destId) {
+    public List<Destinations_Img> getDestinationImages(long destId) {
         return scheduleRepository.getDestinationImages(destId);
     }
 

@@ -40,7 +40,6 @@ public class PackRepositoryImpl implements PackRepository{
 
 		return packMapper.selectOne(hotels.getHotelName());
 	}
-
 	// 호텔 이미지 등록
 	@Override
 	public void saveHotelImg(List<String> imgNames, long id) {
@@ -167,4 +166,7 @@ public class PackRepositoryImpl implements PackRepository{
 	public void saveEachRestaurant(Restaurant_each_day restaurant_each_day) {
 		packMapper.saveEachRestaurant(restaurant_each_day);
 	}
+
+
+	
 }

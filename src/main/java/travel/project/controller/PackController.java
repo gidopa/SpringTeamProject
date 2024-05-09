@@ -277,7 +277,7 @@ public class PackController {
 		Destination destination = destinationService.findDestByName(destinationName);
 		long destId = destination.getDestinationId();
 		Pack pack = packService.findPackById(packId);
-		List<destinations_Img> imageList = scheduleService.getDestinationImages(destId);
+		List<Destinations_Img> imageList = scheduleService.getDestinationImages(destId);
 		model.addAttribute("imageList",imageList);
 		model.addAttribute("pack",pack);
 		// 일차별로 필요한 데이터들 담아 multivaluemap으로 담음
