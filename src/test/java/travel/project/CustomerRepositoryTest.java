@@ -15,9 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import travel.project.domain.Customer;
 import travel.project.repository.customer.CustomerRepository;
 
-
-
-
 @Transactional
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
  class CustomerRepositoryTest {
