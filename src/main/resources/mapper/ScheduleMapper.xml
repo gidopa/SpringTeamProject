@@ -13,9 +13,35 @@
     </resultMap>
 
 	<select id="findScheduleById" resultType="Schedule">
-		select * from Schedule where trip_id = #{tripId}
+		select * from Schedule where pack_id = #{packId}
 	</select>
 
+    <select id="getMaxDayNum">
+        SELECT MAX(day_number) AS max_day_number FROM schedule;
+    </select>
 
+    <select id="findAttractionByDayNum">
+        select * from view_attractions_dayNum where day_number = #{i} and pack_id = #{packId}
+    </select>
+
+    <select id="findHotelByDayNum">
+        select * from view_hotel_dayNum where day_number = #{i} and pack_id = #{packId}
+    </select>
+
+    <select id="findRestaurantByDayNum" resultType="Restaurants">
+        select * from view_restaurants_dayNum where day_number = #{i} and pack_id = #{packId}
+    </select>
+
+    <select id="getHotelImages" resultType="Hotels_Img">
+        select * from hotels_img where hotel_id=#{hotelId}
+    </select>
+
+    <select id="getDestinationImages" resultType="destinations_img">
+        select * from destinations_img where destination_id = #{destId}
+    </select>
+
+    <select id="getHotelAmenities" resultType="HotelAmenities">
+        select * from HotelAmenities where hotel_id = #{hotelId}
+    </select>
 
 </mapper>

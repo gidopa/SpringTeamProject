@@ -172,8 +172,8 @@ public class PackServiceImpl implements PackService{
 		return packRepository.findByDestinationRestaurant(destinationName);
 	}
 	@Override
-	public Pack findPackById(long tripId) {
-		return packRepository.findPackById(tripId);
+	public Pack findPackById(long packId) {
+		return packRepository.findPackById(packId);
 	}
 	
 	// 관광지 모든 열 지역으로 검색
@@ -181,7 +181,12 @@ public class PackServiceImpl implements PackService{
 	public List<AttractionView> findByDestinationAttraction(String destinationName, String type) {
 		return packRepository.findByDestinationAttraction(destinationName, type);
 	}
-	
+  
+		@Override
+	public List<HotelView> findHotelsByDestinationName(String destinationName) {
+		return packRepository.findHotelsByDestinationName(destinationName);
+	}
+  
 	// Schedule 등록
 	@Override
 	public void saveSchedule(long packId, long days, Map<String, String> params) {

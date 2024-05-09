@@ -72,4 +72,10 @@ public interface PackRepository {
     // Restaurant_each_day 등록
     void saveEachRestaurant(Restaurant_each_day restaurant_each_day);
 
+
+    // 패키지 조회 (id)로
+    Pack findPackById(long packId);
+    // Destination에 묶여있는 호텔 리스트 조회
+    List<HotelView> findHotelsByDestinationName(String destinationName);
+
 }

@@ -27,12 +27,13 @@
     <meta property="og:image" content="https://웹사이트/images/opengraph.png">
     <meta property="og:url" content="https://웹사이트">
     <title>첫페이지 | aaa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/setting.css">
     <link rel="stylesheet" href="/css/plugin.css">
     <link rel="stylesheet" href="/css/template.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css/>">
+<%--    <link rel="stylesheet" href="/css/bootstrap.min.css/>">--%>
 
 </head>
 
@@ -58,6 +59,9 @@
     </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="/js/setting.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/template.js"></script>

@@ -123,8 +123,13 @@ public class PackRepositoryImpl implements PackRepository{
 	}
 
 	@Override
-	public Pack findPackById(long tripId) {
-		return packMapper.findPackById(tripId);
+	public Pack findPackById(long packId) {
+		return packMapper.findByIdPack(packId);
+	}
+
+	@Override
+	public List<HotelView> findHotelsByDestinationName(String destinationName) {
+		return packMapper.findHotelsByDestinationName(destinationName);
 	}
 	
 	// 관광지 모든 열 지역으로 검색

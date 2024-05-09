@@ -44,7 +44,7 @@
 	</select>
 
 	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
-		SELECT * from pack WHERE destination LIKE CONCAT('%', #{destination}, '%')
+		SELECT * from pack WHERE destination_name LIKE CONCAT(#{destination}, '%')
 	</select>
 
 
@@ -107,8 +107,12 @@
 		SELECT * FROM view_restaurants WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
 	</select>
 
-	<select id="findPackById">
-		SELECT * from trips where trip_id = #{tripId}
+	<select id="findHotelsBypackId" resultType="HotelView">
+		SELECT * FROM view_hotels WHERE pack_id = #{packId}
+	</select>
+
+	<select id="findHotelsByDestinationName">
+		SELECT * from pack where destination_name = #{destinationName}
 	</select>
 	
 	<!-- 관광지 모든 열 지역으로 검색 -->

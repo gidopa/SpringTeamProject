@@ -27,6 +27,7 @@ public interface PackService {
 	// 호텔 편의시설 등록
 	public void saveHotelAmenities(List<String> amenities, long id);
 
+
 	List<Pack> getPackageListByDestination(String destination);
 
 	
@@ -63,6 +64,7 @@ public interface PackService {
 	// 레스토랑 모든 열 지역으로 검색
 	public List<RestaurantView> findByDestinationRestaurant(String destinationName);
 
+
 	Pack findPackById(long tripId);
 	
 	// 관광지 모든 열 지역으로 검색
@@ -80,4 +82,8 @@ public interface PackService {
 	// Restaurant_each_day
 	public void saveEachRestaurant(long packId, long days, Map<String, String> params);
 
+	Pack findPackById(long packId);
+
+
+	List<HotelView> findHotelsByDestinationName(String destinationName);
 }

@@ -1,11 +1,8 @@
 package travel.project.controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
+
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,10 +14,10 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.eclipse.tags.shaded.org.apache.xpath.SourceTree;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
@@ -38,8 +35,6 @@ import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import travel.project.service.ScheduleService.ScheduleService;
 
 
@@ -246,21 +241,52 @@ public class PackController {
 		return "main/main";
 	}
 
+
 	@GetMapping("/package/{tripId}")
 	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
+
+	@GetMapping("/package/{packId}")
+	public String packDetail(@PathVariable long packId, Model model, @RequestParam String destinationName){
+		// 일차별이 아닌 공통으로 필요한 데이터 addAttribute
 		Destination destination = destinationService.findDestByName(destinationName);
 		long destId = destination.getDestinationId();
-		// 여행 목적지에 관한 attraction(관광지)에 대한 정보 가져옴
-		List<Attraction> attractionList = destinationService.findAttractionById(destId);
-		List<Restaurants> restaurantsList = destinationService.findRestaurantsById(destId);
-		List<Schedule> scheduleList = scheduleService.findScheduleById(tripId);
-		for(Attraction a : attractionList){
-			log.info(a.getAttractionName());
+		Pack pack = packService.findPackById(packId);
+		List<destinations_Img> imageList = scheduleService.getDestinationImages(destId);
+		model.addAttribute("imageList",imageList);
+		model.addAttribute("pack",pack);
+		// 일차별로 필요한 데이터들 담아 multivaluemap으로 담음
+		// key 가 1,2 이렇게 올라가고 해당 키값에 따라 일차별로 데이터를 나눔
+		// join하고 DTO로 만들면 list 갯수 줄일 수 있을듯 ..
+		MultiValueMap<Integer, Object> map = new LinkedMultiValueMap<>();
+		int maxDayNum = scheduleService.getMaxDayNum(packId);
+		for (int i = 1; i <= maxDayNum; i++) {
+			List<Attraction> attractionDayNum = scheduleService.findAttractionByDayNum(i,packId);
+			Hotels hotelDayNum = scheduleService.findHotelByDayNum(i,packId);
+			List<Restaurants> restaurantsDayNum = scheduleService.findRestaurantByDayNum(i,packId);
+			long hotelId = hotelDayNum.getHotelId();
+			List<Hotels_Img> hotelImageList = scheduleService.getHotelImages(hotelId);
+			List<HotelAmenities> hotelAmenitiesList = scheduleService.getHotelAmenities(hotelId);
+			// 호텔 관련 정보를 리스트에 담아 MultiValueMap에 추가
+			map.add(i,new ItemWrapper(hotelDayNum, "hotel"));
+			for(HotelAmenities hotelAmenities : hotelAmenitiesList){
+				map.add(i,new ItemWrapper(hotelAmenities,"hotelAmenities"));
+			}
+			for(Hotels_Img hotelImages : hotelImageList){
+				map.add(i,new ItemWrapper(hotelImages,"hotelImages"));
+			}
+			// 관광지 정보를 리스트에 담아 MultiValueMap에 추가
+			for (Attraction attraction : attractionDayNum) {
+				map.add(i,new ItemWrapper(attraction, "attraction"));
+			}
+
+			// 레스토랑 정보를 리스트에 담아 MultiValueMap에 추가
+			for (Restaurants restaurant : restaurantsDayNum) {
+				map.add(i,new ItemWrapper(restaurant, "restaurant"));
+			}
 		}
-		log.info("restaurantsList.size() = {}" , restaurantsList.size());
-		log.info("attractionList.size() = {}" , attractionList.size());
-		log.info("scheduleList.size() = {}", scheduleList.size());
-		return null;
+		model.addAttribute("map",map);
+		model.addAttribute("center", "../packageDetail.jsp");
+		return main;
 	}
 	
 }
