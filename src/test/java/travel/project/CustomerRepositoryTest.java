@@ -1,24 +1,23 @@
-package travel.project.repository.CustomerRepository;
+package travel.project;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import lombok.RequiredArgsConstructor;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-
 import org.springframework.transaction.annotation.Transactional;
+
 import travel.project.domain.Customer;
 import travel.project.repository.customer.CustomerRepository;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
+
+
+
 @Transactional
 @SpringBootTest(properties = {"spring.config.location=classpath:application-test.yml"})
  class CustomerRepositoryTest {
@@ -41,7 +40,21 @@ import java.util.Optional;
     	String id = "id1";
     	String result = customerRepository.verificationId(id);
     	assertThat(result).isEqualTo("true");
+    }
 
+    @Test
+    void verificationEmail() {
+    	String email = "test1@test.com";
+    	String result = customerRepository.verificationEmail(email);
+    	assertThat(result).isEqualTo("true");
+    }
+
+
+    @Test
+    void verificationPhoneNumber() {
+    	String phoneNumber = "01012341235";
+    	String result = customerRepository.verificationPhoneNumber(phoneNumber);
+    	assertThat(result).isEqualTo("true");
     }
 
 

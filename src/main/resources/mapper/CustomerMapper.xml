@@ -37,7 +37,7 @@
 	</select>	
 	
 
-	<select id="verificationPhoneNumber" parameterType="int" resultType="java.lang.String">
+	<select id="verificationPhoneNumber" parameterType="String" resultType="java.lang.String">
 		        SELECT 
 		            CASE 
 		                WHEN COUNT(*) = 1 THEN 'true'

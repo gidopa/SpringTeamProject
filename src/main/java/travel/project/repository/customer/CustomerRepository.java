@@ -1,8 +1,8 @@
 package travel.project.repository.customer;
 
-import travel.project.domain.Customer;
-
 import java.util.Optional;
+
+import travel.project.domain.Customer;
 
 public interface CustomerRepository {
 
@@ -15,7 +15,7 @@ public interface CustomerRepository {
     String verificationEmail(String email);
 
     //회원가입시 핸드폰번호 중복검사
-    String verificationPhoneNumber(int phoneNumber);
+    String verificationPhoneNumber(String phoneNumber);
 
 
 

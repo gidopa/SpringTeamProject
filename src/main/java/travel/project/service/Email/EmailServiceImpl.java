@@ -11,10 +11,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
-
+	
+	
 	private final JavaMailSender javaMailSender;
 	
 	@Override
