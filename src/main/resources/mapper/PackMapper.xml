@@ -3,62 +3,88 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="travel.project.mapper.PackMapper">
-	
-	<!-- 목적지 리스트 -->	
+
+	<!-- 목적지 리스트 -->
 	<resultMap id="DestinationMap" type="Destination">
-        <id property="id" column="id"/>
-        <result property="destinationName" column="destination_Name"/>
-        <result property="country" column="country"/>
-        <result property="destinationDescription" column="destination_Description"/>
-    </resultMap>
+		<id property="id" column="id" />
+		<result property="destinationName" column="destination_Name" />
+		<result property="country" column="country" />
+		<result property="destinationDescription"
+			column="destination_Description" />
+	</resultMap>
+
 
 	<!-- 호텔 등록 -->
-    <insert id="saveHotel" parameterType="Hotels">
-        INSERT INTO hotels (Hotel_Name, Destination_name, Star_Rating, Description)
-        VALUES (#{hotelName},#{destinationName}, #{starRating}, #{description})
-    </insert>
-	
+	<insert id="saveHotel" parameterType="Hotels">
+		INSERT INTO hotels (Hotel_Name, Destination_name, Star_Rating, Description)
+		VALUES (#{hotelName},#{destinationName}, #{starRating},
+		#{description})
+	</insert>
+
 	<!-- 호텔 이름으로 찾기 -->
-	<select id="selectOne" resultType="Hotels" parameterType="String">
+	<select id="selectOne" resultType="Hotels"
+		parameterType="String">
 		SELECT * FROM hotels where Hotel_Name=#{hotelName}
 	</select>
-	
+
 	<!-- 호텔 편의시설 등록 -->
-	<insert id="saveHotelAmenities" >
+	<insert id="saveHotelAmenities">
 		INSERT INTO hotelAmenities(Hotel_ID, Amenity) VALUES
-		 <foreach item="amenity" collection="amenities" separator=",">
-            (#{id}, #{amenity})
-        </foreach> 
+		<foreach item="amenity" collection="amenities" separator=",">
+			(#{id}, #{amenity})
+		</foreach>
 	</insert>
-	
+
 	<!-- 호텔 이미지 등록 -->
-	<insert id="saveHotelImg" >
+	<insert id="saveHotelImg">
 		INSERT INTO hotels_img(Img_Name, Hotel_Id) VALUES
-		 <foreach item="imgName" collection="imgNames" separator=",">
-            (#{imgName}, #{id})
-        </foreach> 
+		<foreach item="imgName" collection="imgNames" separator=",">
+			(#{imgName}, #{id})
+		</foreach>
 	</insert>
 
 	<select id="findAllPacks" resultType="Pack">
 		select * from pack
 	</select>
 
+
 	<select id="findPacksByDestination" parameterType="String" resultType="Pack">
 		SELECT * from pack WHERE destination_name LIKE CONCAT(#{destination}, '%')
 	</select>
 
 
-	
+
 	<!-- Destination 등록 -->
-	<insert id="saveDestination" parameterType="Destination" useGeneratedKeys="true" keyProperty="destinationId">
-		INSERT INTO destinations(destination_name, Country, destination_description)
+	<insert id="saveDestination" parameterType="Destination"
+		useGeneratedKeys="true" keyProperty="destinationId">
+		INSERT INTO
+		destinations(destination_name, Country, destination_description)
 		VALUES (#{destinationName}, #{country}, #{destinationDescription})
 	</insert>
-	
+
 	<!-- Destination 리스트 반환 -->
 	<select id="findAllDestination" resultMap="DestinationMap">
-		SELECT * FROM destinations
+		SELECT * FROM
+		destinations
 	</select>
+
+	<select id="findPackById">
+		SELECT * from pack where pack_id = #{packId}
+	</select>
+
+	<!-- 패키지 조회 -->
+	<select id="reservationInquiry" >
+    select * from pack
+    <where>
+    <![CDATA[
+        Start_Date >= DATE_SUB(#{startDate}, INTERVAL 3 DAY) 
+        and End_Date <= DATE_ADD(#{endDate}, INTERVAL 3 DAY)
+      ]]>
+    </where>
+</select>
+
+
+
 	
 	<!-- Restaurant 등록 -->
 	<insert id="saveRestaurant" parameterType="Restaurants">
@@ -87,6 +113,11 @@
 		VALUES (#{packName}, #{destinationName}, #{packType}, #{startDate}, #{endDate}, #{price})
 	</insert>
 	
+	<!-- Pack 인덱스 반환 -->
+	<select id="selectLastPack">
+		SELECT max(pack_id) FROM pack 
+	</select>
+	
 	<!-- Pack id 조회  -->
 	<select id="findByIdPack" parameterType="long">
 		SELECT * FROM pack where pack_id=#{packId}
@@ -96,6 +127,11 @@
 	<select id="findByDestinationHotels" resultType="HotelView" parameterType="String">
 		SELECT * FROM view_hotels WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
 	</select>
+	
+	<!-- 레스토랑 모든 열 지역으로 검색 -->
+	<select id="findByDestinationRestaurant" resultType="RestaurantView" parameterType="String">
+		SELECT * FROM view_restaurants WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
+	</select>
 
 	<select id="findHotelsBypackId" resultType="HotelView">
 		SELECT * FROM view_hotels WHERE pack_id = #{packId}
@@ -104,5 +140,33 @@
 	<select id="findHotelsByDestinationName">
 		SELECT * from pack where destination_name = #{destinationName}
 	</select>
-
+	
+	<!-- 관광지 모든 열 지역으로 검색 -->
+	<select id="findByDestinationAttraction" parameterType="String">
+		SELECT * FROM view_attractions WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%') and type LIKE CONCAT('%', #{type}, '%')
+	</select>
+	
+	<!-- Schedule 등록 -->
+	<insert id="saveSchedule" parameterType="Schedule">
+        INSERT INTO Schedule (pack_id, day_number, schedule_Type, event_id)
+        VALUES (#{packId}, #{dayNumber}, #{scheduleType}, #{eventId})
+    </insert>
+    
+    <!-- hotel_each_day 등록 -->
+	<insert id="saveEachHotel" parameterType="Hotel_each_day">
+		INSERT INTO hotel_each_day (pack_id, day_number, hotel_id)
+		VALUES (#{packId}, #{dayNumber}, #{hotelId})
+	</insert>
+	
+	 <!-- Attraction_each_day 등록 -->
+	<insert id="saveEachAttraction" parameterType="Attraction_each_day">
+		INSERT INTO attraction_each_day (pack_id, day_number, attraction_id)
+		VALUES (#{packId}, #{dayNumber}, #{attractionId})
+	</insert>
+	
+	 <!-- Restaurant_each_day 등록 -->
+	<insert id="saveEachRestaurant" parameterType="Restaurant_each_day">
+		INSERT INTO restaurant_each_day (pack_id, day_number, restaurant_id)
+		VALUES (#{packId}, #{dayNumber}, #{restaurantId})
+	</insert>
 </mapper>
