@@ -3,14 +3,17 @@ package travel.project.service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import travel.project.domain.Attraction;
+import travel.project.domain.AttractionView;
 import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
 
 public interface PackService {
@@ -22,7 +25,7 @@ public interface PackService {
 	public void saveHotelImg(List<String> imgNames, long id);
 	
 	// 호텔 편의시설 등록
-  public void saveHotelAmenities(List<String> amenities, long id);
+	public void saveHotelAmenities(List<String> amenities, long id);
 
 
 	List<Pack> getPackageListByDestination(String destination);
@@ -53,14 +56,33 @@ public interface PackService {
 	public long dayDifference(Date startDate, Date endDate);
 	
 	// Pack 등록
-	public Pack savePack(Pack pack);
-
+	public long savePack(Pack pack);
 
 	// 호텔 모든 열 지역으로 검색
 	public List<HotelView> findByDestinationHotels(String destinationName);
+	
+	// 레스토랑 모든 열 지역으로 검색
+	public List<RestaurantView> findByDestinationRestaurant(String destinationName);
+
+
+	Pack findPackById(long tripId);
+	
+	// 관광지 모든 열 지역으로 검색
+	public List<AttractionView> findByDestinationAttraction(String destinationName, String type);
+	
+	// Schedule 등록
+	public void saveSchedule(long packId, long days, Map<String, String> params);
+	
+	// hotel_each_day 등록
+	public void saveEachHotel(long packId, long days, Map<String, String> params);
+	
+	// Attraction_each_day
+	public void saveEachAttraction(long packId, long days, Map<String, String> params);
+
+	// Restaurant_each_day
+	public void saveEachRestaurant(long packId, long days, Map<String, String> params);
 
 	Pack findPackById(long packId);
-
 
 
 	List<HotelView> findHotelsByDestinationName(String destinationName);

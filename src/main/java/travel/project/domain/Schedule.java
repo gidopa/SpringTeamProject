@@ -15,5 +15,5 @@ public class Schedule {
     private String scheduleType; // 명소, 식당, 호텔
     private int eventId;
     private String description;
-
+    private int eventId;
 }

@@ -63,16 +63,16 @@
 <!--                           <img src="/icons/icon_minus_black.svg" alt="-"> -->
                         </button>
 	                       <select class="form-select form-select-lg mb-3" name="destinationName" aria-label="Large select example">
-							 	<option value="KOREA ICN">인천(ICN)</option>
-							    <option value="JAPAN NRT">도쿄(NRT)</option>
-							    <option value="JAPAN HND">하네다(HND)</option>
-							    <option value="JAPAN KIX">오사카(KIX)</option>
-							    <option value="JAPAN CTS">삿포로(CTS)</option>
-							    <option value="EASTSOUTHASIA BKK">방콕(BKK)</option>
-							    <option value="EASTSOUTHASIA SIN">싱가포르(SIN)</option>
-							    <option value="EASTSOUTHASIA KUL">쿠알라룸푸르(KUL)</option>
-							    <option value="EASTSOUTHASIA CGK">자카르타(CGK)</option>
-							    <option value="EASTSOUTHASIA HAN">하노이(HAN)</option>
+							 	<option value="KOREA-ICN">인천(ICN)</option>
+							    <option value="JAPAN-NRT">도쿄(NRT)</option>
+							    <option value="JAPAN-HND">하네다(HND)</option>
+							    <option value="JAPAN-KIX">오사카(KIX)</option>
+							    <option value="JAPAN-CTS">삿포로(CTS)</option>
+							    <option value="EASTSOUTHASIA-BKK">방콕(BKK)</option>
+							    <option value="EASTSOUTHASIA-SIN">싱가포르(SIN)</option>
+							    <option value="EASTSOUTHASIA-KUL">쿠알라룸푸르(KUL)</option>
+							    <option value="EASTSOUTHASIA-CGK">자카르타(CGK)</option>
+							    <option value="EASTSOUTHASIA-HAN">하노이(HAN)</option>
 							</select>
                         <button class="btnset" type="button">
 <!--                           <img src="/icons/icon_plus_black.svg" alt="+"> -->

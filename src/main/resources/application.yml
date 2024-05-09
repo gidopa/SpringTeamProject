@@ -29,8 +29,6 @@ spring:
           starttls:
             enable: true
   
-  # 추가
-
 # 추가
   servlet:
     multipart:

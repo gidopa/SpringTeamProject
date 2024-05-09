@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
-public class destinations_Img {
-    private long destinationsImgId;
-    private String imgName;
-    private String category;
-    private long destinationId;
+public class Hotel_each_day {
+	
+	private long packId;
+	private long dayNumber;
+	private long hotelId;
 }

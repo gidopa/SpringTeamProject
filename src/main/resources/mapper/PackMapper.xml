@@ -87,6 +87,11 @@
 		VALUES (#{packName}, #{destinationName}, #{packType}, #{startDate}, #{endDate}, #{price})
 	</insert>
 	
+	<!-- Pack 인덱스 반환 -->
+	<select id="selectLastPack">
+		SELECT max(pack_id) FROM pack 
+	</select>
+	
 	<!-- Pack id 조회  -->
 	<select id="findByIdPack" parameterType="long">
 		SELECT * FROM pack where pack_id=#{packId}
@@ -96,6 +101,11 @@
 	<select id="findByDestinationHotels" resultType="HotelView" parameterType="String">
 		SELECT * FROM view_hotels WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
 	</select>
+	
+	<!-- 레스토랑 모든 열 지역으로 검색 -->
+	<select id="findByDestinationRestaurant" resultType="RestaurantView" parameterType="String">
+		SELECT * FROM view_restaurants WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%')
+	</select>
 
 	<select id="findHotelsBypackId" resultType="HotelView">
 		SELECT * FROM view_hotels WHERE pack_id = #{packId}
@@ -104,5 +114,33 @@
 	<select id="findHotelsByDestinationName">
 		SELECT * from pack where destination_name = #{destinationName}
 	</select>
-
+	
+	<!-- 관광지 모든 열 지역으로 검색 -->
+	<select id="findByDestinationAttraction" parameterType="String">
+		SELECT * FROM view_attractions WHERE Destination_name LIKE CONCAT('%', #{destinationName}, '%') and type LIKE CONCAT('%', #{type}, '%')
+	</select>
+	
+	<!-- Schedule 등록 -->
+	<insert id="saveSchedule" parameterType="Schedule">
+        INSERT INTO Schedule (pack_id, day_number, schedule_Type, event_id)
+        VALUES (#{packId}, #{dayNumber}, #{scheduleType}, #{eventId})
+    </insert>
+    
+    <!-- hotel_each_day 등록 -->
+	<insert id="saveEachHotel" parameterType="Hotel_each_day">
+		INSERT INTO hotel_each_day (pack_id, day_number, hotel_id)
+		VALUES (#{packId}, #{dayNumber}, #{hotelId})
+	</insert>
+	
+	 <!-- Attraction_each_day 등록 -->
+	<insert id="saveEachAttraction" parameterType="Attraction_each_day">
+		INSERT INTO attraction_each_day (pack_id, day_number, attraction_id)
+		VALUES (#{packId}, #{dayNumber}, #{attractionId})
+	</insert>
+	
+	 <!-- Restaurant_each_day 등록 -->
+	<insert id="saveEachRestaurant" parameterType="Restaurant_each_day">
+		INSERT INTO restaurant_each_day (pack_id, day_number, restaurant_id)
+		VALUES (#{packId}, #{dayNumber}, #{restaurantId})
+	</insert>
 </mapper>

@@ -2,7 +2,17 @@ package travel.project.controller;
 
 import java.sql.Date;
 import java.time.LocalDate;
+
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +27,9 @@ import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
+import travel.project.domain.RestaurantView;
 import travel.project.domain.Restaurants;
+import travel.project.mapper.ScheduleMapper;
 import travel.project.domain.*;
 import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
@@ -34,6 +46,7 @@ public class PackController {
     private final PackService packService;
 	private final DestinationService destinationService;
 	private final ScheduleService scheduleService;
+	private final ScheduleMapper scheduleMapper;
 	String main = "main/main";
 	
 	// 호텔 등록 페이지
@@ -166,28 +179,61 @@ public class PackController {
 		LocalDate endDate = packService.replaceSqlDate(eDate);
 		pack.setStartDate(Date.valueOf(startDate));
 		pack.setEndDate(Date.valueOf(endDate));
-		System.out.println(pack.getPackName());
 		
 		// 두 날짜 차이 계산
 		long daysDifference = packService.dayDifference(pack.getStartDate(), pack.getEndDate());
 		
 		// pack 등록
-		Pack savedPack= packService.savePack(pack);
+		long savedPack= packService.savePack(pack);
 		
 		// 호텔 모든 열 지역으로 검색
 		List<HotelView> hotelViews = packService.findByDestinationHotels(pack.getDestinationName());
 		
 		// 목적지 명소 등 조회
-		// 레스토랑 모든 열 조회
+		// 레스토랑 모든 열 지역으로 검색
+		List<RestaurantView> restaurantViews = packService.findByDestinationRestaurant(pack.getDestinationName());
 		
+		// 관광지 모든 열 지역으로 검색
+		List<AttractionView> attractionViews = packService.findByDestinationAttraction(pack.getDestinationName(), "tourist");
+		
+		// 액티비티 모든 열 지역으로 검색
+		List<AttractionView> activityViews = packService.findByDestinationAttraction(pack.getDestinationName(), "Activity");
+		
+		model.addAttribute("daysDifference", daysDifference+1);
 		model.addAttribute("hotelView", hotelViews);
+		model.addAttribute("restaurantView", restaurantViews);
+		model.addAttribute("attractionView", attractionViews);
+		model.addAttribute("activityView", activityViews);
+		model.addAttribute("packId", savedPack);
 		model.addAttribute("center", "../pack/packagesDetail.jsp");
+		return main;
+	}
+	
+	// 패키지 상세 일정 등록
+	@PostMapping("/packages/{packId}")
+	public String packages(@PathVariable long packId,
+						@RequestParam long days,
+						@RequestParam Map<String, String> params
+						) {
+		
+		// Schedule 등록
+		packService.saveSchedule(packId, days, params);
+		
+		// hotel_each_day 등록
+		packService.saveEachHotel(packId, days, params);
+		
+		// Attraction_each_day
+		packService.saveEachAttraction(packId, days, params);
+		
+		// Restaurant_each_day
+		packService.saveEachRestaurant(packId, days, params);
+		
 		return main;
 	}
 	
 	// 지역별 패키지의 리스트
 	@GetMapping("/package/list/{destination}")
-	public String getAllPackageList(Model model,@PathVariable String destination){
+	public String getAllPackageList(Model model,@PathVariable("destination") String destination){
 		// PathVariable로 destination을 받아 해당 destination에 따른 list 보여줌
 		List<Pack> packs = packService.getPackageListByDestination(destination);
 		model.addAttribute("center","../pack/PackageList.jsp");
@@ -195,7 +241,10 @@ public class PackController {
 		return "main/main";
 	}
 
-	// 상세화면
+
+	@GetMapping("/package/{tripId}")
+	public String packDetail(@PathVariable long tripId, Model model, @RequestParam String destinationName){
+
 	@GetMapping("/package/{packId}")
 	public String packDetail(@PathVariable long packId, Model model, @RequestParam String destinationName){
 		// 일차별이 아닌 공통으로 필요한 데이터 addAttribute
@@ -239,8 +288,5 @@ public class PackController {
 		model.addAttribute("center", "../packageDetail.jsp");
 		return main;
 	}
-
-
-
 	
 }
