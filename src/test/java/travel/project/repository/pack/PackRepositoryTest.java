@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import travel.project.domain.HotelView;
 import travel.project.domain.Hotels;
+import travel.project.domain.Pack;
 import travel.project.mapper.PackMapper;
 import travel.project.repository.DestinationRepository.DestinationRepository;
 import travel.project.repository.Schedule.ScheduleRepository;
@@ -56,10 +57,12 @@ class PackRepositoryTest {
     @Test
     void findAllPacks() throws Exception{
         //given
-
+        List<Pack> allPacks = packRepository.findAllPacks();
         //when
-
+        String packName = "도쿄 패키지";
         //then
+        assertThat(allPacks.size()).isEqualTo(1);
+        assertThat(allPacks.get(0).getPackName()).isEqualTo(packName);
     }
     @Test
     void saveDestination() throws Exception{
@@ -120,10 +123,12 @@ class PackRepositoryTest {
     @Test
     void findPackById() throws Exception{
         //given
-
+        Pack pack = new Pack(1,"도쿄 패키지","JPN-NRT","TOUR", null, null, 150);
         //when
-
+        Pack packById = packRepository.findPackById(1);
         //then
+        assertThat(packById.getPackName()).isEqualTo(pack.getPackName());
+        assertThat(packById.getDestinationName()).isEqualTo(pack.getDestinationName());
     }
     @Test
     void findHotelsByDestinationName() throws Exception{

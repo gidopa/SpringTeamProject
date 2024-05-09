@@ -24,7 +24,7 @@ class ScheduleRepositoryTest {
     @Test
     void findScheduleById() throws Exception{
         //given
-        Schedule schedule = new Schedule(1,1,1,"TOUR",1, "도쿄 투어");
+        Schedule schedule = new Schedule(1,1,1,"TOUR","도쿄 투어", 1);
         //when
         List<Schedule> scheduleById = scheduleRepository.findScheduleById(1);
         //then
