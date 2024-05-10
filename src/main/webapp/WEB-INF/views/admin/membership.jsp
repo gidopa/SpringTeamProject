@@ -1,8 +1,15 @@
+<%@page import="java.util.List"%>
+<%@page import="travel.project.domain.Customer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String contextPath = request.getContextPath();
+List<Customer> customers = (List<Customer>)request.getAttribute("customers");
 %>
+
+<c:set var="customers" value="${requestScope.customer}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +23,7 @@ String contextPath = request.getContextPath();
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="/resources/admin/css/styles.css" rel="stylesheet" />
+<link href="/admin/css/styles.css" rel="stylesheet" />
 
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -159,7 +166,7 @@ String contextPath = request.getContextPath();
 					</ol> -->
 					<div class="card mb-4">
 						<div class="card-body">
-							이거 왜 너비 조절이 안되냐... 이거 왜 너비 조절이 안되냐... 이거 왜 너비 조절이 안되냐... &nbsp; &nbsp; &nbsp; &nbsp;           
+							&nbsp;&nbsp;&nbsp;&nbsp; 회원에게 메일을 보낼 수 있습니다. &nbsp; &nbsp; &nbsp; &nbsp;           
 						</div>
 					</div>
 					<div class="card mb-4">
@@ -176,41 +183,21 @@ String contextPath = request.getContextPath();
 										<th>이메일</th>
 										<th>전화번호</th>
 										<th>주소</th>
+										<th>보내기</th>
 									</tr>
 								</thead>
-
+								
+							<% for(Customer customer : customers) {%>
 								<tr>
-									<td>Jonas Alexander</td>
-									<td>Developer</td>
-									<td>San Francisco</td>
-									<td>30</td>
-									<td>2010/07/14</td>
-									<td>$86,500</td>
+									<td><%=customer.getCustomerId() %></td>
+									<td><%=customer.getName() %></td>
+									<td><%=customer.getPassword() %></td>
+									<td><%=customer.getEmail() %> </td>
+									<td><%=customer.getPhoneNumber() %></td>
+									<td><%=customer.getAddress() %></td>
+									<td><a href="/email?emailAddress=<%=customer.getEmail()%>">메일 보내기</a></td>
 								</tr>
-								<tr>
-									<td>Shad Decker</td>
-									<td>Regional Director</td>
-									<td>Edinburgh</td>
-									<td>51</td>
-									<td>2008/11/13</td>
-									<td>$183,000</td>
-								</tr>
-								<tr>
-									<td>Michael Bruce</td>
-									<td>Javascript Developer</td>
-									<td>Singapore</td>
-									<td>29</td>
-									<td>2011/06/27</td>
-									<td>$183,000</td>
-								</tr>
-								<tr>
-									<td>Donna Snider</td>
-									<td>Customer Support</td>
-									<td>New York</td>
-									<td>27</td>
-									<td>2011/01/25</td>
-									<td>$112,000</td>
-								</tr>
+							<%} %>	
 								</tbody>
 							</table>
 						</div>
@@ -234,10 +221,10 @@ String contextPath = request.getContextPath();
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
-	<script src="/resources/admin/js/scripts.js"></script>
+	<script src="/admin/js/scripts.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-	<script src="/resources/admin/js/datatables-simple-demo.js"></script>
+	<script src="/admin/js/datatables-simple-demo.js"></script>
 </body>
 </html>
