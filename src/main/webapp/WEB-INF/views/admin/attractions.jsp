@@ -11,6 +11,34 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        select {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #AttractionContent {
+            margin-top: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+
     <script>
         $(document).ready(function() {
             $('#courseDropdown').change(function() {
@@ -35,7 +63,7 @@
 <body>
 
 
-<h1>강의 수정</h1>
+<h1>관광지 수정</h1>
 <label for="courseDropdown">코스 선택:</label>
 <select id="courseDropdown">
     <option value="">여행지를 선택하세요</option>
