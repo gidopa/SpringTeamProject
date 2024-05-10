@@ -17,7 +17,7 @@
 	</select>
 
     <select id="getMaxDayNum">
-        SELECT MAX(day_number) AS max_day_number FROM schedule;
+        SELECT MAX(day_number) AS max_day_number FROM schedule where pack_id = #{packId};
     </select>
 
     <select id="findAttractionByDayNum">
