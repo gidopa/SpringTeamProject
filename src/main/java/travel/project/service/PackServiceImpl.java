@@ -42,6 +42,7 @@ import travel.project.repository.pack.PackRepository;
 @Transactional
 public class PackServiceImpl implements PackService{
 
+
 	private final PackRepository packRepository;
     private static String UPLOADED_FOLDER = "C://temp//";
     private int count = 0;
@@ -185,7 +186,22 @@ public class PackServiceImpl implements PackService{
 	public List<HotelView> findHotelsByDestinationName(String destinationName) {
 		return packRepository.findHotelsByDestinationName(destinationName);
 	}
-  
+
+	@Override
+	public List<Attraction> findAttractionsByDestinationId(long destinationId) {
+		return packRepository.findAttractionsByDestinationId(destinationId);
+	}
+
+	@Override
+	public void deleteAttractionById(long attractionId) {
+		packRepository.deleteAttractionById(attractionId);
+	}
+
+	@Override
+	public Attraction findAttractionById(long attractionId) {
+		return packRepository.findAttractionById(attractionId);
+	}
+
 	// Schedule 등록
 	@Override
 	public void saveSchedule(long packId, long days, Map<String, String> params) {
@@ -340,4 +356,9 @@ public class PackServiceImpl implements PackService{
 	public List<Pack> reservationInquiry(String startDate,String endDate) {
 		return packRepository.reservationInquiry(startDate,endDate);
   }
+
+	@Override
+	public void updateAttraction(Attraction attraction) {
+		packRepository.updateAttraction(attraction);
+	}
 }

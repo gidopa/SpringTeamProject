@@ -4,16 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import travel.project.domain.Attraction;
 import travel.project.domain.Customer;
+import travel.project.domain.Destination;
+import travel.project.service.PackService;
 import travel.project.service.admin.AdminService;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Slf4j
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AdminController {
 	
 	private final AdminService adminService;
+	private final PackService packService;
 	
 	@GetMapping
 	public String adminHome() {
@@ -48,6 +48,8 @@ public class AdminController {
 	public String travelPackage() {
 		return "admin/travelPackage";
 	}
+
+
 	
 
 	

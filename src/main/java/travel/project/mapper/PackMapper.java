@@ -97,4 +97,11 @@ public interface PackMapper {
     //패키지 조회
     List<Pack> reservationInquiry(@Param("startDate") String startDate,@Param("endDate") String endDate);
 
+    List<Attraction> findAttractionsByDestinationId(long destinationId);
+
+    void deleteAttractionById(long attractionId);
+
+    Attraction findAttractionById(long attractionId);
+
+    void updateAttraction(Attraction attraction);
 }

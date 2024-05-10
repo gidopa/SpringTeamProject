@@ -169,4 +169,21 @@
 		INSERT INTO restaurant_each_day (pack_id, day_number, restaurant_id)
 		VALUES (#{packId}, #{dayNumber}, #{restaurantId})
 	</insert>
+
+	<select id="findAttractionsByDestinationId">
+		select * from view_attractions where destination_id = #{destinationId}
+	</select>
+
+	<delete id="deleteAttractionById">
+		delete from Attractions where attraction_id = #{attractionId}
+	</delete>
+
+	<select id="findAttractionById">
+		select * from Attractions where attraction_id = #{attractionId}
+	</select>
+
+	<update id="updateAttraction" parameterType="Attraction">
+		update attractions set attraction_name = #{attractionName}, Type = #{type},  attraction_Description = #{attractionDescription}
+		where attraction_id = #{attractionId}
+	</update>
 </mapper>

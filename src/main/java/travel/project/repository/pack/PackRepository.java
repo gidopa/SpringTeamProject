@@ -84,4 +84,11 @@ public interface PackRepository {
     List<HotelView> findHotelsByDestinationName(String destinationName);
 
 
+    List<Attraction> findAttractionsByDestinationId(long destinationId);
+
+    void deleteAttractionById(long attractionId);
+
+    Attraction findAttractionById(long attractionId);
+
+    void updateAttraction(Attraction attraction);
 }

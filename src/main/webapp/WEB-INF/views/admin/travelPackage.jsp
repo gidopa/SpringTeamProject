@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -91,6 +92,15 @@ String contextPath = request.getContextPath();
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
 							</div> 여행상품 관리
+							<!-- <div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div> -->
+						</a>
+
+						<a class="nav-link collapsed" href="/attraction">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-book-open"></i>
+							</div> Attraction 수정
 							<!-- <div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div> -->

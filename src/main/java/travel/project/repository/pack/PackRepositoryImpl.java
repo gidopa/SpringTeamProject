@@ -31,6 +31,7 @@ import travel.project.mapper.PackMapper;
 @Repository
 public class PackRepositoryImpl implements PackRepository{
 
+
 	private final PackMapper packMapper;
 
 	// 호텔 등록 후 반환
@@ -136,7 +137,13 @@ public class PackRepositoryImpl implements PackRepository{
 	public List<HotelView> findHotelsByDestinationName(String destinationName) {
 		return packMapper.findHotelsByDestinationName(destinationName);
 	}
-	
+
+	@Override
+	public List<Attraction> findAttractionsByDestinationId(long destinationId) {
+		return packMapper.findAttractionsByDestinationId(destinationId);
+	}
+
+
 	// 관광지 모든 열 지역으로 검색
 	@Override
 	public List<AttractionView> findByDestinationAttraction(String destinationName, String type) {
@@ -167,6 +174,19 @@ public class PackRepositoryImpl implements PackRepository{
 		packMapper.saveEachRestaurant(restaurant_each_day);
 	}
 
+	@Override
+	public void deleteAttractionById(long attractionId) {
+		packMapper.deleteAttractionById(attractionId);
+	}
 
-	
+	@Override
+	public Attraction findAttractionById(long attractionId) {
+		return packMapper.findAttractionById(attractionId);
+	}
+
+	@Override
+	public void updateAttraction(Attraction attraction) {
+		packMapper.updateAttraction(attraction);
+	}
+
 }

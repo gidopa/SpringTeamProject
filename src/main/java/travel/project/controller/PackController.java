@@ -314,6 +314,6 @@ public class PackController {
 		model.addAttribute("center", "../packageDetail.jsp");
 		return main;
 	}
-	
+
 
 }
