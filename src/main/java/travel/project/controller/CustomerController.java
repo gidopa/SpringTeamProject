@@ -54,7 +54,11 @@ public class CustomerController {
 
 	//회원가입 요청처리 메소드
 	@PostMapping("/membershipJoin")
-	public String membershipJoin(@ModelAttribute("customer") Customer customer,Model model) {
+	public String membershipJoin(@Valid @ModelAttribute("customer") Customer customer,BindingResult bindingResult,Model model) {
+		if(bindingResult.hasErrors()){
+			log.info("errors = {}", bindingResult);
+			return "member/MembershipJoin";
+		}
 			customerService.membershipJoin(customer);
 		return "redirect:/login";
 	}

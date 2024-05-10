@@ -16,6 +16,9 @@ public class Customer {
     @NotEmpty(message = "아이디는 필수 입니다")
     @Size(max = 20, min = 5, message = "아이디는 5 ~ 20 글자사이여야 합니다")
     private String customerId;
+    @NotEmpty(message = "비밀번호는 필수 입니다")
+    @Size(min = 8, message = "비밀번호는 최소 8글자여야 합니다")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\\\W_]).*$", message = "문자, 숫자, 특수문자를 모두 포함해야합니다")
     private String password;
     private String confirmPassword;
     @NotEmpty(message = "아이디는 필수 입니다")
