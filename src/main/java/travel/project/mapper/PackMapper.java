@@ -93,8 +93,15 @@ public interface PackMapper {
     List<HotelView> findHotelsByDestinationName(String destinationName);
 
     Pack findPackById(long packId);
-
+    
     //패키지 조회
     List<Pack> reservationInquiry(@Param("startDate") String startDate,@Param("endDate") String endDate);
 
+    // 패키지 삭제 처리
+    void packagesDelete(long packId);
+    
+    // 호텔 뷰 조회
+    HotelView findHotelsBypackId(long packId);
+    
+    
 }

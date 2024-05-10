@@ -14,8 +14,7 @@ public class Destination {
     private String destinationName;
     private String country;
     private String destinationDescription;	// 열명 변경
+    private String destinationAlias;	// 열명 변경
     
-    // 지역 삭제
-    // private String Region; 
     
 }

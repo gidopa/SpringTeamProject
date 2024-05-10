@@ -166,7 +166,12 @@ public class PackRepositoryImpl implements PackRepository{
 	public void saveEachRestaurant(Restaurant_each_day restaurant_each_day) {
 		packMapper.saveEachRestaurant(restaurant_each_day);
 	}
-
-
+	
+	// 패키지 삭제 처리
+	@Override
+	public void packagesDelete(long packId) {
+		packMapper.packagesDelete(packId);
+	}
+	
 	
 }

@@ -17,4 +17,5 @@ public class Pack {
     private Date startDate; // startDate와 endDate는 트리거로 insert, update시 검증
     private Date endDate;
     private int price;
+    private String destinationAlias;
 }

@@ -339,5 +339,13 @@ public class PackServiceImpl implements PackService{
 	@Override
 	public List<Pack> reservationInquiry(String startDate,String endDate) {
 		return packRepository.reservationInquiry(startDate,endDate);
-  }
+	}
+	
+	// 패키지 삭제 처리
+	@Override
+	public void packagesDelete(long packId) {
+		packRepository.packagesDelete(packId);
+	}
+	
+	
 }

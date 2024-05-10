@@ -80,6 +80,11 @@
                         <div class="input-group">
                             <input class="input--style-2" type="text" placeholder=description name="destinationDescription" required>
                         </div>
+                        
+                         <!-- Destination 별칭 -->
+                        <div class="input-group">
+                            <input class="input--style-2" type="text" placeholder="여행지 이름 예쁘게 쓰세요" name="destinationAlias" required>
+                        </div>
                         <!-- Destination END -->
                         
                          <div class="p-t-30">
