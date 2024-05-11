@@ -92,4 +92,9 @@ public interface PackService {
 	// 패키지 삭제 처리
 	public void packagesDelete(long packId);
 	
+	// 패키지 수정
+	public Pack updatePack(Pack pack);
+	
+	// 스케줄 삭제
+	public void deleteSchedule(long packId);
 }

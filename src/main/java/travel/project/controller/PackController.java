@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -375,9 +376,14 @@ public class PackController {
 				map.add(i,new ItemWrapper(restaurant, "restaurant"));
 			}
 		}
+		String sDate = String.valueOf(pack.getStartDate());
+		String eDate = String.valueOf(pack.getEndDate());
+		
 		model.addAttribute("map",map);
 		
 		model.addAttribute("pack", pack);
+		model.addAttribute("sDate", sDate);
+		model.addAttribute("eDate", eDate);
 		model.addAttribute("hotelView", hotelViews);
 		model.addAttribute("restaurantView", restaurantViews);
 		model.addAttribute("attractionView", attractionViews);
@@ -387,6 +393,7 @@ public class PackController {
 		return main;
 	}
 	
+	@Transactional
 	@PutMapping("/packages/{packId}")
 	public String packagesUpdate(@PathVariable long packId,
 								 @RequestParam long days,
@@ -400,25 +407,30 @@ public class PackController {
 		LocalDate endDate = packService.replaceSqlDate(enDate);
 		pack.setStartDate(Date.valueOf(startDate));
 		pack.setEndDate(Date.valueOf(endDate));
+		pack.setPackId(packId);
 		
 		// pack 업데이트
+		Pack updatedPack = packService.updatePack(pack);
 		
-		System.out.println(pack.getDestinationAlias());
-		System.out.println(pack.getDestinationName());
-		System.out.println(pack.getPackName());
-		System.out.println(pack.getPackType());
-		System.out.println(pack.getPrice());
+		// 스케줄, 상세 테이블 전체 삭제
+		packService.deleteSchedule(packId);
 		
-		// 상세일정 업데이트
+		// Schedule 등록
+		packService.saveSchedule(packId, days, params);
 		
+		// hotel_each_day 등록
+		packService.saveEachHotel(packId, days, params);
 		
-		System.out.println();
-		params.forEach((key, value) -> System.out.println(key + ": " + value));
+		// Attraction_each_day
+		packService.saveEachAttraction(packId, days, params);
 		
-		return null;
+		// Restaurant_each_day
+		packService.saveEachRestaurant(packId, days, params);		
+		
+		return "redirect:/admin";
 	}
 	
-	
+	// 패키지 삭제 처리
 	@DeleteMapping("/packages/{packId}")
 	public String packagesDelete(@PathVariable long packId) {
 		packService.packagesDelete(packId);

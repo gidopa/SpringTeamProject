@@ -347,5 +347,16 @@ public class PackServiceImpl implements PackService{
 		packRepository.packagesDelete(packId);
 	}
 	
+	// 패키지 수정
+	@Override
+	public Pack updatePack(Pack pack) {
+		return packRepository.updatePack(pack);
+	}
+	
+	// 스케줄 삭제
+	@Override
+	public void deleteSchedule(long packId) {
+		packRepository.deleteSchedule(packId);
+	}
 	
 }

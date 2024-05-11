@@ -175,6 +175,40 @@
 		DELETE FROM pack WHERE Pack_id = #{packId}
 	</delete>
 	
+	<!-- 패키지 수정 -->
+	<update id="updatePack">
+		UPDATE 
+			pack 
+		SET 
+			pack_name = #{packName},
+			Destination_name = #{destinationName},
+			pack_Type = #{packType}, 
+			Start_Date = #{startDate},
+			End_Date = #{endDate},
+			Price = #{price},
+			destination_alias = #{destinationAlias}
+		WHERE
+			pack_id = #{packId}
+	</update>
 	
+	<delete id="deleteSchedule">
+		DELETE FROM schedule WHERE pack_id = #{packId}
+	</delete>
 	
+	<!-- 스케줄 삭제 -->
+	<delete id="deleteEachTable" parameterType="map">
+		DELETE FROM
+		<choose>
+			<when test="tableName == 'hotel_each_day'">
+				hotel_each_day
+			</when>
+			<when test="tableName == 'restaurant_each_day'">
+				restaurant_each_day
+			</when>
+			<when test="tableName == 'attraction_each_day'">
+				attraction_each_day
+			</when>
+		</choose>
+		WHERE pack_id = #{packId}
+	</delete>
 </mapper>

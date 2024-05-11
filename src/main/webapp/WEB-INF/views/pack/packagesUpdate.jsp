@@ -157,7 +157,7 @@
                     <div class="input-group">
                       <label class="label" for="CheckIN-pc">체크인</label>
                       <div class="inputset inputset-lg">
-                        <input id="CheckIN-pc" value="${pack.startDate }" type="text" name="sDate" class="date-range200 inputset-input form-control" value="" required="required">
+                        <input id="CheckIN-pc" value="${sDate }" type="text" name="sDate" class="date-range200 inputset-input form-control" value="" required="required">
                         <figure class="icon">
                           <img src="/icons/icon_calendar.svg" alt="아이콘">
                         </figure>
@@ -166,7 +166,7 @@
                     
                     <div class="input-group">
                       <label class="label" for="CheckOut-pc"></label>체크아웃 <div class="inputset inputset-lg">
-                        <input id="CheckOut-pc" value="${pack.endDate }" type="text" name="eDate" class="date-range201 inputset-input form-control" value="" required="required">
+                        <input id="CheckOut-pc" value="${eDate }" type="text" name="eDate" class="date-range201 inputset-input form-control" value="" required="required">
                         <figure class="icon">
                           <img src="/icons/icon_calendar.svg" alt="아이콘">
                         </figure>
@@ -469,13 +469,18 @@
       target.value = this.value;
     });
   }
+  
+  const form = document.querySelector('form'); // 폼 요소 선택
+
+  form.addEventListener('submit', function(event) {
+    hiddenStartDate.value = startDateInput.value;
+    hiddenEndDate.value = endDateInput.value;
+  });
 
   // 각 필드에 대해 이벤트 리스너 설정
   updateHiddenField(packNameInput, hiddenPackName);
   updateHiddenField(destinationNameSelect, hiddenDestinationName);
   updateHiddenField(packTypeSelect, hiddenPackType);
-  updateHiddenField(startDateInput, hiddenStartDate);
-  updateHiddenField(endDateInput, hiddenEndDate);
   updateHiddenField(priceInput, hiddenPrice);
   updateHiddenField(destinationAliasInput, hiddenDestinationAlias);
 
