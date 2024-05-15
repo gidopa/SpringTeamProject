@@ -374,11 +374,6 @@
                                 <span>고객의소리</span>
                             </a>
                         </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="/admin">
-                                <span>관리자</span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
             </ul>
