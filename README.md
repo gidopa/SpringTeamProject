@@ -31,7 +31,7 @@
 #### RDBMS
 ![MySQL](https://img.shields.io/badge/MySQL-0078D6?style=for-the-badge&logo=mysql&logoColor=white)
 
-<img src="https://img.shields.io/badge/MyBatis-000000?style=for-the-badge&logo=MyBatis&logoColor=white">
+<img src="https://img.shields.io/badge/MyBatis-0078D6?style=for-the-badge&logo=MyBatis&logoColor=white">
 
 #### Templates
 ![JSP](https://img.shields.io/badge/JSP-0078D6.svg?style=for-the-badge&logo=Laravel&logoColor=white)
