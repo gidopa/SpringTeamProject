@@ -129,6 +129,7 @@
                                 <span>부대시설</span>
                             </a>
                         </li>
+
                         <li class="header-subitem">
                             <a class="header-sublink" href="/hotels">
                                 <span>호텔 등록</span>
@@ -159,6 +160,7 @@
                                 <span>패키지 등록</span>
                             </a>
                         </li>
+
                     </ul>
                     <!-- <ul class="header-sublist">
                     <li class="header-subitem">
@@ -375,11 +377,6 @@
                         <li class="header-subitem">
                             <a class="header-sublink" href="javascript:void(0)">
                                 <span>고객의소리</span>
-                            </a>
-                        </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="/admin">
-                                <span>관리자</span>
                             </a>
                         </li>
                     </ul>

@@ -11,6 +11,7 @@ import travel.project.domain.Attraction;
 import travel.project.domain.AttractionView;
 import travel.project.domain.Destination;
 import travel.project.domain.HotelView;
+import travel.project.domain.Hotel_each_day;
 import travel.project.domain.Hotels;
 import travel.project.domain.Pack;
 import travel.project.domain.RestaurantView;
@@ -87,4 +88,13 @@ public interface PackService {
 
 
 	List<HotelView> findHotelsByDestinationName(String destinationName);
+	
+	// 패키지 삭제 처리
+	public void packagesDelete(long packId);
+	
+	// 패키지 수정
+	public Pack updatePack(Pack pack);
+	
+	// 스케줄 삭제
+	public void deleteSchedule(long packId);
 }
