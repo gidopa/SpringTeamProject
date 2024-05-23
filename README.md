@@ -84,8 +84,7 @@
 <hr>
     
 ## 2. Erd
-![ERD](https://github.com/gidopa/TeamProject/assets/120196095/7458a764-30ef-438b-bf81-59167be1bed9)
-
+![팀플 ERD](https://github.com/gidopa/SpringTeamProject/assets/120196095/0c76729a-c127-4a71-b892-7467a15de997)
 
 ## 3. 주요기능
 :arrow_right: 로그인 
