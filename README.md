@@ -75,6 +75,9 @@
  
 - Debug용 콘솔 출력
   - System.out.println 보다는 Logback 적극 활용
+
+- RESTful
+  - REST API를 구현 하진 않았지만 이후 REST API 설계를 위해 최대한 RESTful 하도록 uri 구성
  
 - 기타
   - Spring MVC
