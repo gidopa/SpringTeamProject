@@ -50,7 +50,7 @@ document.getElementById("btn_id").addEventListener("click", function() {
 document.getElementById("password").addEventListener("input", function() {
     var password = document.getElementById("password").value;
     var passwordInput = document.getElementById("passwordInput");
-
+console.log(password)
     // 비밀번호 유효성 검사 수행
     var containsNumber = /\d/.test(password);
     var containsLetter = /[a-zA-Z]/.test(password);
@@ -175,24 +175,28 @@ function check() {
 }
 
 
+
+
 function reconfirmation(){
 	
+	
 	var customerId = document.getElementById("customerId").value;
+	console.log(customerId)
 	var password = document.getElementById("password").value;
-	var confirmPassword = document.getElementById("confirm_password").value;
+	var confirmPassword = document.getElementById("confirmPassword").value;
 	var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var phoneNumber = document.getElementById("phoneNumber").value;
     var agreementCheckbox = document.getElementById("agreement");
 	
-    var customerIdInput = document.getElementById("customerIdInput");
+//    var customerIdInput = document.getElementById("customerIdInput");
     var customerverificationId = document.getElementById("customerverificationId");
-    var passwordInput = document.getElementById("passwordInput");
-    var confirm_passwordInput = document.getElementById("confirm_passwordInput");
-    var nameInput = document.getElementById("nameInput");
-    var emailInput = document.getElementById("emailInput");
+//    var passwordInput = document.getElementById("passwordInput");
+//    var confirm_passwordInput = document.getElementById("confirm_passwordInput");
+//    var nameInput = document.getElementById("nameInput");
+//    var emailInput = document.getElementById("emailInput");
      var emailCheckInput = document.getElementById("emailCheckInput");
-    var phoneNumberInput = document.getElementById("phoneNumberInput");
+    var phoneNumberCheckInput = document.getElementById("phoneNumberCheckInput");
    
    // 비밀번호 유효성 검사 수행
     var containsNumber = /\d/.test(password);
@@ -210,34 +214,35 @@ function reconfirmation(){
     var idPattern = /^[a-zA-Z0-9]+$/;
     if (!idPattern.test(customerId)) {return false;  }
 	
-	
-	//비밀번호
+//	
+//	//비밀번호
     if (password.length < 6 || !containsNumber || !containsLetter || !containsSpecial) {return false; } 
-	
-	//비밀번호 확인
+//	
+//	//비밀번호 확인
     if (password !== confirmPassword) {return false; } 
-	
-	//이름 확인
+//	
+//	//이름 확인
     if (name.length < 2 || name.length > 8) {return false; }
-    
-     //이메일 확인
+//    
+//     //이메일 확인
     if (!emailPattern.test(email)) {return false; }
-
-	//휴대폰 확인   
+//
+//	//휴대폰 확인   
     if (!phonePattern.test(phoneNumber)) {return false;}
-	 
-	 //체크박스 확인
+//	 
+//	 //체크박스 확인
     if (!agreementCheckbox.checked) {return false; }
-    
+//    
     //아이디 중복시 확인
     if(customerverificationId.innerHTML === "이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요."){return false;}
     //이메일 중복시 확인
     if(emailCheckInput.innerHTML === "이미 사용 중인 이메일입니다."){return false;}
-    
-    //번호 중복시 확인
+//    
+//    //번호 중복시 확인
     if(phoneNumberCheckInput.innerHTML === "이미 사용 중인 번호입니다."){return false;}
-    
+//    
     return true;
+    
 	
 	
 }

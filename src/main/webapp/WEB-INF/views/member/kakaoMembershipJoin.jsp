@@ -73,34 +73,29 @@
     </style>
 </head>
 <body>
-<form:form action="/member/membershipJoin" onsubmit="return reconfirmation(); " method="post" modelAttribute="customer">
-    <h2>회원정보 입력</h2>
-    <form:label path="customerId">아이디:</form:label>
+<form:form action="/member/kakaoMembershipUpdate" onsubmit="return reconfirmation()" method="post" modelAttribute="customer">
+    <h2>카카오 로그인 회원정보 입력</h2>
+   
     <p id="customerIdInput"></p>
-    <form:input path="customerId" />
-    <form:button type="button" id="btn_id">중복확인</form:button>
-    <p id="customerverificationId"></p>
-    <div class="field-error">
-        <form:errors path="customerId" cssClass="error"/>
-    </div>
-    <form:label path="password">비밀번호:</form:label>
-    <p id="passwordInput"></p>
-    <form:input id="password" type="password" path="password" required="true"/>
-    <form:errors path="password" cssClass="error"/>
-    <br> <form:label path="confirmPassword">비밀번호 확인:</form:label>
-    <p id="confirmPasswordInput"></p>
-    <form:input type="password" id="confirmPassword" path="confirmPassword" required="true"/>
-    <form:errors path="confirmPassword" cssClass="error"/> <br>
+    <form:input path="customerId" id="customerId" disabled="false" type="hidden"/>
+ 
+
+
+ 
+ 	<!-- <input type="hidden" name="customerId" value="${customerId}"> -->
+ 
     <br> <form:label path="name">이름:</form:label>
     <p id="nameInput"></p>
-    <form:input type="text" id="name" path="name" required="true"/>
+    <form:input type="text" id="name" path="name" required="true" disabled="true"/>
     <form:errors path="name" cssClass="error"/>
     <br>
     <form:label path="email">이메일:</form:label>
     <p id="emailInput"></p>
-    <form:input type="text" id="email" path="email" required="true"/>
+    <form:input type="text" id="email" path="email" required="true" disabled="true"/>
     <form:errors path="email" cssClass="error"/>
     <p id="emailCheckInput"></p> <br>
+    
+    
     <form:label path="phoneNumber">핸드폰 번호:(-)을 빼고 적어주세요.</form:label>
     <p id="phoneNumberInput"></p>
     <form:input type="text" id="phoneNumber" path="phoneNumber" required="true"/> <br>
@@ -113,10 +108,10 @@
 
     <div class="agreement-container">
         <div class="agreement-header"
-             onclick="toggleAgreement('agreementContent1')">회원가입 약관(필수)</div>
+             onclick="toggleAgreement('agreementContent1')">카카오 회원가입 약관(필수)</div>
         <div class="agreement-content" id="agreementContent1">
             <p>
-                <strong>회원가입 약관</strong>:
+                <strong>카카오 회원가입 약관</strong>:
             </p>
             <p>제1조 목적 본 이용약관은 “사이트명”(이하 "사이트")의 서비스의 이용조건과 운영에 관한 제반사항 규정을
                 목적으로 합니다.</p>
@@ -323,7 +318,7 @@
 
     <input type="checkbox" id="agreement" name="agreement" required="true"/>
     <label for="agreement">회원가입 약관 및 개인정보 수집 및 이용에 동의합니다.</label> <br>
-    <button >회원가입</button>
+    <button type="submit">카카오 회원가입</button>
     <button type="reset" style="background-color: #f44336;">다시 입력</button>
 
 </form:form>
@@ -340,7 +335,7 @@
 </script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <%-- 회원가입 유효성 검사 체크 --%>
-<script src="/js/member.js"></script>
+<script src="/js/member2.js"></script>
 
 <script type="text/javascript">
     function goPopup() {

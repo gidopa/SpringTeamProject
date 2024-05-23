@@ -8,6 +8,7 @@
         INSERT INTO customer (customer_id,password,name, email, phone_number, address)
         values (#{customerId},#{password},#{name}, #{email}, #{phoneNumber}, #{address})
     </insert>
+	
 
 
 
@@ -59,8 +60,15 @@
         where customer_id = #{customerId}
     </update>
 
+    <insert id="kakao" parameterType="customer" >
+        INSERT INTO customer (customer_id,name, email)
+        values (#{customerId},#{name}, #{email})
+    </insert>
 
-
+	<update id="kakaoUpdate">
+        update customer set phone_number = #{phoneNumber}, address = #{address}
+        where customer_id = #{customerId}
+    </update>
 
 
 </mapper>

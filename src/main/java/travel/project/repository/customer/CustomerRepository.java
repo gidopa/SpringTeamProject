@@ -26,4 +26,12 @@ public interface CustomerRepository {
 
     void updateCustomer(Customer customer);
 
+    //카카오 로그인 회원가입 요청
+	Customer kakaologin(String customerId, String name, String email);
+
+	//카카오 회원정보 update
+	void kakaoUpdate(Customer customer);
+
+	Customer kakaoFindById(String id);
+
 }

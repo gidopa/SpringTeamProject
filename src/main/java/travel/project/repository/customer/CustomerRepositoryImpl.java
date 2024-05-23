@@ -62,6 +62,25 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         customerMapper.update(customer);
     }
 
+    //카카오 로그인
+    @Override
+    public Customer kakaologin(String customerId, String name, String email) {
 
+    	 customerMapper.kakao(customerId,name,email);
+
+    	 return customerMapper.findById(customerId);
+    }
+
+    //카카오 로그인 회원정보 update
+    @Override
+    public void kakaoUpdate(Customer customer) {
+    	customerMapper.kakaoUpdate(customer);
+    }
+
+    //카카오 로그인 아이디가 DB에 저장되어있는지 확인
+    @Override
+    public Customer kakaoFindById(String id) {
+    	return customerMapper.findById(id);
+    }
 
 }

@@ -64,7 +64,7 @@
                     <div class="form-footer-tit">
                         <span class="fw-500">SNS 계정으로 로그인</span>
                     </div>
-                    <a class="btnset btnset-round contents-start-kakao" href="javascript:void(0)">
+                    <a class="btnset btnset-round contents-start-kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9e9c47f1553d5454adc41705006331a5&redirect_uri=http://localhost:8081/member/KaKaoCallback">
                         <img class="btn-icon" src="/icons/icon_kakao_circle.svg" alt="카카오로그인">
                     </a>
                     <a class="btnset btnset-round contents-start-naver" href="<%=apiURL%>">
