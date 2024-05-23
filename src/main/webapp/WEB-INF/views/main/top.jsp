@@ -134,6 +134,11 @@
                                 <span>호텔 등록</span>
                             </a>
                         </li>
+                         <li class="header-subitem">
+                            <a class="header-sublink" href="/hotels/correctionList">
+                                <span>호텔 정보 수정</span>
+                            </a>
+                        </li>
                         <li class="header-subitem">
                             <a class="header-sublink" href="/destinations">
                                 <span>목적지 등록</span>
@@ -267,9 +272,7 @@
                     <li>
                         <a href="/editForm">회원정보수정</a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)">회원가입</a>
-                    </li>
+                  
                 </ul>
                 <%
                     }

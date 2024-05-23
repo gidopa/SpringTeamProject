@@ -51,4 +51,19 @@ public class CustomerServiceImpl implements CustomerService{
   	public void membershipJoin(Customer customer) {
   		customerRepository.save(customer);
   	}
+
+  	//카카오 로그인 요청
+  	@Override
+  	public Customer kakaologin(String customerId, String name, String email) {
+  		return customerRepository.kakaologin(customerId,name,email);
+  	}
+  	@Override
+  	public void kakaoUpdate(Customer customer) {
+  		 customerRepository.kakaoUpdate(customer);
+  	}
+
+  	@Override
+  	public Customer kakaoFindById(String id) {
+  		return customerRepository.kakaoFindById(id);
+  	}
 }
