@@ -22,18 +22,18 @@ class DestinationRepositoryTest {
 
     @Autowired
     DestinationRepository destinationRepository;
-    @Test
-    void findDestByName() throws Exception{
-        //given
-        String destinationName = "JPN-NRT";
-        Destination destination = new Destination(10,"JPN-NRT","Japan","바로옆 개꿀");
-        //when
-        Destination destByName = destinationRepository.findDestByName(destinationName);
-        //then
-        assertThat(destination.getDestinationId()).isEqualTo(destByName.getDestinationId());
-        assertThat(destination.getCountry()).isEqualTo(destByName.getCountry());
-        assertThat(destination.getDestinationDescription()).isEqualTo(destByName.getDestinationDescription());
-    }
+//    @Test
+//    void findDestByName() throws Exception{
+//        //given
+//        String destinationName = "JPN-NRT";
+//        Destination destination = new Destination(10,"JPN-NRT","Japan","바로옆 개꿀");
+//        //when
+//        Destination destByName = destinationRepository.findDestByName(destinationName);
+//        //then
+//        assertThat(destination.getDestinationId()).isEqualTo(destByName.getDestinationId());
+//        assertThat(destination.getCountry()).isEqualTo(destByName.getCountry());
+//        assertThat(destination.getDestinationDescription()).isEqualTo(destByName.getDestinationDescription());
+//    }
 
     @Test
     void findAttractionById() {

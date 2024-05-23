@@ -83,5 +83,12 @@ public interface PackRepository {
     // Destination에 묶여있는 호텔 리스트 조회
     List<HotelView> findHotelsByDestinationName(String destinationName);
 
+    // 패키지 삭제 처리
+	public void packagesDelete(long packId);
 
+    // 패키지 수정
+	Pack updatePack(Pack pack);
+	
+	// 스케줄 삭제
+	void deleteSchedule(long packId);
 }

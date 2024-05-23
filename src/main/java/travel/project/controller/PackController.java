@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -92,9 +93,9 @@ public class PackController {
 		List<String> imgNames = packService.uploadImage(files, savedHotels.getHotelId(), "hotel");
 		
 		// 호텔 이미지 등록
-    packService.saveHotelImg(imgNames, savedHotels.getHotelId());
+		packService.saveHotelImg(imgNames, savedHotels.getHotelId());
 
-		return main;
+		return "admin/index";
 	}
 
 	// Destination 페이지 요청
@@ -109,7 +110,7 @@ public class PackController {
 	@PostMapping("/destinations")
 	public String destinations(@ModelAttribute Destination destination, Model model) {
 		packService.saveDestination(destination);
-		return main;
+		return "admin/index";
 	}
 	
 	// restaurants 등록을 위한 Destination 리스트 페이지
@@ -144,7 +145,7 @@ public class PackController {
 		// 레스토랑 등록
 		packService.saveRestaurant(restaurants, destination_Id);
 
-		return main;
+		return "admin/index";
 	}
 	
 	// attractions 등록을 위한 Destination 리스트 페이지
@@ -178,7 +179,7 @@ public class PackController {
 		
 		// attractions 등록
 		packService.saveAttraction(attraction, id);
-		return main;
+		return "admin/index";
 	}
 	
 	// package 등록 화면
@@ -247,7 +248,7 @@ public class PackController {
 		// Restaurant_each_day
 		packService.saveEachRestaurant(packId, days, params);
 		
-		return main;
+		return "admin/index";
 	}
 	
 	// 지역별 패키지의 리스트
@@ -333,5 +334,126 @@ public class PackController {
 		return main;
 	}
 	
+	// 패키지 수정, 삭제 리스트 화면
+	@GetMapping("/packages/list")
+	public String packagesList(Model model) {
+		
+		// 패키지 리스트 조회
+		List<Pack> packList = packService.getPackageListByDestination("all");
+		
+		model.addAttribute("packList", packList);
+		model.addAttribute("center", "../pack/packageUpDel.jsp");
+		return main;
+	}
+	
+	// 패키지 수정 화면
+	@GetMapping("/packages/{packId}")
+	public String packagesUpdate(@PathVariable long packId, Model model) {
+		
+		// 패키지 조회
+		Pack pack = packService.findPackById(packId);
+		
+		// 호텔 모든 열 지역으로 검색
+		List<HotelView> hotelViews = packService.findByDestinationHotels(pack.getDestinationName());
+		
+		// 레스토랑 모든 열 지역으로 검색
+		List<RestaurantView> restaurantViews = packService.findByDestinationRestaurant(pack.getDestinationName());
+		
+		// 관광지 모든 열 지역으로 검색
+		List<AttractionView> attractionViews = packService.findByDestinationAttraction(pack.getDestinationName(), "tourist");
+		
+		// 액티비티 모든 열 지역으로 검색
+		List<AttractionView> activityViews = packService.findByDestinationAttraction(pack.getDestinationName(), "Activity");
+		
+		long daysDifference = packService.dayDifference(pack.getStartDate(), pack.getEndDate());
+		
+		MultiValueMap<Integer, Object> map = new LinkedMultiValueMap<>();
+		int maxDayNum = scheduleService.getMaxDayNum(packId);
+		for (int i = 1; i <= maxDayNum; i++) {
+			List<Attraction> attractionDayNum = scheduleService.findAttractionByDayNum(i,packId);
+			Hotels hotelDayNum = scheduleService.findHotelByDayNum(i,packId);
+			List<Restaurants> restaurantsDayNum = scheduleService.findRestaurantByDayNum(i,packId);
+			long hotelId = hotelDayNum.getHotelId();
+			List<Hotels_Img> hotelImageList = scheduleService.getHotelImages(hotelId);
+			List<HotelAmenities> hotelAmenitiesList = scheduleService.getHotelAmenities(hotelId);
+			// 호텔 관련 정보를 리스트에 담아 MultiValueMap에 추가
+			map.add(i,new ItemWrapper(hotelDayNum, "hotel"));
+			for(HotelAmenities hotelAmenities : hotelAmenitiesList){
+				map.add(i,new ItemWrapper(hotelAmenities,"hotelAmenities"));
+			}
+			for(Hotels_Img hotelImages : hotelImageList){
+				map.add(i,new ItemWrapper(hotelImages,"hotelImages"));
+			}
+			// 관광지 정보를 리스트에 담아 MultiValueMap에 추가
+			for (Attraction attraction : attractionDayNum) {
+				map.add(i,new ItemWrapper(attraction, "attraction"));
+			}
 
+			// 레스토랑 정보를 리스트에 담아 MultiValueMap에 추가
+			for (Restaurants restaurant : restaurantsDayNum) {
+				map.add(i,new ItemWrapper(restaurant, "restaurant"));
+			}
+		}
+		String sDate = String.valueOf(pack.getStartDate());
+		String eDate = String.valueOf(pack.getEndDate());
+		
+		model.addAttribute("map",map);
+		
+		model.addAttribute("pack", pack);
+		model.addAttribute("sDate", sDate);
+		model.addAttribute("eDate", eDate);
+		model.addAttribute("hotelView", hotelViews);
+		model.addAttribute("restaurantView", restaurantViews);
+		model.addAttribute("attractionView", attractionViews);
+		model.addAttribute("activityView", activityViews);
+		model.addAttribute("daysDifference", daysDifference+1);
+		model.addAttribute("center", "../pack/packagesUpdate.jsp");
+		return main;
+	}
+	
+	@Transactional
+	@PutMapping("/packages/{packId}")
+	public String packagesUpdate(@PathVariable long packId,
+								 @RequestParam long days,
+								 @ModelAttribute Pack pack,
+								 @RequestParam String stDate,
+								 @RequestParam String enDate,
+								 @RequestParam Map<String, String> params) {
+		
+		// sql 날짜 변경
+		LocalDate startDate = packService.replaceSqlDate(stDate);
+		LocalDate endDate = packService.replaceSqlDate(enDate);
+		pack.setStartDate(Date.valueOf(startDate));
+		pack.setEndDate(Date.valueOf(endDate));
+		pack.setPackId(packId);
+		
+		// pack 업데이트
+		Pack updatedPack = packService.updatePack(pack);
+		
+		// 스케줄, 상세 테이블 전체 삭제
+		packService.deleteSchedule(packId);
+		
+		// Schedule 등록
+		packService.saveSchedule(packId, days, params);
+		
+		// hotel_each_day 등록
+		packService.saveEachHotel(packId, days, params);
+		
+		// Attraction_each_day
+		packService.saveEachAttraction(packId, days, params);
+		
+		// Restaurant_each_day
+		packService.saveEachRestaurant(packId, days, params);		
+		
+		return "redirect:/admin";
+	}
+	
+	// 패키지 삭제 처리
+	@DeleteMapping("/packages/{packId}")
+	public String packagesDelete(@PathVariable long packId) {
+		packService.packagesDelete(packId);
+		return "redirect:/packages/list";
+	}
+
+	
 }

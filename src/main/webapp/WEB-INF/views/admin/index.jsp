@@ -16,7 +16,7 @@ String contextPath = request.getContextPath();
 <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
 	rel="stylesheet" />
-<link href="admin/css/styles.css" rel="stylesheet" />
+<link href="/admin/css/styles.css" rel="stylesheet" />
 <style type="text/css">
 
 table caption {
@@ -85,29 +85,40 @@ table.dataTable th, table.dataTable td {
 							</div> 회원관리
 						</a>
 						<div class="sb-sidenav-menu-heading">Travel Package</div>
-						<a class="nav-link collapsed" href="<%=contextPath %>/admin/reservation" >
+<%-- 						<a class="nav-link collapsed" href="<%=contextPath %>/admin/reservation" > --%>
+<!-- 							<div class="sb-nav-link-icon"> -->
+<!-- 								<i class="fas fa-columns"></i> -->
+<!-- 							</div> 예약관리 -->
+<!-- 						</a> -->
+<%-- 						<a class="nav-link collapsed" href="<%=contextPath %>/admin/travelpackage"> --%>
+<!-- 							<div class="sb-nav-link-icon"> -->
+<!-- 								<i class="fas fa-book-open"></i> -->
+<!-- 							</div> 여행상품 관리 -->
+<!-- 						</a> -->
+						<a class="nav-link collapsed" href="/hotels" >
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
-							</div> 예약관리
-							<!-- <div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div> -->
+							</div> 호텔등록
 						</a>
-						<!-- <div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="layout-static.html">Static
-									Navigation</a> <a class="nav-link" href="layout-sidenav-light.html">Light
-									Sidenav</a>
-							</nav>
-						</div> -->
-						<a class="nav-link collapsed" href="<%=contextPath %>/admin/travelpackage">
+						<a class="nav-link collapsed" href="/destinations" >
 							<div class="sb-nav-link-icon">
-								<i class="fas fa-book-open"></i>
-							</div> 여행상품 관리
-							<!-- <div class="sb-sidenav-collapse-arrow">
-								<i class="fas fa-angle-down"></i>
-							</div> -->
+								<i class="fas fa-columns"></i>
+							</div> 목적지등록
+						</a>
+						<a class="nav-link collapsed" href="/restaurants" >
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 식당등록
+						</a>
+						<a class="nav-link collapsed" href="/attractions" >
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 명소등록
+						</a>
+						<a class="nav-link collapsed" href="/packages" >
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 패키지등록
 						</a>
 						<!-- <div class="collapse" id="collapsePages"
 							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
@@ -140,11 +151,17 @@ table.dataTable th, table.dataTable td {
 							</nav>
 						</div> -->
 						<div class="sb-sidenav-menu-heading">Customer Service</div>
+						<a class="nav-link" href="/packages/list">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-chart-area"></i>
+							</div> 패키지 수정, 삭제
+						</a> 
 						<a class="nav-link" href="/email">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 이메일 알림
-						</a> <a class="nav-link" href="tables.html">
+						</a> 
+						<a class="nav-link" href="tables.html">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 고객센터 Q&A
@@ -386,16 +403,16 @@ table.dataTable th, table.dataTable td {
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
-	<script src="admin/js/scripts.js"></script>
+	<script src="/admin/js/scripts.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
-	<script src="admin/assets/demo/chart-area-demo.js"></script>
-	<script src="admin/assets/demo/chart-bar-demo.js"></script>
+	<script src="/admin/assets/demo/chart-area-demo.js"></script>
+	<script src="/admin/assets/demo/chart-bar-demo.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
-	<script src="admin/js/datatables-simple-demo.js"></script>
+	<script src="/admin/js/datatables-simple-demo.js"></script>
 
 </body>
 </html>

@@ -82,7 +82,7 @@
                         <img src="/images/travel.jpg">
                         <div class="course-info">
                              <p><strong>번호</strong> : ${list.packId}</p>
-                            <p><strong>여행지</strong> : ${list.destinationName}</p>
+                            <p><strong>여행지</strong> : ${list.destinationAlias}</p>
                             <p><strong>패키지이름</strong> : ${list.packName}</p>
                              <p><strong>여행타입</strong> : ${list.packType}</p>
                               <p><strong>패키지여행 시작날짜</strong> : ${list.startDate}</p>

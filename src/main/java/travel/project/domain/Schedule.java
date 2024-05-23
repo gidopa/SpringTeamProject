@@ -15,4 +15,15 @@ public class Schedule {
     private String scheduleType; // 명소, 식당, 호텔
     private String description;
     private int eventId;
+    
+	public Schedule(long scheduleId, long packId, int dayNumber, String scheduleType, int eventId, String description) {
+		this.scheduleId = scheduleId;
+		this.packId = packId;
+		this.dayNumber = dayNumber;
+		this.scheduleType = scheduleType;
+		this.description = description;
+		this.eventId = eventId;
+	}
+    
+    
 }

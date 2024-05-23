@@ -129,31 +129,31 @@
                                 <span>부대시설</span>
                             </a>
                         </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="/hotels">
-                                <span>호텔 등록</span>
-                            </a>
-                        </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="/destinations">
-                                <span>목적지 등록</span>
-                            </a>
-                        </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="/restaurants">
-                                <span>식당 등록</span>
-                            </a>
-                        </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="/attractions">
-                                <span>명소 등록</span>
-                            </a>
-                        </li>
-                        <li class="header-subitem">
-                            <a class="header-sublink" href="/packages">
-                                <span>패키지 등록</span>
-                            </a>
-                        </li>
+<!--                         <li class="header-subitem"> -->
+<!--                             <a class="header-sublink" href="/hotels"> -->
+<!--                                 <span>호텔 등록</span> -->
+<!--                             </a> -->
+<!--                         </li> -->
+<!--                         <li class="header-subitem"> -->
+<!--                             <a class="header-sublink" href="/destinations"> -->
+<!--                                 <span>목적지 등록</span> -->
+<!--                             </a> -->
+<!--                         </li> -->
+<!--                         <li class="header-subitem"> -->
+<!--                             <a class="header-sublink" href="/restaurants"> -->
+<!--                                 <span>식당 등록</span> -->
+<!--                             </a> -->
+<!--                         </li> -->
+<!--                         <li class="header-subitem"> -->
+<!--                             <a class="header-sublink" href="/attractions"> -->
+<!--                                 <span>명소 등록</span> -->
+<!--                             </a> -->
+<!--                         </li> -->
+<!--                         <li class="header-subitem"> -->
+<!--                             <a class="header-sublink" href="/packages"> -->
+<!--                                 <span>패키지 등록</span> -->
+<!--                             </a> -->
+<!--                         </li> -->
                     </ul>
                     <!-- <ul class="header-sublist">
                     <li class="header-subitem">

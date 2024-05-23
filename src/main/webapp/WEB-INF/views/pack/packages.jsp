@@ -31,6 +31,13 @@
                         <input type="text" class="inputset-input form-control" placeholder="패키지 명을 입력하세요." name="packName" required>
                       </div>
                 </div>
+                
+                <div class="input-group">
+                      <label class="label"><h3>Destinaton 별칭</h3></label>
+                      <div class="inputset inputset-lg">
+                        <input type="text" class="inputset-input form-control" placeholder="목적지 별칭을 입력하세요." name="destinationAlias" required>
+                      </div>
+                </div>
                     
                 <div class="form-body">
                   <div class="calendar-wrap"></div>

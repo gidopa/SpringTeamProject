@@ -2,6 +2,7 @@ package travel.project.repository.pack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -166,7 +167,35 @@ public class PackRepositoryImpl implements PackRepository{
 	public void saveEachRestaurant(Restaurant_each_day restaurant_each_day) {
 		packMapper.saveEachRestaurant(restaurant_each_day);
 	}
+	
+	// 패키지 삭제 처리
+	@Override
+	public void packagesDelete(long packId) {
+		packMapper.packagesDelete(packId);
+	}
+	
+	// 패키지 수정
+	@Override
+	public Pack updatePack(Pack pack) {
+		packMapper.updatePack(pack);
+		
+		return packMapper.findByIdPack(pack.getPackId());
+	}
+	
+	// 스케줄 삭제
+	@Override
+	public void deleteSchedule(long packId) {
+		packMapper.deleteSchedule(packId);
+		
+        List<String> tableNames = Arrays.asList("hotel_each_day", "restaurant_each_day", "attraction_each_day");
 
-
+		for(String tableName : tableNames) {
+			Map<String, Object> params = new HashMap<>();
+			params.put("tableName", tableName);
+			params.put("packId", packId);
+			packMapper.deleteEachTable(params);
+		}
+	}
+	
 	
 }

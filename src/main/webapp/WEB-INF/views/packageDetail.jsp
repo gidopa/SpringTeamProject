@@ -154,7 +154,7 @@
 <div class="container content-area">
     <div class="main-content">
         <div class="info-header">
-            <h1 class="h3">여행지: ${pack.destinationName}</h1>
+            <h1 class="h3">여행지: ${pack.destinationAlias}</h1>
             <p>출발일: ${pack.startDate} | 도착일: ${pack.endDate} | 가격: ${pack.price}원</p>
             <c:forEach var="image" items="${imageList}">
                 <img src="/images/${image.imgName}" alt="${image.imgName}">
