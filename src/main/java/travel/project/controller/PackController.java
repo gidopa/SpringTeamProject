@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -25,6 +26,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +53,7 @@ import travel.project.service.Detination.DestinationService;
 import travel.project.service.PackService;
 import org.springframework.web.multipart.MultipartFile;
 import travel.project.service.ScheduleService.ScheduleService;
+import travel.project.service.customer.CustomerService;
 
 
 @Slf4j
@@ -59,6 +65,7 @@ public class PackController {
 	private final DestinationService destinationService;
 	private final ScheduleService scheduleService;
 	private final ScheduleMapper scheduleMapper;
+	private final CustomerService customerService;
 	String main = "main/main";
 
 	// 호텔 등록 페이지
@@ -272,14 +279,25 @@ public class PackController {
 	}
 
 	@GetMapping("/package/{packId}")
-	public String packDetail(@PathVariable long packId, Model model, @RequestParam String destinationName){
-		// 일차별이 아닌 공통으로 필요한 데이터 addAttribute
+	public String packDetail(@PathVariable long packId, Model model, @RequestParam String destinationName, HttpServletRequest request){
+		// 일차별이 아닌 공통으로 필요한 데이터
 		Destination destination = destinationService.findDestByName(destinationName);
 		long destId = destination.getDestinationId();
 		Pack pack = packService.findPackById(packId);
 		List<Destinations_Img> imageList = scheduleService.getDestinationImages(destId);
+			
+		// 로그인한 아이디를 받아오고, 아이디를 통해 customer객체를 받아오자.
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		Optional<Customer> optional = customerService.findById(id);
+		System.out.println("optional 객체 비어있나? " + optional.isEmpty());
+		Customer customer = optional.get();
+		
+		
+		// addAttribute
 		model.addAttribute("imageList",imageList);
 		model.addAttribute("pack",pack);
+		model.addAttribute("customer",customer);
 		// 일차별로 필요한 데이터들 담아 multivaluemap으로 담음
 		// key 가 1,2 이렇게 올라가고 해당 키값에 따라 일차별로 데이터를 나눔
 		// join하고 DTO로 만들면 list 갯수 줄일 수 있을듯 ..
