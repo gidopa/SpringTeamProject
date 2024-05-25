@@ -59,7 +59,7 @@
 <hr>
 
 ### :busts_in_silhouette: 팀원 소개
-- 장원보 [장원보](https://github.com/Onestepp1) :walking: 
+- 장원보 :walking:  [장원보 Github](https://github.com/Onestepp1)     
 - 박기도 :full_moon:
 - 김원기 [김원기 Github](https://github.com/TrendFollow)
 - 장영훈 [장영훈 Github](https://github.com/jangyoung-hoon)
