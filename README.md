@@ -52,7 +52,7 @@
 <hr>
 
  ### :watch: 프로젝트 기간
- 2024-05-0 ~ 2024-05-20
+ 2024-05-01 ~ 2024-05-20
  ![프로젝트 스케쥴](https://github.com/gidopa/SpringTeamProject/assets/120196095/2a23aded-c8c4-45f8-a966-36f4cd968734)
  
  
