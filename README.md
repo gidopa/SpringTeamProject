@@ -8,8 +8,8 @@
 #### 코로나 이후 많아진 여행 수요에 맞게 패키지를 구성해 여행을 할 수 있도록 여행사 웹 개설
 
 ## 참고 사이트
-![하나투어]((https://enjoy.hanatour.com/?gad_source=1))
-![노랑풍선]((https://pkg.ybtour.co.kr/index.yb))
+[하나투어](https://enjoy.hanatour.com)
+[노랑풍선](https://pkg.ybtour.co.kr)
 
 
 ## :mortar_board: 목차
@@ -24,7 +24,7 @@
 ### :computer: 기술 스택
 #### Platform
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-![Eclipse](https://img.shields.io/badge/EclipseSTS-0078D6.svg?style=for-the-badge&logo=Eclipse&logoColor=purple)
+![Eclipse](https://img.shields.io/badge/STS4-0078D6.svg?style=for-the-badge&logo=Eclipse&logoColor=purple)
 ![IntelliJ](https://img.shields.io/badge/IntelliJ-0078D6.svg?style=for-the-badge&logo=intellijidea&logoColor=#000000)
 
 ![apachetomcat](https://img.shields.io/badge/tomcat-0078D6.svg?style=for-the-badge&logo=apachetomcat&logoColor=yellow)
